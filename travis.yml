@@ -1,0 +1,136 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+
+addons:
+  apt:
+    packages:
+      - lynx
+
+notifications:
+  email:
+    - suprinya.pa@centrilliontech.co.th
+
+env:
+  global:
+    - ANDROID_API_LEVEL=28
+    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+    - ANDROID_ABI=armeabi-v7a
+    - FIREBASE_PROJECT_NAME=automatedtest-ci-demo
+    - FIREBASE_KEY_FILE=automatedtest-ci-demo-firebase-adminsdk-iwoq0-659c2cbb4f.json
+    - FIREBASE_SERVICE_ACCOUNT=firebase-adminsdk-iwoq0@automatedtest-ci-demo.iam.gserviceaccount.com
+    - FIREBASE_DEVICE_MODEL=NexusLowRes
+    - FIREBASE_DEVICE_VERSION=26
+    - AWS_BUCKET_NAME=ct-android-ci-cd-test
+    - AWS_ACCESS_KEY=ct-android-ci-cd-test
+    - AWS_SECRET_ACCESS_KEY=ct-android-ci-cd-test
+
+    matrix:
+    - ANDROID_SDKS=android-19,sysimg-19  ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+    - ANDROID_SDKS=android-24,sysimg-24  ANDROID_TARGET=android-24  ANDROID_ABI=armeabi-v7a
+    - ANDROID_SDKS=android-27,sysimg-27  ANDROID_TARGET=android-27  ANDROID_ABI=armeabi-v7a
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - android-27
+    - android-22
+    - extra-android-m2repository
+    - extra-android-support
+    - extra-google-m2repository
+    - sys-img-armeabi-v7a-android-22
+  licenses:
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
+  deploy:
+    provider: s3
+    access_key_id: $S3_ACCESS_KEY_ID
+    secret_access_key: $S3_SECRET_ACCESS_KEY
+    bucket: $AWS_BUCKET_NAME
+    skip_cleanup: true
+    upload-dir: travis-apk-scgexpress
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_2e23d3804d07_key -iv $encrypted_2e23d3804d07_iv -in automatedtest-ci-demo-firebase-adminsdk-iwoq0-659c2cbb4f.json.enc -out automatedtest-ci-demo-firebase-adminsdk-iwoq0-659c2cbb4f.json -d
+  - touch $HOME/.android/repositories.cfg
+  - yes | sdkmanager "platforms;android-$ANDROID_API_LEVEL"
+  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
+  - gem update --system
+  - gem install fastlane -NV
+  - pip install --user awscli
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+    - $HOME/google-cloud-sdk/
+
+install: true
+
+before_script: chmod +x gradlew
+
+jobs:
+  include:
+    - stage: "Builds"
+      name: "Build - API"
+      script: ./gradlew assembleApiDebug --stacktrace
+    - script: ./gradlew assembleMockDebug --stacktrace
+      name: "Build - MOCK"
+    - stage: "Tests"                                        # naming the Tests stage
+      name: "Unit Tests - API"                              # names the first Tests stage job
+      script: ./gradlew testApiDebugUnitTest --stacktrace
+    - script: ./gradlew testMockDebugUnitTest --stacktrace
+      name: "Unit Tests - MOCK"                             # names the second Tests stage job
+      #    - before_script:
+      #        - android list targets
+      #        - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi $ANDROID_ABI -c 100M
+      #        - emulator -avd test -no-audio -no-window &
+      #        - android-wait-for-emulator
+      #        - adb shell input keyevent 82 &
+      #      script: ./gradlew connectedApiDebugAndroidTest --stacktrace
+      #      name: "Instrumentation Tests -  API - MainActivity"   # names the third Tests stage job
+#    - before_script:
+#        # gcloud
+#        - gcloud version || true
+#        - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+#        # Add gcloud to $PATH
+#        - source /home/travis/google-cloud-sdk/path.bash.inc
+#        - gcloud version
+#        # Add gcloud auth
+#        - gcloud auth activate-service-account $FIREBASE_SERVICE_ACCOUNT --key-file=$FIREBASE_KEY_FILE --project=$FIREBASE_PROJECT_NAME
+#        # Add gcloud services enable
+#        - gcloud services enable toolresults.googleapis.com
+#      script:
+#        - ./gradlew assembleApiDebug
+#        - ./gradlew assembleApiDebugAndroidTest
+#        - gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/api/debug/app-api-debug.apk --test app/build/outputs/apk/androidTest/api/debug/app-api-debug-androidTest.apk --device model=$FIREBASE_DEVICE_MODEL,version=$FIREBASE_DEVICE_VERSION
+#      name: "Firebase Test Lab - Instrumentation Tests - API"
+    - script:
+#        - ./configure_aws.sh
+#        - aws s3 cp s3://$AWS_BUCKET_NAME/keystore.jks keystore.jks
+#        - aws s3 cp s3://$AWS_BUCKET_NAME/keystore.properties keystore.properties
+#        - aws s3 cp s3://$AWS_BUCKET_NAME/ct-google-play-service-account.json fastlane/ct-google-play-service-account.json
+#        - ls
+#        - cp keystore.jks app
+#        - fastlane internal KEYSTORE_ALIAS:$KEYSTORE_ALIAS  KEYSTORE_PASSWORD:$KEYSTORE_PASSWORD KEYSTORE_ALIAS_PASSWORD:$KEYSTORE_ALIAS_PASSWORD;
+      name: "Run Fastlane - Builds and release alpha"
+      - script: fastlane test
+        name: "Run Fastlane - test"
+
+  #script:
+  #- ./gradlew clean test
+  #- ./gradlew clean build
+  #- ./gradlew connectedApiDebugAndroidTest
+  #- ./gradlew connectedMockDebugAndroidTest
+  #- ./gradlew testApiDebugUnitTest --stacktrace
+  #- ./gradlew testMockDebugUnitTest --stacktrace

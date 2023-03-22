@@ -8,8 +8,8 @@
 
     <color name="primaryTextColor">#333</color>
 
-    <color name="grayDark">#555</color>
-    <color name="grayDarker">#333</color>
+    <color name="grayDark">#727272</color>
+    <color name="grayDarker">#2B2B2B</color>
 
     <color name="grayLight">#CCC</color>
     <color name="grayLighter">#EEE</color>
@@ -28,8 +28,10 @@
     <color name="colorIncomplete">#FF9E1C</color>
     <color name="colorNew">#1c82ff</color>
 
-    <color name="deliveryBlue">#83d2f7</color>
-    <color name="deliveryGreen">#62b866</color>
+    <color name="pickupExtraTracking">#0061FE</color>
+
+    <color name="deliveryBlue">#3B7FC2</color>
+    <color name="deliveryGreen">#558B4E</color>
     <color name="deliveryYellow">#fed043</color>
     <color name="deliveryRed">#f06866</color>
     <color name="deliveryOrange">#f0791a</color>
@@ -48,4 +50,8 @@
     <color name="transparent">#00ffffff</color>
     <color name="transparent_black">#00000000</color>
     <color name="transparent_grey">#a0bbc7cd</color>
+
+    <color name="greenLight">#5062b866</color>
+
+    <color name="polylineBlue">#FF3E9AE9</color>
 </resources>

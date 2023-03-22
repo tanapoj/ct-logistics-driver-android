@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/containerReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/grid_large"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioReason"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:buttonTint="@color/gray"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_medium"
+                tools:text="ติดต่อไม่ได้"/>
+
+            <View
+                android:id="@+id/vDivider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:layout_marginTop="@dimen/grid_normal"
+                android:background="@color/grayLight"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

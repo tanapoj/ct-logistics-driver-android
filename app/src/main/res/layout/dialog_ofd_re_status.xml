@@ -16,9 +16,7 @@
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/reset_status"
-            android:layout_marginLeft="@dimen/grid_large"
-            android:layout_marginRight="@dimen/grid_xlarge"/>
+            android:text="@string/reset_status"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -30,9 +28,7 @@
             app:layout_constraintBottom_toTopOf="@+id/edtNote"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-            android:layout_marginLeft="@dimen/grid_large"
-            android:layout_marginRight="@dimen/grid_xlarge"/>
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"/>
 
     <EditText
             android:id="@+id/edtNote"
@@ -41,20 +37,19 @@
             android:layout_marginStart="@dimen/grid_large"
             android:layout_marginTop="@dimen/grid_xlarge"
             android:layout_marginEnd="@dimen/grid_xlarge"
-            android:layout_marginBottom="@dimen/grid_large"
             android:hint="@string/note"
-            app:layout_constraintBottom_toTopOf="@+id/btnOk"
-            android:layout_marginLeft="@dimen/grid_large"
-            android:layout_marginRight="@dimen/grid_xlarge"/>
+            app:layout_constraintBottom_toTopOf="@+id/btnOk"/>
 
     <TextView
             android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/grid_xlarge"
             android:layout_marginStart="@dimen/grid_large"
-            android:layout_marginTop="@dimen/grid_xlarge"
-            android:layout_marginEnd="@dimen/grid_xlarge"
-            android:layout_marginBottom="@dimen/grid_large"
+            android:paddingTop="@dimen/grid_xlarge"
+            android:paddingEnd="@dimen/grid_xlarge"
+            android:paddingBottom="@dimen/grid_large"
+            android:layout_marginEnd="@dimen/grid_normal"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -63,18 +58,16 @@
             android:textSize="@dimen/text_small"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="@dimen/grid_large"
-            android:layout_marginRight="@dimen/grid_xlarge"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_large"
-            android:layout_marginTop="@dimen/grid_xlarge"
-            android:layout_marginEnd="@dimen/grid_xxlarge"
-            android:layout_marginBottom="@dimen/grid_large"
+            android:paddingStart="@dimen/grid_large"
+            android:paddingTop="@dimen/grid_xlarge"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:paddingBottom="@dimen/grid_large"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -83,7 +76,5 @@
             android:textSize="@dimen/text_small"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnOk"
-            android:layout_marginLeft="@dimen/grid_large"
-            android:layout_marginRight="@dimen/grid_xxlarge"/>
+            app:layout_constraintEnd_toStartOf="@+id/btnOk"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

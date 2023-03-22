@@ -59,6 +59,7 @@
     <dimen name="text_xlarge">22sp</dimen>
     <dimen name="text_xxlarge">26sp</dimen>
     <dimen name="text_xxxlarge">30sp</dimen>
+    <dimen name="text_xxxxlarge">32sp</dimen>
     <dimen name="text_xxsmall_no_scale">10dp</dimen>
     <dimen name="text_xsmall_no_scale">12dp</dimen>
     <dimen name="text_small_no_scale">14dp</dimen>
@@ -70,6 +71,7 @@
     <dimen name="text_xxxlarge_no_scale">30dp</dimen>
 
     <!-- Icon Size -->
+    <dimen name="icon_avatar_xsmall">24dp</dimen>
     <dimen name="icon_avatar_small">32dp</dimen>
     <dimen name="icon_avatar">40dp</dimen>
     <dimen name="icon_avatar_large">64dp</dimen>
@@ -111,6 +113,9 @@
     <dimen name="btn_raised_padding">16dp</dimen>
     <dimen name="btn_raised_corner_radius">2dp</dimen>
 
+    <!-- Button Size -->
+    <dimen name="btn_size_reverse">32sp</dimen>
+
     <!-- Float Action Button -->
     <dimen name="fab_size_normal">56dp</dimen>
     <dimen name="fab_size_mini">40dp</dimen>
@@ -139,4 +144,9 @@
     <dimen name="tab_height">40dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="padding_bottom_fab">76dp</dimen>
+
+    <dimen name="text_tracking_count">38sp</dimen>
+
+    <dimen name="radio_width">75dp</dimen>
 </resources>

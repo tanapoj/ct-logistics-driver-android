@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/grid_normal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:focusable="true">
+        <TextView
+            android:id="@+id/tvTitleDeliveryCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_medium"
+            android:layout_marginTop="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_large"
+            android:textColor="@color/grayDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="DELIVERED (2) - COD (1) 1,500" />
+
+        <ImageView
+            android:id="@+id/imgDrag"
+            android:layout_width="@dimen/icon_avatar_xsmall"
+            android:layout_height="@dimen/icon_avatar_xsmall"
+            android:layout_marginTop="@dimen/grid_large"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_large"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down"
+            android:tint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerReverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/grid_normal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerTitle">
+
+        <Button
+            android:id="@+id/btnReverseAll"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_size_reverse"
+            android:background="@drawable/button_green_background"
+            android:text="@string/all"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/glReverse1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glReverse1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <Button
+            android:id="@+id/btnReverse"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_size_reverse"
+            android:background="@drawable/button_border_green_background"
+            android:text="@string/reverse"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/glReverse2"
+            app:layout_constraintStart_toStartOf="@+id/glReverse1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glReverse2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <Button
+            android:id="@+id/btnReverseNon"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_size_reverse"
+            android:background="@drawable/button_border_green_background"
+            android:text="@string/non_reverse"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glReverse2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnReverse"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/grid_normal"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

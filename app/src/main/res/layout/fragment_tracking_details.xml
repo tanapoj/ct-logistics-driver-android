@@ -1,579 +1,837 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ScrollView
-            android:id="@+id/scvContent"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/containerButton"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:context=".ui.delivery.tracking.TrackingDetailsFragment">
+        android:id="@+id/scvContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/containerButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.delivery.tracking.TrackingDetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginTop="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:layout_marginBottom="@dimen/grid_normal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTracking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_normal"
-                android:layout_marginTop="@dimen/grid_normal"
-                android:layout_marginEnd="@dimen/grid_normal"
-                android:layout_marginBottom="@dimen/grid_normal">
+                app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilTrackingNo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/tracking_number"
-                    app:layout_constraintEnd_toStartOf="@id/cvCodAmount"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                        android:id="@+id/edtTrackingNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:inputType="text"
-                        android:textSize="@dimen/text_xlarge"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cvCodAmount"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/grid_large"
                     android:layout_marginTop="@dimen/grid_medium"
                     android:layout_marginEnd="@dimen/grid_large"
-                    android:layout_marginBottom="@dimen/grid_medium"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="0.3"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginBottom="@dimen/grid_medium">
 
-                <TextView
-                        android:id="@+id/txtCodTitle"
+                    <TextView
+                        android:id="@+id/edtTrackingNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cod_thb"
-                        android:textSize="@dimen/text_xsmall"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginEnd="@dimen/grid_normal"
+                        android:text="@string/booking_id"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                        android:id="@+id/txtCod"
+                    <TextView
+                        android:id="@+id/txtOrderCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/grid_small"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_xlarge"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_xsmall"
                         android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtTrackingNo"
+                        tools:text="Order code : 2222222222" />
+
+                    <TextView
+                        android:id="@+id/txtOrderDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayLight"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toEndOf="@+id/txtOrderCode"
+                        app:layout_constraintTop_toBottomOf="@+id/edtTrackingNo"
+                        tools:text="(22/09/2018)" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cvCodAmount"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/txtCodTitle"
-                        tools:text="0"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.3">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                    android:id="@+id/txtOrderCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_normal"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_normal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tilTrackingNo"
-                    tools:text="Order Code : 11111123"
-                    android:layout_marginLeft="@dimen/grid_normal"/>
-
-            <TextView
-                    android:id="@+id/txtOrderDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/grid_normal"
-                    android:textColor="@color/grayLight"
-                    android:textSize="@dimen/text_normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtOrderCode"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtOrderCode"
-                    tools:text="22/09/2018"
-                    android:layout_marginRight="@dimen/grid_normal"/>
-
-            <androidx.cardview.widget.CardView
-                    android:id="@+id/cvRecipient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_normal"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrderDate">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/grid_large"
-                        android:layout_marginTop="@dimen/grid_medium"
-                        android:layout_marginEnd="@dimen/grid_large"
-                        android:layout_marginBottom="@dimen/grid_medium">
-
-                    <TextView
-                            android:id="@+id/txtRecipientTitle"
+                        <TextView
+                            android:id="@+id/txtCodTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/recipient"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/text_medium"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtRecipient"/>
-
-                    <TextView
-                            android:id="@+id/txtRecipient"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/grid_normal"
-                            android:layout_marginTop="@dimen/grid_small"
-                            android:gravity="end"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_normal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/txtRecipientTitle"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="Ms. Supattra Anna"
-                            android:layout_marginLeft="@dimen/grid_normal"/>
-
-                    <View
-                            android:id="@+id/vDivider1"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayDark"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtRecipientTitle"/>
-
-                    <TextView
-                            android:id="@+id/txtAddressTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:text="@string/address"
-                            android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/vDivider1"/>
-
-                    <TextView
-                            android:id="@+id/txtAddress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintTop_toBottomOf="@id/txtAddressTitle"
-                            tools:text="20/126 Ramintra Soi 14, Bankhen, 10220"/>
-
-                    <!-- TODO: Hiding not implemented -->
-                    <ImageView
-                            android:id="@+id/imgAddress"
-                            android:layout_width="@dimen/icon_normal"
-                            android:layout_height="@dimen/icon_normal"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:background="?attr/selectableItemBackground"
-                            android:focusable="true"
-                            android:tint="@color/ripple_effect_image_tint"
-                            android:visibility="invisible"
-                            app:layout_constraintBottom_toBottomOf="@id/txtAddress"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@drawable/ic_baseline_location_24dp"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-
-                    <View
-                            android:id="@+id/vDivider2"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayLight"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtAddress"/>
-
-                    <TextView
-                            android:id="@+id/txtPhoneTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:text="@string/phone_number"
-                            android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/vDivider2"/>
-
-                    <TextView
-                            android:id="@+id/txtPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintTop_toBottomOf="@id/txtPhoneTitle"
-                            tools:text="081-2345678"/>
-
-                    <ImageView
-                            android:id="@+id/btnPhone"
-                            android:layout_width="@dimen/icon_normal"
-                            android:layout_height="@dimen/icon_normal"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:tint="@color/ripple_effect_image_tint"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtPhone"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtPhoneTitle"
-                            app:srcCompat="@drawable/ic_baseline_phone_24dp"
-                            tools:layout_editor_absoluteX="300dp"
-                            tools:layout_editor_absoluteY="52dp"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-
-                    <View
-                            android:id="@+id/vDivider3"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayLight"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtPhone"/>
-
-                    <TextView
-                            android:id="@+id/txtRemarkTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:text="@string/remark"
-                            android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintTop_toBottomOf="@id/vDivider3"/>
-
-                    <TextView
-                            android:id="@+id/txtRemark"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtRemarkTitle"
-                            tools:text="Contact Mr. A before delivery (Delivery time 08:00am - 10:00am only)"/>
-
-                    <View
-                            android:id="@+id/vDivider4"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayLight"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtRemark"/>
-
-                    <ImageView
-                            android:id="@+id/imgPhoto"
-                            android:layout_width="@dimen/icon_avatar_large"
-                            android:layout_height="@dimen/icon_avatar_large"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            app:srcCompat="@drawable/ic_baseline_image_24dp"
-                            app:layout_constraintTop_toBottomOf="@id/vDivider4"/>
-
-                    <TextView
-                            android:id="@+id/txtBefore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/grid_normal"
-                            android:text="@string/photo"
-                            app:layout_constraintBottom_toBottomOf="@id/imgPhoto"
-                            app:layout_constraintStart_toEndOf="@id/imgPhoto"
-                            app:layout_constraintTop_toTopOf="@id/imgPhoto"
-                            android:layout_marginLeft="@dimen/grid_normal"/>
-
-                    <ImageView
-                            android:id="@+id/btnAddPhoto"
-                            android:layout_width="@dimen/icon_normal"
-                            android:layout_height="@dimen/icon_normal"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:focusable="true"
-                            android:tint="@color/ripple_effect_image_tint"
-                            app:layout_constraintBottom_toBottomOf="@id/txtBefore"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@drawable/ic_baseline_photo_camera_24dp"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:id="@+id/cvSender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_normal"
-                    app:layout_constraintTop_toBottomOf="@+id/cvRecipient">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/grid_large"
-                        android:layout_marginTop="@dimen/grid_medium"
-                        android:layout_marginEnd="@dimen/grid_large"
-                        android:layout_marginBottom="@dimen/grid_medium">
-
-                    <TextView
-                            android:id="@+id/txtSenderTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sender"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/text_medium"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtSender"/>
-
-                    <TextView
-                            android:id="@+id/txtSender"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/grid_normal"
-                            android:layout_marginTop="@dimen/grid_small"
-                            android:gravity="end"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_normal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/txtSenderTitle"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="Mrs. Pilin Kusol"
-                            android:layout_marginLeft="@dimen/grid_normal"/>
-
-                    <TextView
-                            android:id="@+id/txtSenderCode"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:text="@string/cod_thb"
                             android:textColor="@color/grayLight"
                             android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtSender"
-                            tools:text="22/09/2018"/>
-
-                    <View
-                            android:id="@+id/vDivider5"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayDark"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtSenderCode"/>
-
-                    <TextView
-                            android:id="@+id/txtSenderAddressTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:text="@string/address"
-                            android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/vDivider5"/>
-
-                    <TextView
-                            android:id="@+id/txtSenderAddress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintTop_toBottomOf="@id/txtSenderAddressTitle"
-                            tools:text="20/126 Ramintra Soi 14, Bankhen, 10220"/>
-
-                    <!-- TODO: Hiding not implemented -->
-                    <ImageView
-                            android:id="@+id/imgSenderAddress"
-                            android:layout_width="@dimen/icon_normal"
-                            android:layout_height="@dimen/icon_normal"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:background="?attr/selectableItemBackground"
-                            android:focusable="true"
-                            android:tint="@color/ripple_effect_image_tint"
-                            android:visibility="invisible"
-                            app:layout_constraintBottom_toBottomOf="@id/txtSenderAddress"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@drawable/ic_baseline_location_24dp"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-
-                    <View
-                            android:id="@+id/vDivider6"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayLight"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtSenderAddress"/>
-
-                    <TextView
-                            android:id="@+id/txtSenderPhoneTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:text="@string/phone_number"
-                            android:textSize="@dimen/text_xsmall"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/vDivider6"/>
-
-                    <TextView
-                            android:id="@+id/txtSenderPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintTop_toBottomOf="@+id/txtSenderPhoneTitle"
-                            tools:text="081-2345678"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:id="@+id/cvStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_normal"
-                    app:layout_constraintBottom_toTopOf="@+id/vDivider8"
-                    app:layout_constraintTop_toBottomOf="@+id/cvSender">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/grid_large"
-                        android:layout_marginTop="@dimen/grid_medium"
-                        android:layout_marginEnd="@dimen/grid_large"
-                        android:layout_marginBottom="@dimen/grid_medium">
-
-                    <TextView
-                            android:id="@+id/txtStatusTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/status"
-                            android:textSize="@dimen/text_small"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-
-                    <TextView
-                            android:id="@+id/txtStatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_small"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_normal"
-                            app:layout_constraintTop_toBottomOf="@id/txtStatusTitle"
-                            tools:text="Delivery Waiting..."/>
-
-                    <ImageView
-                            android:id="@+id/btnReStatus"
-                            android:layout_width="@dimen/icon_small"
-                            android:layout_height="@dimen/icon_small"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:focusable="true"
-                            android:tint="@color/ripple_effect_image_tint_gray"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtStatus"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/txtStatusTitle"
-                            app:srcCompat="@drawable/ic_baseline_border_create_white_24dp"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-
-                    <View
-                            android:id="@+id/vDivider7"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/divider"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:background="@color/grayDark"
-                            android:visibility="gone"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtStatus"/>
-
-                    <ImageView
-                            android:id="@+id/imgSignature"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/icon_avatar_xlarge"
-                            android:layout_marginTop="@dimen/grid_normal"
-                            android:layout_marginEnd="@dimen/grid_medium"
-                            android:background="@color/gray"
-                            android:focusable="true"
-                            android:visibility="gone"
-                            app:layout_constraintTop_toBottomOf="@+id/vDivider7"
-                            android:layout_marginRight="@dimen/grid_medium"/>
-
-                    <TextView
-                            android:id="@+id/txtSigner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/grid_small"
-                            android:textColor="@color/grayLight"
-                            android:textSize="@dimen/text_normal"
-                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imgSignature"
-                            tools:text="Mrs. Pilin Kosol"/>
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/grid_normal"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/text_xlarge"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="0" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRecipient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_xsmall"
+                app:layout_constraintTop_toBottomOf="@+id/cvTracking">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <ImageView
+                        android:id="@+id/btnPhone"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtPhone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_phone_24dp" />
+
+
+                    <ImageView
+                        android:id="@+id/btnAddress"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtEmail"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/txtEmail"
+                        app:srcCompat="@drawable/ic_baseline_location_24dp" />
+
+                    <TextView
+                        android:id="@+id/txtPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhoneTitle"
+                        tools:text="081-2345678" />
+
+                    <TextView
+                        android:id="@+id/txtRecipient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recipient"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/txtEmailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/address"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtEmailTitle"
+                        app:layout_constraintWidth_percent="0.7"
+                        tools:text="20/126 Ramintra Soi 14, Bankhen, 10220" />
+
+                    <!-- TODO: Hiding not implemented -->
+                    <TextView
+                        android:id="@+id/txtPhoneTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRecipient" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--<androidx.cardview.widget.CardView
+                android:id="@+id/cvRecipient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintTop_toBottomOf="@+id/cvTracking">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtRecipientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recipient"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtRecipient" />
+
+                    <TextView
+                        android:id="@+id/txtRecipient"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginLeft="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtRecipientTitle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Ms. Supattra Anna" />
+
+                    <View
+                        android:id="@+id/vDivider1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRecipientTitle" />
+
+                    <TextView
+                        android:id="@+id/txtEmailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/address"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider1" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintTop_toBottomOf="@id/txtEmailTitle"
+                        tools:text="20/126 Ramintra Soi 14, Bankhen, 10220" />
+
+                    &lt;!&ndash; TODO: Hiding not implemented &ndash;&gt;
+                    <ImageView
+                        android:id="@+id/imgAddress"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:background="?attr/selectableItemBackground"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@id/txtEmail"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_location_24dp" />
+
+                    <View
+                        android:id="@+id/vDivider2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtEmail" />
+
+                    <TextView
+                        android:id="@+id/txtPhoneTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/phone_number"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider2" />
+
+                    <TextView
+                        android:id="@+id/txtPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhoneTitle"
+                        tools:text="081-2345678" />
+
+                    <ImageView
+                        android:id="@+id/btnPhone"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtPhone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtPhoneTitle"
+                        app:srcCompat="@drawable/ic_baseline_phone_24dp"
+                        tools:layout_editor_absoluteX="300dp"
+                        tools:layout_editor_absoluteY="52dp" />
+
+                    <View
+                        android:id="@+id/vDivider3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+
+                    <TextView
+                        android:id="@+id/txtRemarkTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/remark"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintTop_toBottomOf="@id/vDivider3" />
+
+                    <TextView
+                        android:id="@+id/txtRemark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRemarkTitle"
+                        tools:text="Contact Mr. A before delivery (Delivery time 08:00am - 10:00am only)" />
+
+                    <View
+                        android:id="@+id/vDivider4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRemark" />
+
+                    <ImageView
+                        android:id="@+id/imgPhoto"
+                        android:layout_width="@dimen/icon_avatar_large"
+                        android:layout_height="@dimen/icon_avatar_large"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        app:layout_constraintTop_toBottomOf="@id/vDivider4"
+                        app:srcCompat="@drawable/ic_baseline_image_24dp" />
+
+                    <TextView
+                        android:id="@+id/txtBefore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginLeft="@dimen/grid_normal"
+                        android:text="@string/photo"
+                        app:layout_constraintBottom_toBottomOf="@id/imgPhoto"
+                        app:layout_constraintStart_toEndOf="@id/imgPhoto"
+                        app:layout_constraintTop_toTopOf="@id/imgPhoto" />
+
+                    <ImageView
+                        android:id="@+id/btnAddPhoto"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtBefore"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_photo_camera_24dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintTop_toBottomOf="@+id/cvRecipient">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <ImageView
+                        android:id="@+id/imgPhoto"
+                        android:layout_width="@dimen/icon_avatar_large"
+                        android:layout_height="@dimen/icon_avatar_large"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_image_24dp" />
+
+                    <TextView
+                        android:id="@+id/txtBefore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginLeft="@dimen/grid_normal"
+                        android:text="@string/photo"
+                        app:layout_constraintBottom_toBottomOf="@id/imgPhoto"
+                        app:layout_constraintStart_toEndOf="@id/imgPhoto"
+                        app:layout_constraintTop_toTopOf="@id/imgPhoto" />
+
+                    <ImageView
+                        android:id="@+id/btnAddPhoto"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtBefore"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_photo_camera_24dp" />
+
+                    <View
+                        android:id="@+id/vDivider3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imgPhoto" />
+
+                    <TextView
+                        android:id="@+id/txtServiceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/services_type"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider3" />
+
+                    <TextView
+                        android:id="@+id/txtService"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtServiceTitle"
+                        app:layout_constraintWidth_percent="0.7"
+                        tools:text="Normal - Doc40" />
+
+                    <View
+                        android:id="@+id/vDivider4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtService" />
+
+                    <TextView
+                        android:id="@+id/txtRemarkTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/remark"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintTop_toBottomOf="@id/vDivider4" />
+
+                    <TextView
+                        android:id="@+id/txtRemark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRemarkTitle"
+                        tools:text="Contact Mr. A before delivery (Delivery time 08:00am - 10:00am only)" />
+
+                    <View
+                        android:id="@+id/vDivider9"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRemark" />
+
+                    <TextView
+                        android:id="@+id/txtReverseTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/product_reverse"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider9" />
+
+                    <TextView
+                        android:id="@+id/txtReverse"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtReverseTitle"
+                        app:layout_constraintWidth_percent="0.7"
+                        tools:text="รอรับ" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintTop_toBottomOf="@+id/cvPhoto">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtSender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Sender : Mrs. Pilin Kusol"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_medium"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!--<TextView
+                        android:id="@+id/txtSender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginLeft="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtSenderTitle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Mrs. Pilin Kusol" />-->
+
+                    <TextView
+                        android:id="@+id/txtShipper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayLight"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtSender"
+                        tools:text="22/09/2018" />
+
+                    <View
+                        android:id="@+id/vDivider5"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtShipper" />
+<!--
+                    <TextView
+                        android:id="@+id/txtSenderAddressTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/address"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider5" />
+
+                    <TextView
+                        android:id="@+id/txtSenderAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintTop_toBottomOf="@id/txtSenderAddressTitle"
+                        tools:text="20/126 Ramintra Soi 14, Bankhen, 10220" />
+
+                    &lt;!&ndash; TODO: Hiding not implemented &ndash;&gt;
+                    <ImageView
+                        android:id="@+id/imgSenderAddress"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:background="?attr/selectableItemBackground"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@id/txtSenderAddress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_location_24dp" />
+
+                    <View
+                        android:id="@+id/vDivider6"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtSenderAddress" />-->
+
+                    <TextView
+                        android:id="@+id/txtSenderPhoneTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/phone_number"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider5" />
+
+                    <TextView
+                        android:id="@+id/txtSenderPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintTop_toBottomOf="@+id/txtSenderPhoneTitle"
+                        tools:text="081-2345678" />
+
+                    <ImageView
+                        android:id="@+id/btnSenderPhone"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtSenderPhone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_phone_24dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintBottom_toTopOf="@+id/vDivider8"
+                app:layout_constraintTop_toBottomOf="@+id/cvSender">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtStatusTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintTop_toBottomOf="@id/txtStatusTitle"
+                        tools:text="Delivery Waiting..." />
+
+                    <ImageView
+                        android:id="@+id/btnReStatus"
+                        android:layout_width="@dimen/icon_small"
+                        android:layout_height="@dimen/icon_small"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint_gray"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtStatus"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtStatusTitle"
+                        app:srcCompat="@drawable/ic_baseline_border_create_white_24dp" />
+
+                    <View
+                        android:id="@+id/vDivider7"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayDark"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtStatus" />
+
+                    <ImageView
+                        android:id="@+id/imgSignature"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/icon_avatar_xlarge"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:layout_marginRight="@dimen/grid_medium"
+                        android:background="@color/gray"
+                        android:focusable="true"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider7" />
+
+                    <TextView
+                        android:id="@+id/txtSigner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayLight"
+                        android:textSize="@dimen/text_normal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imgSignature"
+                        tools:text="Mrs. Pilin Kosol" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <View
-                    android:id="@+id/vDivider8"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/grid_medium"
-                    android:layout_marginBottom="@dimen/grid_medium"
-                    android:background="@color/grayLight"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cvStatus"/>
+                android:id="@+id/vDivider8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/grid_medium"
+                android:layout_marginBottom="@dimen/grid_medium"
+                android:background="@color/grayLight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvStatus" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/containerButton"
-            android:layout_width="match_parent"
+        android:id="@+id/containerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scvContent">
+
+        <Button
+            android:id="@+id/btnRetention"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:visibility="gone"
+            android:layout_marginStart="@dimen/grid_small"
+            android:layout_marginTop="@dimen/grid_small"
+            android:layout_marginEnd="@dimen/grid_small"
+            android:layout_marginBottom="@dimen/grid_small"
+            android:backgroundTint="@color/btn_accent_tint"
+            android:text="@string/retention"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelivery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_small"
+            android:layout_marginEnd="@dimen/grid_small"
+            android:layout_marginRight="@dimen/grid_small"
+            android:layout_marginBottom="@dimen/grid_small"
+            android:backgroundTint="@color/btn_accent_tint"
+            android:text="@string/delivery"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scvContent">
-
-        <Button
-                android:id="@+id/btnRetention"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_small"
-                android:layout_marginTop="@dimen/grid_small"
-                android:layout_marginEnd="@dimen/grid_small"
-                android:layout_marginBottom="@dimen/grid_small"
-                android:backgroundTint="@color/btn_accent_tint"
-                android:text="@string/retention"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnDelivery"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <Button
-                android:id="@+id/btnDelivery"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/grid_small"
-                android:layout_marginEnd="@dimen/grid_small"
-                android:layout_marginBottom="@dimen/grid_small"
-                android:backgroundTint="@color/btn_accent_tint"
-                android:text="@string/delivery"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnRetention"
-                android:layout_marginRight="@dimen/grid_small"/>
+            app:layout_constraintStart_toEndOf="@+id/btnRetention" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

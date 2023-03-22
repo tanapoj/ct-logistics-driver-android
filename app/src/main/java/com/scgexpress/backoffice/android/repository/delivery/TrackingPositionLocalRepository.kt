@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@Deprecated("legacy delivery")
 @Singleton
 class TrackingPositionLocalRepository @Inject
 constructor(private val dao: TrackingPositionDao) {

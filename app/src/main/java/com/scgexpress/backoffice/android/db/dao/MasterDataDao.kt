@@ -12,14 +12,23 @@ import io.reactivex.Single
 @Dao
 interface MasterDataDao {
 
+    @get:Query("SELECT * FROM tbl_master_parcel_sizing ORDER BY id ASC")
+    val parcelSizingItems: Flowable<List<TblMasterParcelSizing>>
+
     @Query("SELECT * FROM tbl_auth_users WHERE personal_id = :personalId")
     fun getAuthUsers(personalId: String): Single<TblAuthUsers>
+
+    @Query("SELECT * FROM tbl_auth_users WHERE branch_id = :branchId")
+    fun getAuthUsersRetention(branchId: String): Single<List<TblAuthUsers>>
 
     @Query("SELECT * FROM tbl_master_manifest_type")
     fun getMasterManifastType(): Flowable<List<TblMasterManifestType>>
 
     @Query("SELECT * FROM tbl_scg_branch WHERE id = :id")
     fun getScgBranch(id: Int): Single<TblScgBranch>
+
+    @Query("SELECT * FROM tbl_scg_branch")
+    fun getRetentionScgBranch(): Single<List<TblScgBranch>>
 
     @Query("SELECT * FROM tbl_scg_assort_code WHERE zipcode = :zipcode")
     fun getScgAssortCode(zipcode: String): Single<TblScgAssortCode>
@@ -57,6 +66,9 @@ interface MasterDataDao {
 
     @Query("SELECT * FROM tbl_scg_postalCode WHERE postal_code = :postalCode")
     fun getScgPostalCodes(postalCode: String): Single<List<TblScgPostalcode>>
+
+    @Query("SELECT * FROM tbl_master_payment_type")
+    fun getTblMasterPaymentType(): Single<List<TblMasterPaymentType>>
 
 
     /* code gen */

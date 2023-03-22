@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/grid_small">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerCP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/grid_normal"
+        android:layout_marginTop="@dimen/grid_small"
+        android:layout_marginEnd="@dimen/grid_normal"
+        android:layout_marginBottom="@dimen/grid_xsmall"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardElevation="@dimen/grid_xsmall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTrackingCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imgStatusIconCP"
+                app:layout_constraintStart_toEndOf="@id/imgStatusIconCP"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1100200452402" />
+
+            <TextView
+                android:id="@+id/tvServiceCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_xsmall"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/tvTrackingCP"
+                app:layout_constraintTop_toBottomOf="@+id/tvTrackingCP"
+                tools:text="Normal/DOC40" />
+
+            <TextView
+                android:id="@+id/tvCodCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:layout_marginTop="@dimen/grid_normal"
+                android:layout_marginEnd="@dimen/grid_medium"
+                android:layout_marginBottom="@dimen/grid_normal"
+                android:textColor="@color/deliveryRed"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTrackingCP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTrackingCP"
+                tools:text="243" />
+
+            <TextView
+                android:id="@+id/tvCodTitleIP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_medium"
+                android:text="COD (THB)"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_xsmall"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvServiceCP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvServiceCP" />
+
+            <TextView
+                android:id="@+id/tvDeliveredCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_medium"
+                android:layout_marginTop="@dimen/grid_large"
+                android:layout_marginEnd="@dimen/grid_medium"
+                android:textColor="@color/deliveryGreen"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vDividerTitle2CP"
+                app:layout_constraintWidth_percent=".8"
+                tools:text="Delivered" />
+
+            <TextView
+                android:id="@+id/tvDateCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_normal"
+                android:layout_marginTop="@dimen/grid_small"
+                android:layout_marginBottom="@dimen/grid_large"
+                android:textColor="@color/grayLight"
+                android:textSize="@dimen/text_xsmall"
+                app:layout_constraintStart_toStartOf="@+id/tvDeliveredCP"
+                app:layout_constraintTop_toBottomOf="@+id/tvDeliveredCP"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="2017-09-17 16:12" />
+
+            <TextView
+                android:id="@+id/tvRecipientCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_medium"
+                android:layout_marginTop="@dimen/grid_large"
+                android:layout_marginEnd="@dimen/grid_medium"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vDividerTitle2CP"
+                app:layout_constraintWidth_percent=".8"
+                tools:text="Mrs. Pilin Kusol" />
+
+            <View
+                android:id="@+id/vDividerTitle2CP"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/divider"
+                android:layout_marginTop="@dimen/grid_normal"
+                android:background="@color/grayLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvServiceCP" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgStatusIconCP"
+                android:layout_width="@dimen/icon_xlarge"
+                android:layout_height="@dimen/icon_xlarge"
+                android:layout_margin="@dimen/grid_normal"
+                android:tint="@color/deliveryGreen"
+                app:layout_constraintBottom_toBottomOf="@+id/tvServiceCP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTrackingCP"
+                app:srcCompat="@drawable/ic_baseline_unarchive_24dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

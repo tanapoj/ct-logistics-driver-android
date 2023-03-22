@@ -17,7 +17,9 @@ class OfdScanActivity : BaseActivity() {
         OfdScanFragment.newInstance(viewModel)
     }
 
-    private lateinit var viewModel: OfdScanViewModel
+    private val viewModel: OfdScanViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(OfdScanViewModel::class.java)
+    }
 
     private var manifest: Manifest? = Manifest()
 
@@ -26,17 +28,13 @@ class OfdScanActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ofd_scan)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(OfdScanViewModel::class.java)
-
-        getIntentHeader()
-
-        initActionbar()
-
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.clContainer, mFragment)
                 .commit()
         }
+
+        initActionBar()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -54,15 +52,12 @@ class OfdScanActivity : BaseActivity() {
         mFragment.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun getIntentHeader() {
-        manifest = intent.getSerializableExtra(PARAMS_MANIFEST) as? Manifest
-        viewModel.setManifestID(manifest!!.id!!)
-    }
-
-    private fun initActionbar() {
+    private fun initActionBar() {
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = manifest!!.barcode
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            title = "Scan OFD"
+        }
     }
 }
 

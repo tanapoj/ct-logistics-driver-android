@@ -1,124 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvOr"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/or"
+            android:textColor="@color/grayLight"
+            app:layout_constraintBottom_toTopOf="@id/cvLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/cvLoginQr" />
 
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider"
+            android:layout_marginStart="@dimen/grid_xxxlarge"
+            android:layout_marginLeft="@dimen/grid_xxxlarge"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:layout_marginRight="@dimen/grid_normal"
+            android:background="@color/grayLight"
+            app:layout_constraintBottom_toBottomOf="@id/tvOr"
+            app:layout_constraintEnd_toStartOf="@id/tvOr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvOr" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginLeft="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_xxxlarge"
+            android:layout_marginRight="@dimen/grid_xxxlarge"
+            android:background="@color/grayLight"
+            app:layout_constraintBottom_toBottomOf="@id/tvOr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvOr"
+            app:layout_constraintTop_toTopOf="@id/tvOr" />
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/cvLoginQr"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_xxlarge"
-                android:layout_marginEnd="@dimen/grid_xxlarge"
-                android:layout_marginBottom="@dimen/grid_xlarge"
-                android:padding="@dimen/grid_normal"
-                app:cardElevation="@dimen/grid_normal"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintBottom_toTopOf="@id/cvLogin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+            android:id="@+id/cvLoginQr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_xxlarge"
+            android:layout_marginEnd="@dimen/grid_xxlarge"
+            android:layout_marginBottom="@dimen/grid_xlarge"
+            android:padding="@dimen/grid_normal"
+            app:cardElevation="@dimen/grid_normal"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toTopOf="@id/cvLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <ImageView
-                        android:id="@+id/ivQrIcon"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        app:srcCompat="@drawable/ic_qr_code_24dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <Button
-                        android:id="@+id/tvScanQrCode"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/grid_small"
-                        android:text="@string/scan_qr_code_to_login"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivQrIcon"/>
+                    android:id="@+id/tvScanQrCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/grid_small"
+                    android:text="@string/scan_qr_code_to_login"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivQrIcon" />
+
+                <ImageView
+                    android:id="@+id/ivQrIcon"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_qr_code_24dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
 
-        <TextView
-                android:id="@+id/tvOr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/or"
-                android:textColor="@color/grayLight"
-                app:layout_constraintBottom_toTopOf="@id/cvLogin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvLoginQr"/>
-
-        <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/divider"
-                android:layout_marginStart="@dimen/grid_xxxlarge"
-                android:layout_marginEnd="@dimen/grid_normal"
-                android:background="@color/grayLight"
-                app:layout_constraintBottom_toBottomOf="@id/tvOr"
-                app:layout_constraintEnd_toStartOf="@id/tvOr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvOr"
-                android:layout_marginLeft="@dimen/grid_xxxlarge"
-                android:layout_marginRight="@dimen/grid_normal"/>
-
-        <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/divider"
-                android:layout_marginStart="@dimen/grid_normal"
-                android:layout_marginEnd="@dimen/grid_xxxlarge"
-                android:background="@color/grayLight"
-                app:layout_constraintBottom_toBottomOf="@id/tvOr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvOr"
-                app:layout_constraintTop_toTopOf="@id/tvOr"
-                android:layout_marginLeft="@dimen/grid_normal"
-                android:layout_marginRight="@dimen/grid_xxxlarge"/>
-
-
         <androidx.cardview.widget.CardView
-                android:id="@+id/cvLogin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_xxlarge"
-                android:layout_marginEnd="@dimen/grid_xxlarge"
-                android:layout_marginBottom="@dimen/grid_normal"
-                android:padding="@dimen/grid_normal"
-                app:cardElevation="@dimen/grid_normal"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvOr">
+            android:id="@+id/cvLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_xxlarge"
+            android:layout_marginEnd="@dimen/grid_xxlarge"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:padding="@dimen/grid_normal"
+            app:cardElevation="@dimen/grid_normal"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOr">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/grid_large">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/grid_large">
 
                 <!--<TextView-->
                 <!--android:id="@+id/tvScanQrCode"-->
@@ -135,57 +134,63 @@
                 <!--app:layout_constraintEnd_toEndOf="parent"-->
                 <!--app:layout_constraintStart_toStartOf="parent" />-->
 
-                <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilUser"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/grid_normal"
-                        android:layout_marginEnd="@dimen/grid_normal"
-                        android:hint="@string/user"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                            android:id="@+id/etUser"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilPassword"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/grid_normal"
-                        android:layout_marginEnd="@dimen/grid_normal"
-                        android:hint="@string/password"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tilUser">
-
-                    <EditText
-                            android:id="@+id/etPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
                 <Button
-                        android:id="@+id/btnLogin"
-                        android:layout_width="0dp"
+                    android:id="@+id/btnLogin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/grid_small"
+                    android:text="@string/login"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/btn_accent_tint"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:hint="@string/password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tilUser">
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/grid_small"
-                        android:text="@string/login"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@color/btn_accent_tint"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tilPassword"/>
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilUser"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:hint="@string/user"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/etUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:singleLine="true">
+
+                        <requestFocus />
+                    </EditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

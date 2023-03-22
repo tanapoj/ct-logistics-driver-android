@@ -51,20 +51,8 @@ internal class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideTblMasterParcelSizingDao(appDatabase: AppDatabase): TblMasterParcelSizingDao {
-        return appDatabase.tblMasterParcelSizingDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideTblMasterServiceTypeLevel3Dao(appDatabase: AppDatabase): TblMasterServiceTypeLevel3Dao {
-        return appDatabase.tblMasterServiceTypeLevel3Dao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideTblOrganizationDao(appDatabase: AppDatabase): TblOrganizationDao {
-        return appDatabase.tblOrganizationDao()
+    fun providePickupDao(appDatabase: AppDatabase): PickupDao {
+        return appDatabase.pickupDao()
     }
 
     @Provides

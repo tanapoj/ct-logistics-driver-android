@@ -86,7 +86,8 @@ internal class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(@ApplicationContext context: Context, config: ApiConfig,
+    fun provideRetrofit(
+        @ApplicationContext context: Context, config: ApiConfig,
         client: OkHttpClient
     ): Retrofit {
         val jsonParser = config.jsonParser ?: throw IllegalArgumentException("jsonParser cannot be null")
@@ -143,6 +144,12 @@ internal class NetworkModule {
     @Singleton
     fun provideNotificationService(retrofit: Retrofit): NotificationService {
         return retrofit.create(NotificationService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePickupService(retrofit: Retrofit): PickupService {
+        return retrofit.create(PickupService::class.java)
     }
 
     @Provides

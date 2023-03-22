@@ -1,79 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMenu"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        android:id="@+id/rvMenu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/btnLogout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/grid_normal"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardElevation="@dimen/grid_normal"
-            app:cardPreventCornerOverlap="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/cvLoadingStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardElevation="@dimen/grid_normal"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toTopOf="@id/btnLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/grayDark">
-
-            <ImageView
-                    android:id="@+id/imgIcon"
-                    android:layout_width="@dimen/icon_large"
-                    android:layout_height="@dimen/icon_large"
-                    android:layout_marginStart="@dimen/grid_normal"
-                    app:srcCompat="@drawable/ic_exit_24dp"
-                    android:tint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    android:layout_marginLeft="@dimen/grid_normal"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/grid_normal">
 
             <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_normal"
-                    android:text="@string/logout"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/imgIcon"
-                    app:layout_constraintEnd_toStartOf="@id/imgIconMore"
-                    app:layout_constraintStart_toEndOf="@id/imgIcon"
-                    app:layout_constraintTop_toTopOf="@id/imgIcon"
-                    android:layout_marginLeft="@dimen/grid_normal"/>
+                android:id="@+id/tvStatusMsg"
+                android:text="@string/sync_msg_before_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ProgressBar
+                android:id="@+id/pbStatus"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorPrimary"
+                android:max="100"
+                android:progress="50"
+                android:progressTint="@color/colorPrimary"
+                android:scaleY="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusMsg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="@dimen/grid_normal"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/grayDark">
 
             <ImageView
-                    android:id="@+id/imgIconMore"
-                    android:layout_width="@dimen/icon_large"
-                    android:layout_height="@dimen/icon_large"
-                    android:layout_marginEnd="@dimen/grid_normal"
-                    app:srcCompat="@drawable/ic_chevron_right_24dp"
-                    android:tint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" android:layout_marginRight="@dimen/grid_normal"/>
+                android:id="@+id/imgIcon"
+                android:layout_width="@dimen/icon_large"
+                android:layout_height="@dimen/icon_large"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:layout_marginLeft="@dimen/grid_normal"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_exit_24dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:layout_marginLeft="@dimen/grid_normal"
+                android:text="@string/logout"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imgIcon"
+                app:layout_constraintEnd_toStartOf="@id/imgIconMore"
+                app:layout_constraintStart_toEndOf="@id/imgIcon"
+                app:layout_constraintTop_toTopOf="@id/imgIcon" />
+
+            <ImageView
+                android:id="@+id/imgIconMore"
+                android:layout_width="@dimen/icon_large"
+                android:layout_height="@dimen/icon_large"
+                android:layout_marginEnd="@dimen/grid_normal"
+                android:layout_marginRight="@dimen/grid_normal"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_chevron_right_24dp"
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

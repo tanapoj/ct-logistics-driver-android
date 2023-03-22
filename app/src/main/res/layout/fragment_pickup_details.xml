@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scvContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerButton"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginTop="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:layout_marginBottom="@dimen/grid_normal">
+
+            <Button
+                android:id="@+id/btnCancelBooking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_small"
+                android:text="@string/cancel_booking"
+                android:textColor="@color/grayDark"
+                app:layout_constraintBottom_toTopOf="@+id/vDivider3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvTracking" />
+
+            <View
+                android:id="@+id/vDivider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/grid_large"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRemark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintTop_toBottomOf="@+id/cvRecipient">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtDatePickupTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/date_time_picking_up"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtDatePickup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtDatePickupTitle"
+                        tools:text="2018-09-22 16:30" />
+
+
+                    <TextView
+                        android:id="@+id/txtServiceTypeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/services_type"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vDivider2" />
+
+                    <TextView
+                        android:id="@+id/txtServiceType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtServiceTypeTitle"
+                        tools:text="Normal, Chilled, Frozen" />
+
+                    <TextView
+                        android:id="@+id/txtRemarkTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remark"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtServiceType" />
+
+                    <TextView
+                        android:id="@+id/txtRemark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtRemarkTitle"
+                        tools:text="Contact Mr. A before delivery (Delivery time 08:00am - 10:00am only)" />
+
+                    <View
+                        android:id="@+id/vDivider2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/divider"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:background="@color/grayLighter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtDatePickup" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:layout_constraintTop_toBottomOf="@+id/cvRemark">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtStatusTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtUpdatedDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:text="@string/status"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toEndOf="@+id/txtStatusTitle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="( Update 2019-02-19 17:28 )" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtStatusTitle"
+                        tools:text="Delivery Waiting..." />
+
+                    <TextView
+                        android:id="@+id/txtCounted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toEndOf="@+id/txtStatus"
+                        app:layout_constraintTop_toBottomOf="@id/txtStatusTitle"
+                        tools:text="(0/243 pieces)" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvBooking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <TextView
+                        android:id="@+id/txtCustomerID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginEnd="@dimen/grid_normal"
+                        android:text="@string/booking_id"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtBookingID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_xsmall"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustomerID"
+                        tools:text="BK1245678" />
+
+                    <TextView
+                        android:id="@+id/txtOrderDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayLight"
+                        android:textSize="@dimen/text_xsmall"
+                        app:layout_constraintStart_toEndOf="@+id/txtBookingID"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCustomerID"
+                        tools:text="(22/09/2018)" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRecipient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_xsmall"
+                app:layout_constraintTop_toBottomOf="@+id/cvBooking">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/grid_medium">
+
+                    <ImageView
+                        android:id="@+id/btnPhone"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtPhone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_phone_24dp" />
+
+
+                    <ImageView
+                        android:id="@+id/btnAddress"
+                        android:layout_width="@dimen/icon_normal"
+                        android:layout_height="@dimen/icon_normal"
+                        android:layout_marginEnd="@dimen/grid_medium"
+                        android:focusable="true"
+                        android:tint="@color/ripple_effect_image_tint"
+                        app:layout_constraintBottom_toBottomOf="@id/txtEmail"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/txtEmail"
+                        app:srcCompat="@drawable/ic_baseline_location_24dp" />
+
+                    <TextView
+                        android:id="@+id/txtPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhoneTitle"
+                        tools:text="081-2345678" />
+
+                    <TextView
+                        android:id="@+id/txtSender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sender"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/txtEmailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/address"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_small"
+                        android:textColor="@color/grayDarker"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtEmailTitle"
+                        app:layout_constraintWidth_percent="0.7"
+                        tools:text="20/126 Ramintra Soi 14, Bankhen, 10220" />
+
+                    <!-- TODO: Hiding not implemented -->
+                    <TextView
+                        android:id="@+id/txtPhoneTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/grayDark"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtSender" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTracking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_normal"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvReceipt">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTracking"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvStatus" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- TODO: Hiding not implemented -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/grid_small"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnPickup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/btn_accent_tint"
+            android:text="@string/pickup"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

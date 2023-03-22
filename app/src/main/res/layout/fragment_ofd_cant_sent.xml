@@ -1,143 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.delivery.ofd.scan.OfdScanFragment">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.delivery.ofd.cantsent.OfdCantSentFragment">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btn_accent_tint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/cvHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/containerScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:layout_marginBottom="@dimen/grid_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerStatusInfo">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/grid_normal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtScanTracking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_large"
-                android:layout_marginTop="@dimen/grid_medium"
-                android:layout_marginEnd="@dimen/grid_large"
-                android:layout_marginBottom="@dimen/grid_medium">
+                android:drawableRight="@drawable/ic_qr_code_24dp"
+                android:hint="@string/scan_in_tracking_no"
+                android:inputType="numberDecimal"
+                android:maxLength="12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sectionCamera" />
 
-            <TextView
-                    android:id="@+id/txtRegisteredTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registered"
-                    android:textSize="@dimen/text_normal"
-                    app:layout_constraintBottom_toTopOf="@id/txtRegistered"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtRegistered"/>
 
-            <TextView
-                    android:id="@+id/txtRegistered"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_0"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_xxxlarge"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sectionCamera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ScrollView
+                    android:id="@+id/svCameraWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/grayDark"
+                    android:fillViewport="true"
+                    android:scrollbars="none"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCameraTitle">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <EditText
-            android:id="@+id/edtRetentionReason"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_medium"
-            android:layout_marginTop="@dimen/grid_medium"
-            android:layout_marginEnd="@dimen/grid_medium"
-            android:layout_marginBottom="@dimen/grid_normal"
-            android:focusableInTouchMode="false"
-            android:hint="@string/retention"
-            android:inputType="text"
-            android:minWidth="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvHeader"/>
-
-    <EditText
-            android:id="@+id/edtNote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_medium"
-            android:layout_marginEnd="@dimen/grid_medium"
-            android:layout_marginBottom="@dimen/grid_normal"
-            android:hint="@string/note"
-            android:inputType="text"
-            android:maxLength="50"
-            android:minWidth="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtRetentionReason"/>
-
-    <EditText
-            android:id="@+id/edtScanTracking"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_medium"
-            android:layout_marginEnd="@dimen/grid_medium"
-            android:layout_marginBottom="@dimen/grid_medium"
-            android:drawableRight="@drawable/ic_qr_code_24dp"
-            android:hint="@string/scan_out_tracking_no"
-            android:inputType="numberDecimal"
-            android:maxLength="12"
-            android:minWidth="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtNote"/>
-
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/grid_normal"
-            app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtScanTracking">
-
-        <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_large"
-                android:layout_marginTop="@dimen/grid_large"
-                android:layout_marginEnd="@dimen/grid_large"
-                android:scrollbars="none">
-
-            <androidx.cardview.widget.CardView
-                    android:id="@+id/cvItems"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    tools:layout_height="20dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvItems"
+                    <LinearLayout
+                        android:id="@+id/linearLayoutBeautyContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scrollbarStyle="outsideInset"
-                        android:scrollbars="horizontal"
-                        tools:layout_height="20dp"/>
+                        android:layout_marginTop="-180dp"
+                        android:orientation="vertical">
 
-            </androidx.cardview.widget.CardView>
-        </HorizontalScrollView>
-    </ScrollView>
+                        <TextureView
+                            android:id="@+id/txQrReader"
+                            android:layout_width="match_parent"
+                            android:layout_height="400dp" />
+                    </LinearLayout>
+                </ScrollView>
 
-    <Button
-            android:id="@+id/btnConfirm"
+                <View
+                    android:id="@+id/vBarcodeRedLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#88FF0000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCameraTitle" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivIconCloseCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_baseline_close_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCameraTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/camera_scan_title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerStatusInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginTop="@dimen/grid_normal"
+            android:text="@string/cod_amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/grid_medium"
+            android:background="@color/grayLight"
+            app:layout_constraintTop_toBottomOf="@+id/txtReason"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grayLight"
+            app:layout_constraintTop_toBottomOf="@+id/tvCountStatus"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCountStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:text="@string/_0"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/grid_normal"
-            android:backgroundTint="@color/btn_accent_tint"
-            android:text="@string/confirm"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginTop="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:text="@string/tracking_registered"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCountStatus"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCountStatus"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- List -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/grid_normal"
+        app:layout_constraintBottom_toTopOf="@+id/btnDone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerScan">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

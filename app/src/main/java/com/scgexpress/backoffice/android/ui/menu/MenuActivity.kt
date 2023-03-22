@@ -55,7 +55,11 @@ class MenuActivity : BaseActivity() {
 
         val permissions = arrayOf(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.CAMERA,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.CALL_PHONE
+
         )
         ActivityCompat.requestPermissions(this, permissions, 0)
 
@@ -93,6 +97,7 @@ class MenuActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
         viewModel.initNotificationIndicator()
+        viewModel.loadOfflineData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -104,10 +109,10 @@ class MenuActivity : BaseActivity() {
         }
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (!viewModel.checkLastClickTime()) return false
         return when (item.itemId) {
+
             android.R.id.home -> {
                 dlMenu.openDrawer(GravityCompat.START)
                 true

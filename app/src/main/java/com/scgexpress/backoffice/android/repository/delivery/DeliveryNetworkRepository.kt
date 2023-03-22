@@ -7,6 +7,7 @@ import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@Deprecated("legacy delivery")
 @Singleton
 class DeliveryNetworkRepository @Inject constructor(private val service: DeliveryService) {
 
@@ -76,7 +77,7 @@ class DeliveryNetworkRepository @Inject constructor(private val service: Deliver
         return service.getManifestHeader(manifestID).map(this::parseToManifest)
     }
 
-    fun acceptBooking(bookingId: String, assignmentId: String, manifestID: String): Flowable<ApiReturnStatus> {
+    fun acceptBooking(bookingId: String, assignmentId: String, manifestID: String): Flowable<ApiResponse> {
         val map: HashMap<String, Any> = hashMapOf()
         map["bookingID"] = bookingId ?: ""
         map["assignmentID"] = assignmentId ?: ""
@@ -88,7 +89,7 @@ class DeliveryNetworkRepository @Inject constructor(private val service: Deliver
     fun rejectBooking(
         bookingId: String, assignmentId: String, idSubCancelReason: String
         , idCancelReason: String, note: String
-    ): Flowable<ApiReturnStatus> {
+    ): Flowable<ApiResponse> {
         val map: HashMap<String, Any> = hashMapOf()
         map["bookingID"] = bookingId ?: ""
         map["assignmentID"] = assignmentId ?: ""

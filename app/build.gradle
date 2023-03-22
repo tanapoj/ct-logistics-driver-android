@@ -17,10 +17,18 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
     compileOptions {
@@ -166,6 +174,10 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:${rootProject.ext.zxingEmbeddedVersion}") {
         transitive = false
     }
+    //cameraX
+    def cameraX_version = "1.0.0-alpha02"
+    implementation "androidx.camera:camera-core:$cameraX_version"
+    implementation "androidx.camera:camera-camera2:$cameraX_version"
 
     implementation "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:${rootProject.ext.advrecyclerviewVersion}"
     implementation "com.archit.calendar:awesome-calendar:${rootProject.ext.awesomeCalendarVersion}"

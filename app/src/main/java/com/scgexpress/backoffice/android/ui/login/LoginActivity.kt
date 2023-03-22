@@ -12,7 +12,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 
-class LoginActivity : BaseActivity(), HasSupportFragmentInjector {
+class  LoginActivity : BaseActivity(), HasSupportFragmentInjector {
 
     override var allowEmergencyMasterDataUpdateDialog = false
 

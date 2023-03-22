@@ -60,6 +60,7 @@
     <string name="sale_driver_report">Sale driver report</string>
     <string name="sd_report">SD Report</string>
     <string name="line_haul">Line haul</string>
+    <string name="navigate">Navigate</string>
     <string name="line">Line</string>
     <string name="date_picker">Date Picker</string>
     <string name="notifications">Notifications</string>
@@ -74,10 +75,102 @@
     <string name="sent">Sent</string>
     <string name="retention">Retention</string>
     <string name="can_not_sent">Can\'t sent</string>
+    <string name="reset_status">Reset status</string>
+    <string name="note">Note</string>
+    <string name="cancel_upper">CANCEL</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="route">route</string>
+
+    <string name="photo_select_method_title">Select Action</string>
+    <string name="photo_select_method_gallery">Gallery</string>
+    <string name="photo_select_method_camera">Camera</string>
+    <string name="pickup_total">รวมทั้งหมด</string>
+    <string name="today">TODAY</string>
+    <string name="see_details">ดูรายละเอียด</string>
+    <string name="reason">Reason</string>
+    <string name="id_parcel">ID Parcel</string>
+    <string name="id_manifest_sheet">ID Manifest Sheet</string>
+
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+
+    <string name="ofd_manifest">OFD Manifest</string>
+    <string name="new_booking">New Booking</string>
+    <string name="new_bookings">New Bookings</string>
+
+    <string name="new_ofd">New</string>
+    <string name="completed">Completed</string>
+    <string name="incomplete">Incomplete</string>
+
+    <string name="remain_pickup">Remains Pickup</string>
+    <string name="remain_ofd">Remains OFD</string>
+    <string name="picked">Picked</string>
+    <string name="ret">Ret</string>
+    <string name="del">Del</string>
+
+    <string name="yes">ใช่</string>
+    <string name="delete_tracking">ลบข้อมูล</string>
+    <string name="registered">Registered</string>
+    <string name="_0">0</string>
+    <string name="scan_out_tracking_no">Scan Out - Tracking NO.</string>
+    <string name="confirm">ยืนยัน</string>
+    <string name="in_progress">In progress</string>
+    <string name="tracking_number">Tracking Number</string>
+    <string name="cod_thb">COD (THB)</string>
+    <string name="recipient">Recipient</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="remark">Remark</string>
+    <string name="photo">รูปถ่าย</string>
+    <string name="sender">Sender</string>
+    <string name="status">Status</string>
+    <string name="unknown">Unknown</string>
+    <string name="booking_id">Booking ID</string>
+    <string name="booking_id_with_colon">Booking ID : </string>
+    <string name="date_time_picking_up">Date - Time Picking up</string>
+    <string name="cancel_booking">Cancel Booking</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="service_charge">Service charge</string>
+    <string name="cod_fee">ค่าบริการ COD</string>
+    <string name="total">Total</string>
+    <string name="branch">Branch</string>
+    <string name="driver">Driver</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="create">Create</string>
+    <string name="scan_in_tracking_no">Scan In - Tracking NO.</string>
+    <string name="tracking">Tracking</string>
+    <string name="cod">COD</string>
+    <string name="oreder_date">Order Date</string>
+    <string name="cod_amount">COD Amount</string>
+    <string name="btn_confirm">CONFIRM</string>
 
     <string name="sentence_booking_details_error_invalid_customer_code">เกิดข้อผิดพลาด ไม่พบ Customer code ในระบบ</string>
 
     <string name="sentence_delivery_tracking_not_found">ไม่พบ Tracking No. ใน OFD ใบนี้</string>
     <string name="sentence_booking_has_been_accepted">Booking has been accepted</string>
     <string name="sentence_booking_has_been_rejected">Booking has been rejected</string>
+
+    <string name="sentence_retention_please_insert_the_reason">โปรดระบุรายละเอียด</string>
+    <string name="sentence_retention_please_insert_note">โปรดกรอกรายละเอียด</string>
+    <string name="sentence_retention_are_you_sure_you_want_to_delete_this_tracking">คุณแน่ใจที่จะลบไอเทมนี้ใช่หรือไม่</string>
+
+    <string name="sentence_are_you_sure_you_want_to_delete_this_tracking">คุณแน่ใจที่จะลบไอเทมนี้ใช่หรือไม่</string>
+    <string name="sentence_data_not_found">ไม่พบข้อมูล</string>
+    <string name="sentence_is_not_tracking_ID_format">รูปแบบ Tracking ไม่ถูกต้อง</string>
+    <string name="sentence_something_went_wrong_please_try_again">เกิดข้อผิดพลาด กรุณาลองใหม่</string>
+    <string name="sentence_please_scan_your_tracking">กรุณากรอกหรือสแกนเลข Tracking</string>
+    <string name="sentence_please_insert_cod_fee">กรุณากรอกค่า cod</string>
+    <string name="sentence_please_insert_cod_fee_correctly">กรุณากรอกค่า cod ให้ถูกต้อง</string>
+    <string name="sentence_put_ofd_parcels_successful">บันทึกข้อมูลสำเร็จ</string>
+    <string name="sentence_put_ofd_parcels_failed">เกิดข้อผิดพลาด บันทึกข้อมูลไม่สำเร็จ</string>
+    <string name="sentence_scan_ofd_parcels_failed">เกิดข้อผิดพลาด ไม่สามารถแสกน tracking นี้ได้</string>
+    <string name="sentence_this_tracking_has_been_scanned">Tracking ซ้ำ</string>
+
+    <string name="sentence_scan_are_you_sure_you_want_to_confirm_scan_out">ยืนยันทำรายการ OFD เสร็จสิ้น</string>
+    <string name="sentence_scan_delete_ofd_parcels_successful">ลบไอเทมสำเร็จ</string>
+    <string name="sentence_scan_delete_ofd_parcels_failed">เกิดข้อผิดพลาด ลบไอเทมไม่สำเร็จ</string>
+
+    <string name="sentence_signature_please_sign_customer_name">กรุณาเซ็นชื่อผู้รับ</string>
+
+    <string name="sentence_tracking_details_reset_status_successful">รีเซ็ตสถานะสำเร็จ</string>
 </resources>

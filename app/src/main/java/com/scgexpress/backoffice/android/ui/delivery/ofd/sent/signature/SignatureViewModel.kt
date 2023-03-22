@@ -13,16 +13,14 @@ import androidx.lifecycle.MutableLiveData
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferState
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility
-import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.api.exception.NoConnectivityException
 import com.scgexpress.backoffice.android.common.Const
 import com.scgexpress.backoffice.android.common.Event
 import com.scgexpress.backoffice.android.common.LocationHelper
 import com.scgexpress.backoffice.android.common.Utils
 import com.scgexpress.backoffice.android.model.DeliveryOfdParcel
-import com.scgexpress.backoffice.android.model.DeliveryOfdParcelList
-import com.scgexpress.backoffice.android.model.DeliveryOfdParcelResponse
 import com.scgexpress.backoffice.android.model.User
+import com.scgexpress.backoffice.android.model.delivery.DeliveryTaskList
 import com.scgexpress.backoffice.android.preference.LoginPreference
 import com.scgexpress.backoffice.android.repository.delivery.DeliveryLocalRepository
 import com.scgexpress.backoffice.android.repository.delivery.DeliveryNetworkRepository
@@ -56,8 +54,8 @@ class SignatureViewModel @Inject constructor(
     private val user: User
         get() = Utils.convertStringToUser(loginPreference.loginUser!!)
 
-    private var _scanDataList: MutableLiveData<DeliveryOfdParcelList> = MutableLiveData()
-    val scanDataList: LiveData<DeliveryOfdParcelList>
+    private var _scanDataList: MutableLiveData<DeliveryTaskList> = MutableLiveData()
+    val scanDataList: LiveData<DeliveryTaskList>
         get() = _scanDataList
 
     private var _manifestID: MutableLiveData<String> = MutableLiveData()
@@ -71,10 +69,6 @@ class SignatureViewModel @Inject constructor(
     private val _snackbar = MutableLiveData<Event<String>>()
     val snackbar: LiveData<Event<String>>
         get() = _snackbar
-
-    private var _trackingNo: MutableLiveData<Event<String>> = MutableLiveData()
-    val trackingNo: LiveData<Event<String>>
-        get() = _trackingNo
 
     private var _signer: MutableLiveData<String> = MutableLiveData()
     val signer: LiveData<String>
@@ -111,10 +105,9 @@ class SignatureViewModel @Inject constructor(
         _manifestID.value = manifestID
     }
 
-    fun setScanDataList(scanDataList: DeliveryOfdParcelList) {
-        if (scanDataList.items.size == 1) {
-            _trackingNo.value = Event(scanDataList.items[0].trackingId)
-            _signer.value = scanDataList.items[0].recipientName
+    fun setScanDataList(scanDataList: DeliveryTaskList) {
+        if (scanDataList.items!!.size == 1) {
+            _signer.value = scanDataList.items!![0].recipientName
         }
         _scanDataList.value = scanDataList
     }
@@ -155,7 +148,8 @@ class SignatureViewModel @Inject constructor(
 
     fun upPhoto(transferUtility: TransferUtility, view: View, filePath: String, signer: String) {
         _signer.value = signer
-        fileName = "parcel/" + manifestID.value + "/signature/" + Utils.getCurrentTimestamp() + "_" + user.id + ".png"
+        fileName =
+            "parcel/" + manifestID.value + "/signature/" + Utils.getCurrentTimestamp() + "_" + user.id + ".png"
         val file = File(filePath)
 
         val uploadObserver = transferUtility.upload(fileName, file)
@@ -190,11 +184,12 @@ class SignatureViewModel @Inject constructor(
         })
     }
 
+    //TODO: Send scan data
     fun sendData() {
         val signatureImage = Const.AWS_BUCKET + "::" + fileName
         val scanDataList = _scanDataList.value
         val deliveryParcel: ArrayList<DeliveryOfdParcel> = arrayListOf()
-        for (data: DeliveryOfdParcel in scanDataList!!.items) {
+        /*for (data: DeliveryTask in scanDataList!!.items) {
             deliveryParcel.add(
                 DeliveryOfdParcel(
                     trackingId = data.trackingId, statusCode = data.statusCode,
@@ -223,7 +218,7 @@ class SignatureViewModel @Inject constructor(
                 if (it is NoConnectivityException) {
                     showSnackbar(context.getString(R.string.there_is_on_internet_connection))
                 }
-            })
+            })*/
     }
 
     fun getLocationHelper(mContext: Context): LocationHelper {

@@ -12,16 +12,10 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@Deprecated("legacy delivery")
 @Singleton
 class DeliveryLocalRepository @Inject
 constructor(private val dao: DeliveryDao) {
-
-    val deliveryItems: Flowable<List<Delivery>>
-        get() {
-            return dao.delivery
-                .subscribeOn(Schedulers.io())
-                .map(this::pareDeliveryList)
-        }
 
     val lastGroupID: Single<String>
         get() {

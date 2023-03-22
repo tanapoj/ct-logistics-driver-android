@@ -97,14 +97,6 @@ constructor(private val notificationDao: NotificationDao) {
             .subscribe()
     }
 
-    fun deleteNotification() {
-        Completable.fromCallable {
-            notificationDao.deleteNotification()
-        }
-            .subscribeOn(Schedulers.io())
-            .subscribe()
-    }
-
     fun deleteNotification(id: String) {
         Completable.fromCallable {
             notificationDao.deleteNotification(id)

@@ -28,7 +28,6 @@ class OfdSentActivity : BaseActivity() {
         setContentView(R.layout.activity_ofd_sent)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(OfdSentViewModel::class.java)
-
         getIntentManifestID()
 
         initActionbar()
@@ -60,7 +59,7 @@ class OfdSentActivity : BaseActivity() {
         trackingID = if (intent.getStringExtra(PARAMS_TRACKING_ID) != null)
             intent.getStringExtra(PARAMS_TRACKING_ID)
         else ""
-        viewModel.setManifestID(manifestID.toString())
+        //viewModelRetentionReason.setManifestID(manifestID.toString())
     }
 
     private fun initActionbar() {

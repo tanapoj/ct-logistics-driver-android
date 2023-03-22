@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.scgexpress.backoffice.android.common.Utils
 import com.scgexpress.backoffice.android.preference.TypedSafePreference
+import timber.log.Timber
 
 class MasterDataPreference(sharedPreferences: SharedPreferences) : TypedSafePreference(sharedPreferences) {
 
@@ -11,6 +12,7 @@ class MasterDataPreference(sharedPreferences: SharedPreferences) : TypedSafePref
         private const val PREF_SYNC_MASTERDATA_VERSION = "masterdata_version"
         private const val PREF_SYNC_MASTERDATA_VERSION_FILENAME = "masterdata_version_filename"
         private const val PREF_SYNC_MASTERDATA_NOTICE_TIME = "masterdata_notice_time"
+        private const val PREF_SYNC_MASTERDATA_HASH = "masterdata_hash"
         const val POSTPONE_NOW = 0
         const val POSTPONE_SHORT = 15 * 60
         const val POSTPONE_LONG = 30 * 60
@@ -28,6 +30,12 @@ class MasterDataPreference(sharedPreferences: SharedPreferences) : TypedSafePref
             edit().putLong(PREF_SYNC_MASTERDATA_VERSION, version).apply()
         }
 
+    var hash: String
+        get() = getString(PREF_SYNC_MASTERDATA_HASH, "") ?: ""
+        set(version) {
+            edit().putString(PREF_SYNC_MASTERDATA_HASH, version).apply()
+        }
+
     var noticeTime: Long
         get() = getLong(PREF_SYNC_MASTERDATA_NOTICE_TIME, 0)!!
         set(status) {
@@ -40,7 +48,7 @@ class MasterDataPreference(sharedPreferences: SharedPreferences) : TypedSafePref
     fun isExpire(): Boolean {
         val current = Utils.getCurrentTimestamp()
         val timeout = getMasterDataTimeout()
-        Log.i("-master", "m e = ${current > lastestVersion + timeout} ${current} > ${lastestVersion + timeout}")
+        Timber.d("-masterdata check expire current=${current} > ${lastestVersion + timeout} is ${current > lastestVersion + timeout}")
         return current > lastestVersion + timeout
     }
 

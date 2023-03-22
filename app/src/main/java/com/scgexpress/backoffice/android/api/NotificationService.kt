@@ -6,7 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface NotificationService {
-    @POST("acceptBooking")
+    @POST("acceptPickupTask")
     fun acceptBooking(@Body body: HashMap<String, Any>): Flowable<NotificationModel>
 
     @POST("cancelBooking")

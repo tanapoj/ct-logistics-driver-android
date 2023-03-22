@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgDrag"
+        android:layout_width="@dimen/icon_avatar_xsmall"
+        android:layout_height="@dimen/icon_avatar_xsmall"
+        android:layout_marginTop="@dimen/grid_normal"
+        android:src="@drawable/ic_swap_vert_24px"
+        android:tint="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/tvDrag"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drag_for_order"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDrag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgDrag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgDrag" />
+</androidx.constraintlayout.widget.ConstraintLayout>

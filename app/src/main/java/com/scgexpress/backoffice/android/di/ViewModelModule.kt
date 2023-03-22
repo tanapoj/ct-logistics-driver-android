@@ -3,46 +3,44 @@ package com.scgexpress.backoffice.android.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryViewModel
+import com.scgexpress.backoffice.android.ui.delivery.detail.TrackingDetailsViewModel
 import com.scgexpress.backoffice.android.ui.delivery.location.DeliveryLocationViewModel
 import com.scgexpress.backoffice.android.ui.delivery.ofd.OfdViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.cantsent.OfdCantSentViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.create.OfdCreateViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.OfdDetailViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingDetailsViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingItemsViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.item.dragged.OfdDetailItemsDraggableViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.search.OfdItemSearchViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.tracking.TrackingDetailsViewModel
+import com.scgexpress.backoffice.android.ui.delivery.ofd.retention.OfdRetentionViewModel
 import com.scgexpress.backoffice.android.ui.delivery.ofd.scan.OfdScanViewModel
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.OfdSentViewModel
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.signature.SignatureViewModel
+import com.scgexpress.backoffice.android.ui.delivery.retention.changedatetime.RetentionChangeDateViewModel
+import com.scgexpress.backoffice.android.ui.delivery.retention.changesaledriver.RetentionChangeSDViewModel
+import com.scgexpress.backoffice.android.ui.delivery.retention.reason.RetentionReasonViewModel
+import com.scgexpress.backoffice.android.ui.delivery.task.DeliveryTaskViewModel
+import com.scgexpress.backoffice.android.ui.dialog.PhotoDialogViewModel
+import com.scgexpress.backoffice.android.ui.dialog.RetentionSelectSubReasonDialogViewModel
 import com.scgexpress.backoffice.android.ui.login.LoginViewModel
 import com.scgexpress.backoffice.android.ui.login.PinViewModel
 import com.scgexpress.backoffice.android.ui.masterdata.MasterDataViewModel
 import com.scgexpress.backoffice.android.ui.menu.MenuViewModel
+import com.scgexpress.backoffice.android.ui.navigation.NavigationMainViewModel
 import com.scgexpress.backoffice.android.ui.notification.NotificationViewModel
+import com.scgexpress.backoffice.android.ui.photo.PhotoConfirmViewModel
+import com.scgexpress.backoffice.android.ui.pickup.detail.PickupDetailsViewModel
+import com.scgexpress.backoffice.android.ui.pickup.main.PickupMainViewModel
+import com.scgexpress.backoffice.android.ui.pickup.receipt.PickupReceiptViewModel
 import com.scgexpress.backoffice.android.ui.pickup.scan.PickupScanViewModel
+import com.scgexpress.backoffice.android.ui.pickup.summary.PickupSummaryViewModel
+import com.scgexpress.backoffice.android.ui.pickup.task.PickupTaskViewModel
 import com.scgexpress.backoffice.android.ui.topic.TopicViewModel
 import com.scgexpress.backoffice.android.viewmodel.ViewModelFactory
 import com.scgexpress.backoffice.android.viewmodel.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import com.scgexpress.backoffice.android.ui.pickup.bookingList.PickupBookingListViewModel as PickupTaskListViewModel1
 
 @Module
 internal abstract class ViewModelModule {
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(BookingDetailsViewModel::class)
-    abstract fun bindBookingDetailsViewModel(bookingDetailsViewModel: BookingDetailsViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(BookingItemsViewModel::class)
-    abstract fun bindBookingItemsViewModel(bookingItemsViewModel: BookingItemsViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -56,6 +54,11 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
+    @ViewModelKey(DeliveryTaskViewModel::class)
+    abstract fun bindDeliveryTaskViewModel(deliveryTaskViewModel: DeliveryTaskViewModel): ViewModel
+
+    @Binds
+    @IntoMap
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 
@@ -63,6 +66,11 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MenuViewModel::class)
     abstract fun bindMenuViewModel(menuViewModel: MenuViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NavigationMainViewModel::class)
+    abstract fun bindNavigationMainViewModel(navigationMainViewModel: NavigationMainViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -76,28 +84,8 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(OfdCantSentViewModel::class)
-    abstract fun bindOfdCantSentViewModel(ofdCantSentViewModel: OfdCantSentViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(OfdCreateViewModel::class)
-    abstract fun bindOfdCreateViewModel(ofdCreateViewModel: OfdCreateViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(OfdDetailViewModel::class)
-    abstract fun bindOfdDetailViewModel(ofdDetailViewModel: OfdDetailViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(OfdDetailItemsDraggableViewModel::class)
-    abstract fun bindOfdDetailItemsDraggableViewModel(ofdDetailItemsDraggableViewModel: OfdDetailItemsDraggableViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(OfdItemSearchViewModel::class)
-    abstract fun bindOfdItemSearchViewModel(ofdItemSearchViewModel: OfdItemSearchViewModel): ViewModel
+    @ViewModelKey(OfdRetentionViewModel::class)
+    abstract fun bindOfdRetentionViewModel(ofdRetentionViewModel: OfdRetentionViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -111,8 +99,48 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
+    @ViewModelKey(PhotoDialogViewModel::class)
+    abstract fun bindPhotoDialogViewModel(photoDialogViewModel: PhotoDialogViewModel): ViewModel
+
+    @Binds
+    @IntoMap
     @ViewModelKey(PinViewModel::class)
     abstract fun bindPinViewModel(pinViewModel: PinViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupDetailsViewModel::class)
+    abstract fun bindPickupDetailsViewModel(pickupDetailsViewModel: PickupDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupReceiptViewModel::class)
+    abstract fun bindPickupReceiptViewModel(pickupReceiptViewModel: PickupReceiptViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupSummaryViewModel::class)
+    abstract fun bindPickupSummaryViewModel(pickupSummaryViewModel: PickupSummaryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupTaskViewModel::class)
+    abstract fun bindPickupTaskViewModel(pickupTaskViewModel: PickupTaskViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupScanViewModel::class)
+    abstract fun bindPickupScanViewModel(pickupScanViewModel: PickupScanViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupTaskListViewModel1::class)
+    abstract fun bindPickupTaskListViewModel(pickupTaskListViewModel: PickupTaskListViewModel1): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PickupMainViewModel::class)
+    abstract fun bindPickupMainViewModel(pickupMainViewModel: PickupMainViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -124,20 +152,37 @@ internal abstract class ViewModelModule {
     @ViewModelKey(TopicViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: TopicViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @ViewModelKey(TrackingDetailsViewModel::class)
     abstract fun bindTrackingDetailsViewModel(trackingDetailsViewModel: TrackingDetailsViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(RetentionReasonViewModel::class)
+    abstract fun bindRetentionScanViewModel(retentionReasonViewModel: RetentionReasonViewModel): ViewModel
 
     @Binds
     @IntoMap
+    @ViewModelKey(RetentionSelectSubReasonDialogViewModel::class)
+    abstract fun bindRetentionSelectSubReasonDialogViewModel(retentionSelectSubReasonDialogViewModel: RetentionSelectSubReasonDialogViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RetentionChangeSDViewModel::class)
+    abstract fun bindRetentionChangeSDViewModel(retentionChangeSDViewModel: RetentionChangeSDViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RetentionChangeDateViewModel::class)
+    abstract fun bindRetentionChangeDateViewModel(retentionChangeDateViewModel: RetentionChangeDateViewModel): ViewModel
+
     @ViewModelKey(SignatureViewModel::class)
     abstract fun bindSignatureViewModel(signatureViewModel: SignatureViewModel): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(PickupScanViewModel::class)
-    abstract fun bindPickupScanViewModel(pickupScanViewModel: PickupScanViewModel): ViewModel
+    @ViewModelKey(PhotoConfirmViewModel::class)
+    abstract fun bindPhotoConfirmViewModel(photoConfirmViewModel: PhotoConfirmViewModel): ViewModel
+
 }

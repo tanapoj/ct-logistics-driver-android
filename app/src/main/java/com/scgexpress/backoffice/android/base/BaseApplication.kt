@@ -1,5 +1,6 @@
 package com.scgexpress.backoffice.android.base
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.app.Fragment
@@ -45,8 +46,23 @@ class BaseApplication : Application(), HasActivityInjector, HasFragmentInjector,
     override fun onCreate() {
         super.onCreate()
 
-        if (com.scgexpress.backoffice.android.BuildConfig.DEBUG)
-            Timber.plant(Timber.DebugTree())
+        if (com.scgexpress.backoffice.android.BuildConfig.DEBUG) {
+            Timber.plant(object : Timber.DebugTree() {
+
+                lateinit var element: StackTraceElement
+
+                override fun createStackElementTag(element: StackTraceElement): String? {
+//                    var className = element.className.replace("$1", "()")
+//                    className = className.replace("$", ":${element.lineNumber}.")
+//                    return "@@ $className :"
+                    return String.format(" @@@ (%s:%s).%s() \t:",
+                        element.fileName,
+                        element.lineNumber,
+                        element.methodName
+                    )
+                }
+            })
+        }
 
         component.inject(this)
 

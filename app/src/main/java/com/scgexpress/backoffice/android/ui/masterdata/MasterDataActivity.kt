@@ -27,7 +27,6 @@ class MasterDataActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private val viewModel by lazy {
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(MasterDataViewModel::class.java)
-        viewModel.canonicalPath = filesDir.canonicalPath
         viewModel
     }
 
@@ -45,7 +44,7 @@ class MasterDataActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         Timber.i("-master ${filesDir.canonicalPath}")
 
-        //viewModel.updateMasterData()
+        //viewModelRetentionReason.updateMasterData()
 
     }
 

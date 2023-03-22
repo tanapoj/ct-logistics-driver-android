@@ -48,4 +48,6 @@
     <color name="transparent">#00ffffff</color>
     <color name="transparent_black">#00000000</color>
     <color name="transparent_grey">#a0bbc7cd</color>
+
+    <color name="greenLight">#5062b866</color>
 </resources>

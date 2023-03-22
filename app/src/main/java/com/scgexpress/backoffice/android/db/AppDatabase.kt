@@ -8,14 +8,34 @@ import com.scgexpress.backoffice.android.db.entity.DeliveryEntity
 import com.scgexpress.backoffice.android.db.entity.NotificationEntity
 import com.scgexpress.backoffice.android.db.entity.TopicEntity
 import com.scgexpress.backoffice.android.db.entity.TrackingPositionEntity
+import com.scgexpress.backoffice.android.db.entity.delivery.*
 import com.scgexpress.backoffice.android.db.entity.masterdata.*
+import com.scgexpress.backoffice.android.db.entity.pickup.*
 
 
 @Database(
     entities = [
+        //Pickup offline data
+        PickupTaskEntity::class,
+        PickupTrackingEntity::class,
+        PickupSubmitTrackingEntity::class,
+        PickupReceiptEntity::class,
+        PickupPendingReceiptEntity::class,
+        PickupScanningTrackingEntity::class,
+
+        //Delivery
         DeliveryEntity::class,
+        DeliveryTaskEntity::class,
+        DeliveryPendingRetentionEntity::class,
+        DeliveryPendingSentEntity::class,
+        DeliverySentTrackingEntity::class,
+        DeliveryRetentionTrackingEntity::class,
+
+        //Notification
         NotificationEntity::class,
         TrackingPositionEntity::class,
+
+        //Master Data
         TblAuthUsers::class,
         TblManifestItems::class,
         TblManifestOfdItems::class,
@@ -64,7 +84,7 @@ import com.scgexpress.backoffice.android.db.entity.masterdata.*
         TblTempCal::class,
         TopicEntity::class
     ],
-    version = 1,
+    version = 10,
     exportSchema = false
 )
 @TypeConverters(EnumConverter::class)
@@ -73,9 +93,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun deliveryDao(): DeliveryDao
     abstract fun notificationDao(): NotificationDao
     abstract fun masterDataDao(): MasterDataDao
-    abstract fun tblMasterParcelSizingDao(): TblMasterParcelSizingDao
-    abstract fun tblMasterServiceTypeLevel3Dao(): TblMasterServiceTypeLevel3Dao
-    abstract fun tblOrganizationDao(): TblOrganizationDao
     abstract fun trackingPositionDao(): TrackingPositionDao
+    abstract fun pickupDao(): PickupDao
     abstract fun topicDao(): TopicDao
 }

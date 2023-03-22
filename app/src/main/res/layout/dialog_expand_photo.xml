@@ -4,13 +4,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent">
+        android:background="@color/white">
 
     <ImageView
             android:id="@+id/imgView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
 
     <ImageView
             android:id="@+id/btnClose"
@@ -20,5 +24,5 @@
             app:layout_constraintEnd_toEndOf="@+id/imgView"
             app:layout_constraintTop_toTopOf="@+id/imgView"
             app:srcCompat="@drawable/ic_baseline_close_24dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

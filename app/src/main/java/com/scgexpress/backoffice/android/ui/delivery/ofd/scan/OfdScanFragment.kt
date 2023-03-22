@@ -1,15 +1,18 @@
 package com.scgexpress.backoffice.android.ui.delivery.ofd.scan
 
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
-import android.location.Location
+import android.content.DialogInterface
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +20,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
 import com.scgexpress.backoffice.android.R
+import com.scgexpress.backoffice.android.camera.QrScannerController
 import com.scgexpress.backoffice.android.common.listener.DrawableClickListener
-import com.scgexpress.backoffice.android.common.showWarningDialog
-import com.scgexpress.backoffice.android.model.Manifest
+import com.scgexpress.backoffice.android.common.showAlertMessage
+import com.scgexpress.backoffice.android.common.trimTrackingCode
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.fragment_ofd_scan.*
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -61,14 +66,15 @@ class OfdScanFragment : Fragment(), HasSupportFragmentInjector {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
 
-        if (context is OfdScanActivity) {
-        } else {
-            throw IllegalStateException("This fragment must be use in conjunction with " + OfdScanActivity::class.java.simpleName)
+        check(context is OfdScanActivity) {
+            "This fragment must be use in conjunction with " + OfdScanActivity::class.java.simpleName
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_ofd_scan, container, false)
         return rootView
@@ -77,19 +83,10 @@ class OfdScanFragment : Fragment(), HasSupportFragmentInjector {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initQrScanner()
         initRecyclerView()
         initButton()
         observeData()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        IntentIntegrator.parseActivityResult(requestCode, resultCode, data)?.let { it ->
-            it.contents?.let {
-                edtScanTracking.setText(it)
-                checkExistTracking(it)
-            }
-        }
     }
 
     private fun initRecyclerView() {
@@ -100,116 +97,147 @@ class OfdScanFragment : Fragment(), HasSupportFragmentInjector {
     }
 
     private fun observeData() {
-        viewModel.data.observe(this, Observer {
-            if (it == null) return@Observer
-            adapter.data = it
-            edtScanTracking.text.clear()
+
+        viewModel.items.observe(this, Observer {
+            adapter.items = it
+            Timber.d("delivery item scanned: $it")
         })
 
-        viewModel.header.observe(this, Observer { it ->
-            if (it != null) {
-                setHeader(it)
+        viewModel.countStatus.observe(this, Observer {
+            tvCountStatus.text = "$it"
+        })
+
+        viewModel.snackbar.observe(this, Observer { e ->
+            e.letContentIfNotHandled {
+                // Only proceed if the event has never been handled
+                Snackbar.make(rootView, it, Snackbar.LENGTH_SHORT).show()
+            }
+
+        })
+
+        viewModel.trackingCode.observe(this, Observer { tracking ->
+            tracking.letContentIfNotHandled {
+                edtScanTracking.setText(it)
             }
         })
 
-        viewModel.snackbar.observe(this, Observer { it ->
-            if (it != null) {
-                it.getContentIfNotHandled()?.let {
-                    // Only proceed if the event has never been handled
-                    Snackbar.make(rootView, it, Snackbar.LENGTH_SHORT).show()
+        viewModel.warning.observe(this, Observer { e ->
+            e.letContentIfNotHandled {
+                activity!!.showAlertMessage(it)
+            }
+
+        })
+
+        viewModel.confirmRemoveTracking.observe(this, Observer { e ->
+            e.letContentIfNotHandled { trackingCode ->
+                AlertDialog.Builder(activity!!).apply {
+                    setMessage(
+                        resources.getString(
+                            R.string.sentence_ofd_confirm_remove_tracking,
+                            trackingCode
+                        )
+                    )
+                    setPositiveButton(resources.getString(R.string.confirm)) { _, _ ->
+                        viewModel.removeTrackingCode(trackingCode, true)
+                    }
+                    setNegativeButton(resources.getString(R.string.cancel)) { _, _ ->
+
+                    }
+                    setCancelable(false)
+                }.run {
+                    create()
+                }.also {
+                    it.show()
                 }
             }
         })
-
-        viewModel.warning.observe(this, Observer { it ->
-            if (it != null) {
-                it.getContentIfNotHandled()?.let {
-                    // Only proceed if the event has never been handled
-                    activity!!.showWarningDialog(it)
-                }
-            }
-        })
-
-        viewModel.trackingId.observe(this, Observer {
-            edtScanTracking.setText(it)
-        })
-
-        viewModel.getLocationHelper(context!!).observe(this, Observer<Location> { location ->
-            if (location == null) return@Observer
-            viewModel.latitude = location.latitude
-            viewModel.longitude = location.longitude
-        })
-    }
-
-    private fun setHeader(item: Manifest) {
-        adapter.manifestID = item.id.toString()
-        if (viewModel.dataNetwork.value == null)
-            viewModel.prepareData()
-
-        try {
-            tvRemain.text = (item.bookingsTotal!!.toInt() -
-                    item.bookingsDone!!.toInt()).toString()
-            tvOfdRemain.text = (item.noOfItemsTotal!!.toInt() -
-                    (item.noOfItemsDelivered!!.toInt() + item.noOfItemsRetention!!.toInt())).toString()
-        } catch (e: Exception) {
-            tvRemain.text = 0.toString()
-            tvOfdRemain.text = 0.toString()
-        }
-
-        tvPicked.text = item.bookingsDone
-        tvTotal.text = item.bookingsTotal
-
-        tvDeliveryDelivered.text = item.noOfItemsDelivered
-        tvDeliveryRetention.text = item.noOfItemsRetention
-        tvDeliveryTotal.text = item.noOfItemsTotal
     }
 
     private fun initButton() {
-        edtScanTracking.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                checkExistTracking(edtScanTracking.text.toString())
-                return@OnKeyListener true
-            }
-            false
+
+        qrScanner.scanCode.observe(this, Observer {
+            edtScanTracking.setText(it.trimTrackingCode())
+            viewModel.setTrackingCode(it)
+            stopQrScanner()
         })
 
-        edtScanTracking.setOnTouchListener(object : DrawableClickListener.RightDrawableClickListener(edtScanTracking) {
-            override fun onDrawableClick(): Boolean {
+        qrScanner.imageSize.observe(this, Observer { (width, height) ->
+            linearLayoutBeautyContent.layoutParams.height = -((height - txQrReader.height) / 2)
+        })
+
+        edtScanTracking.apply {
+            setOnTouchListener(object :
+                DrawableClickListener.RightDrawableClickListener(edtScanTracking) {
+                override fun onDrawableClick(): Boolean {
+                    startQrScanner()
+                    return true
+                }
+            })
+
+            setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    viewModel.setTrackingCode(edtScanTracking.text.toString())
+                    return@OnKeyListener true
+                }
+                false
+            })
+        }
+
+        ivIconCloseCamera.setOnClickListener {
+            stopQrScanner()
+        }
+
+        btnDone.setOnClickListener {
+        }
+    }
+
+
+    //QR Scanner
+
+    private val REQUEST_CODE_PERMISSIONS = 10
+    private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
+    private lateinit var qrScanner: QrScannerController
+
+    private fun initQrScanner() {
+
+        activity!!.let {
+            qrScanner = QrScannerController(it, this, txQrReader)
+            txQrReader.setOnLongClickListener {
                 IntentIntegrator(activity).run {
                     initiateScan()
                 }
-                return true
+                true
             }
-        })
-
-        btnDone.setOnClickListener {
-            showDialogConfirmExit()
         }
-    }
 
-
-    private fun checkExistTracking(trackingId: String) {
-        if (viewModel.checkExistTracking(trackingId)) {
-            viewModel.showWarning(getString(R.string.sentence_this_tracking_has_been_scanned))
-            edtScanTracking.setText("")
-            edtScanTracking.requestFocus()
+        if (allPermissionsGranted()) {
+            stopQrScanner()
         } else {
-            viewModel.confirmScanOfd(trackingId)
+            ActivityCompat.requestPermissions(
+                activity!!, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
     }
 
-    private fun showDialogConfirmExit() {
-        val mBuilder = AlertDialog.Builder(context)
-        mBuilder.setMessage(getString(R.string.sentence_scan_are_you_sure_you_want_to_confirm_scan_out))
-        mBuilder.setPositiveButton(getString(R.string.confirm)) { _, _ ->
-            activity!!.onBackPressed()
-        }
-        mBuilder.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-            dialog.cancel()
-        }
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(
+            activity!!.baseContext, it
+        ) == PackageManager.PERMISSION_GRANTED
+    }
 
-        val mDialog = mBuilder.create()
-        mDialog.show()
+    private fun startQrScanner() {
+        AnimationUtils.loadAnimation(activity!!, R.anim.blink_interval).run {
+            vBarcodeRedLine.startAnimation(this)
+        }
+        edtScanTracking.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+        sectionCamera.visibility = View.VISIBLE
+        qrScanner.startCamera()
+    }
+
+    private fun stopQrScanner() {
+        edtScanTracking.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_qr_code_24dp, 0)
+        sectionCamera.visibility = View.GONE
+        qrScanner.stopCamera()
     }
 }
 

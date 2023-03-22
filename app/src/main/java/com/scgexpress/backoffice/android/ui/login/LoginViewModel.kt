@@ -8,9 +8,12 @@ import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.api.exception.NoConnectivityException
 import com.scgexpress.backoffice.android.common.Event
 import com.scgexpress.backoffice.android.common.Utils
+import com.scgexpress.backoffice.android.common.invoke
 import com.scgexpress.backoffice.android.model.User
 import com.scgexpress.backoffice.android.preference.LoginPreference
 import com.scgexpress.backoffice.android.repository.LoginRepository
+import com.scgexpress.backoffice.android.repository.pickup.OfflineRepository
+import com.scgexpress.backoffice.android.repository.pickup.PickupRepository
 import com.scgexpress.backoffice.android.viewmodel.RxAndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -19,7 +22,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
         application: Application,
         private val repository: LoginRepository,
-        private val loginPreference: LoginPreference
+        private val loginPreference: LoginPreference,
+        private val offlineRepository: OfflineRepository
 ) : RxAndroidViewModel(application) {
 
     private val context: Context
@@ -43,9 +47,10 @@ class LoginViewModel @Inject constructor(
                 .subscribe({
                     if (it != null) {
                         saveLoginStatus(it)
-
                         _isLogin.value = true
                         showSnackbar("Login Successful!")
+
+                        offlineRepository.clearTaskData()()
                     }else{
                         showSnackbar("Login failed, Please try again.")
                     }
@@ -65,9 +70,10 @@ class LoginViewModel @Inject constructor(
                 .subscribe({
                     if (it != null) {
                         saveLoginStatus(it)
-
                         _isLogin.value = true
                         showSnackbar("Login Successful!")
+
+                        offlineRepository.clearTaskData()()
                     } else {
                         showSnackbar("Login failed, Please try again.")
                     }

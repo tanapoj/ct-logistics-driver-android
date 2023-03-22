@@ -1,6 +1,7 @@
 package com.scgexpress.backoffice.android.ui.notification
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.scgexpress.backoffice.android.R
+import com.scgexpress.backoffice.android.common.Const
+import com.scgexpress.backoffice.android.ui.pickup.task.PickupTaskActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
@@ -104,6 +107,7 @@ class NotificationFragment : Fragment(), HasSupportFragmentInjector {
             if (it != null) {
                 it.getContentIfNotHandled()?.let {
                     activity!!.onBackPressed()
+                    goToPickupTaskActivity()
                 }
             }
         })
@@ -111,5 +115,14 @@ class NotificationFragment : Fragment(), HasSupportFragmentInjector {
 
     private fun loadNotification() {
         viewModel.initNotification()
+    }
+
+    private fun goToPickupTaskActivity() {
+        Intent(activity, PickupTaskActivity::class.java).apply {
+            putExtra(Const.PARAMS_PICKUP_TASK_SELECT_TAB, Const.PARAMS_PICKUP_COMPLETED)
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }.also {
+            startActivity(it)
+        }
     }
 }

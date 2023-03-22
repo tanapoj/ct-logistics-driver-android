@@ -81,6 +81,10 @@ class DeliveryViewModel @Inject constructor(
     val snackbar: LiveData<Event<String>>
         get() = _snackbar
 
+    private val _warning = MutableLiveData<Event<String>>()
+    val warning: LiveData<Event<String>>
+        get() = _warning
+
     private val _refreshing = MutableLiveData<Boolean>()
     val refreshing: LiveData<Boolean>
         get() = _refreshing
@@ -186,7 +190,7 @@ class DeliveryViewModel @Inject constructor(
             .subscribe({
                 if (it.message == "Success") {
                     _bookingAccept.value = BookingInfo()
-                    showSnackbar(context.getString(R.string.sentence_booking_has_been_accepted))
+                    showWarning(context.getString(R.string.sentence_booking_has_been_accepted))
                     loadData(startDate, endDate)
                     deleteBooking(item.bookingID)
                 }
@@ -206,7 +210,7 @@ class DeliveryViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 if (it.message == "Success") {
-                    showSnackbar(context.getString(R.string.sentence_booking_has_been_rejected))
+                    showWarning(context.getString(R.string.sentence_booking_has_been_rejected))
                     loadData(startDate, endDate)
                     deleteBooking(_bookingReject.value!!.bookingID)
                 }
@@ -278,6 +282,10 @@ class DeliveryViewModel @Inject constructor(
     fun showSnackbar(msg: String) {
         if (checkLastClickTime())
             _snackbar.value = Event(msg)
+    }
+
+    fun showWarning(msg: String) {
+        _warning.value = Event(msg)
     }
 
     @SuppressLint("RestrictedApi")

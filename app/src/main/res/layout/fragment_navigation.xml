@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/grid_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/grid_xxxlarge"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerTask"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginBottom="@dimen/grid_normal"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:background="@color/grayLight"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/edtSearch"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spnTask"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:drawableRight="@drawable/ic_baseline_search_white_24dp"
+                    android:drawableTint="@color/grayDark"
+                    android:layout_marginStart="@dimen/grid_large"
+                    app:layout_constraintStart_toEndOf="@+id/containerTask"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/containerSearch">
+
+                <RadioGroup
+                    android:id="@+id/radioGroupFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/radioFilterNear"
+                        android:layout_width="@dimen/radio_width"
+                        android:layout_height="@dimen/grid_xlarge"
+                        android:paddingTop="@dimen/grid_xsmall"
+                        android:text="@string/filter_near"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_small"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginBottom="@dimen/grid_normal"
+                        android:background="@drawable/radio_state_filter_navigation"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <RadioButton
+                        android:id="@+id/radioFilterFar"
+                        android:layout_width="@dimen/radio_width"
+                        android:layout_height="@dimen/grid_xlarge"
+                        android:paddingTop="@dimen/grid_xsmall"
+                        android:text="@string/filter_far"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@color/colorPrimary"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginBottom="@dimen/grid_normal"
+                        android:background="@drawable/radio_state_filter_navigation"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/radioFilterNear"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <RadioButton
+                        android:id="@+id/radioFilterOrigin"
+                        android:layout_width="@dimen/radio_width"
+                        android:layout_height="@dimen/grid_xlarge"
+                        android:paddingTop="@dimen/grid_xsmall"
+                        android:text="@string/filter_origin"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@color/colorPrimary"
+                        android:button="@null"
+                        android:visibility="gone"
+                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginBottom="@dimen/grid_normal"
+                        android:background="@drawable/radio_state_filter_navigation"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/radioFilterNear"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <RadioButton
+                        android:id="@+id/radioFilterCustom"
+                        android:layout_width="@dimen/radio_width"
+                        android:layout_height="@dimen/grid_xlarge"
+                        android:paddingTop="@dimen/grid_xsmall"
+                        android:text="@string/custom"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@color/colorPrimary"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/grid_normal"
+                        android:layout_marginTop="@dimen/grid_normal"
+                        android:layout_marginBottom="@dimen/grid_normal"
+                        android:background="@drawable/radio_state_filter_navigation"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/radioFilterFar"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItems"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/padding_bottom_fab"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerHeader"/>
+
+        <fragment
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            tools:context=".MapsActivity"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

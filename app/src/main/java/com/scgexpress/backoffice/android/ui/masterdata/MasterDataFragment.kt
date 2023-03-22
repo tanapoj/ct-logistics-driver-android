@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.amazonaws.auth.CognitoCachingCredentialsProvider
@@ -61,29 +62,31 @@ class MasterDataFragment : Fragment(), HasSupportFragmentInjector {
 
 
     private val s3Client by lazy {
-        val developerProvider = DeveloperAuthenticationProvider(loginRepository, loginPreference, Const.AWS_POOL_ID, Regions.AP_SOUTHEAST_1)
+        val developerProvider =
+            DeveloperAuthenticationProvider(loginRepository, loginPreference, Const.AWS_POOL_ID, Regions.AP_SOUTHEAST_1)
         val credentialsProvider = CognitoCachingCredentialsProvider(
-                mContext,
-                developerProvider,
-                Regions.AP_SOUTHEAST_1
+            mContext,
+            developerProvider,
+            Regions.AP_SOUTHEAST_1
         )
         AmazonS3Client(credentialsProvider)
     }
 
     private val transferUtility by lazy {
-        val developerProvider = DeveloperAuthenticationProvider(loginRepository, loginPreference, Const.AWS_POOL_ID, Regions.AP_SOUTHEAST_1)
+        val developerProvider =
+            DeveloperAuthenticationProvider(loginRepository, loginPreference, Const.AWS_POOL_ID, Regions.AP_SOUTHEAST_1)
         val credentialsProvider = CognitoCachingCredentialsProvider(
-                mContext,
-                developerProvider,
-                Regions.AP_SOUTHEAST_1
+            mContext,
+            developerProvider,
+            Regions.AP_SOUTHEAST_1
         )
         //val credentials = BasicAWSCredentials(Const.AWS_ACCESS_KEY, Const.AWS_SECRET_KEY)
         val s3Client = AmazonS3Client(credentialsProvider)
         TransferUtility.builder()
-                .context(mContext)
-                .awsConfiguration(AWSMobileClient.getInstance().configuration)
-                .s3Client(s3Client)
-                .build()
+            .context(mContext)
+            .awsConfiguration(AWSMobileClient.getInstance().configuration)
+            .s3Client(s3Client)
+            .build()
     }
 
     override fun onAttach(context: Context) {
@@ -120,22 +123,31 @@ class MasterDataFragment : Fragment(), HasSupportFragmentInjector {
             tvStatus.text = it
         })
 
+        viewModel.statusDetail.observe(this, Observer {
+            tvStatusDetail.text = it
+        })
+
         viewModel.done.observe(this, Observer {
             if (it == true) {
                 pbLoading.isIndeterminate = true
-                tvStatus.text = "master data is up-to-date"
-                Handler().postDelayed({
+                tvStatus.text = resources.getString(R.string.master_data_update_state_up_to_date)
+                //Handler().postDelayed({
                     startMenuActivity()
-                }, 100)
+                //}, 1_000)
             }
         })
 
-//        viewModel.testCodFee()
-        startUpdateMasterData()
+        viewModel.dialogErrorMessage.observe(this, Observer {
+            showDialogErrorMessage(it)
+        })
+
+        Handler().postDelayed({
+            startUpdateMasterData()
+        }, 500)
     }
 
-    private fun startUpdateMasterData(){
-        viewModel.loadMasterDataJsonFile(s3Client)
+    private fun startUpdateMasterData() {
+        viewModel.loadMasterDataJsonFile(s3Client, activity!!.filesDir.canonicalPath)
     }
 
     private fun setProgress(percent: Int) {
@@ -143,10 +155,25 @@ class MasterDataFragment : Fragment(), HasSupportFragmentInjector {
         pbLoading.progress = percent
     }
 
-    private fun startMenuActivity(){
-        activity?.apply{
+    private fun startMenuActivity() {
+        activity?.apply {
             startActivity(Intent(activity, MenuActivity::class.java))
             finish()
+        }
+    }
+
+
+    private fun showDialogErrorMessage(msg: String) {
+        AlertDialog.Builder(context!!).apply {
+            setMessage(msg)
+            setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
+                activity?.finish()
+            }
+        }.run {
+            create()
+        }.also {
+            it.show()
         }
     }
 

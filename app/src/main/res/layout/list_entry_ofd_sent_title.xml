@@ -56,21 +56,22 @@
             app:autoSizeMaxTextSize="@dimen/text_normal"
             app:autoSizeTextType="uniform"/>
 
-    <!--<View
+    <View
         android:id="@+id/vDividerTitle"
         android:layout_width="@dimen/divider"
         android:layout_height="match_parent"
         android:background="@color/grayLight" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDeleteTitle"
+    <ImageView
+        android:id="@+id/btnCamera"
         android:layout_width="@dimen/icon_xxlarge"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/grid_small"
-        android:text="@string/delete"
-        android:textColor="@color/colorPrimary"
-        android:tint="@color/white"
-        app:srcCompat="@drawable/rubbish_bin" />-->
+        android:layout_height="@dimen/icon_xxlarge"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="@dimen/grid_medium"
+        android:tint="@color/grayDark"
+        app:srcCompat="@drawable/ic_baseline_photo_camera_24dp" />
 
     <!--</LinearLayout>-->
 

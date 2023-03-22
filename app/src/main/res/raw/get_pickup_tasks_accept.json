@@ -1,0 +1,109 @@
+[
+  {
+    "id": "1",
+    "booking_code": "BK123456",
+    "customer_code": "999996",
+    "customer_name": "Shopee",
+    "sender_code": "09876",
+    "sender_name": "Mrs. Pilin Kusol",
+    "tel": "0661234567",
+    "location": {
+      "address": "20/126, Ramintra Soi 14, Bangkhen",
+      "zipcode": "10220",
+      "latitude": "13.23456",
+      "longitude": "100.23456"
+    },
+    "total_count": 243,
+    "pickuped_count": 20,
+    "service_type_count": {
+      "normal": 200,
+      "chiled": 0,
+      "frozen": 43
+    },
+    "remark": "contact Mr. A before delivery",
+    "status": "IN_PROGRESS",
+    "created_at": "2008-10-17T00:00:00+08:00",
+    "update_at": "2008-10-17T00:00:00+08:00",
+    "pickup_at": "2008-10-17T00:00:00+08:00"
+  },
+  {
+    "id": "2",
+    "booking_code": "BK111111",
+    "customer_code": "Sh111111",
+    "customer_name": "Shopee",
+    "sender_code": "09876",
+    "sender_name": "Mrs. Pilin Kusol",
+    "tel": "0661234567",
+    "location": {
+      "address": "20/126, Ramintra Soi 14, Bangkhen",
+      "zipcode": "10220",
+      "latitude": "13.23456",
+      "longitude": "100.23456"
+    },
+    "total_count": 243,
+    "pickuped_count": 20,
+    "service_type_count": {
+      "normal": 200,
+      "chiled": 0,
+      "frozen": 43
+    },
+    "remark": "contact Mr. A before delivery",
+    "status": "NEW_BOOKING",
+    "created_at": "2008-10-17T00:00:00+08:00",
+    "update_at": "2008-10-17T00:00:00+08:00",
+    "pickup_at": "2008-10-17T00:00:00+08:00"
+  },
+  {
+    "id": "3",
+    "booking_code": "BK222222",
+    "customer_code": "Sh1222222",
+    "customer_name": "Shopee",
+    "sender_code": "09876",
+    "sender_name": "Mrs. Pilin Kusol",
+    "tel": "0661234567",
+    "location": {
+      "address": "20/126, Ramintra Soi 14, Bangkhen",
+      "zipcode": "10220",
+      "latitude": "13.23456",
+      "longitude": "100.23456"
+    },
+    "total_count": 243,
+    "pickuped_count": 20,
+    "service_type_count": {
+      "normal": 200,
+      "chiled": 0,
+      "frozen": 43
+    },
+    "remark": "contact Mr. A before delivery",
+    "status": "IN_PROGRESS",
+    "created_at": "2008-10-17T00:00:00+08:00",
+    "update_at": "2008-10-17T00:00:00+08:00",
+    "pickup_at": "2008-10-17T00:00:00+08:00"
+  },
+  {
+    "id": "4",
+    "booking_code": "BK333333",
+    "customer_code": "Sh333333",
+    "customer_name": "Shopee",
+    "sender_code": "09876",
+    "sender_name": "Mrs. Pilin Kusol",
+    "tel": "0661234567",
+    "location": {
+      "address": "20/126, Ramintra Soi 14, Bangkhen",
+      "zipcode": "10220",
+      "longitude": "100.23456"
+    },
+    "total_count": 243,
+    "pickuped_count": 20,
+    "service_type_count": {
+      "normal": 200,
+      "chiled": 0,
+      "frozen": 43
+    },
+    "remark": "contact Mr. A before delivery",
+    "status": "COMPLETED",
+    "created_at": "2008-10-17T00:00:00+08:00",
+    "update_at": "2008-10-17T00:00:00+08:00",
+    "pickup_at": "2008-10-17T00:00:00+08:00"
+  }
+]

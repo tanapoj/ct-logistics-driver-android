@@ -4,30 +4,28 @@ import com.scgexpress.backoffice.android.base.BaseActivity
 import com.scgexpress.backoffice.android.base.BaseActivityModule
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryMainActivity
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryMainActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.detail.TrackingDetailsActivity
+import com.scgexpress.backoffice.android.ui.delivery.detail.TrackingDetailsActivityModule
 import com.scgexpress.backoffice.android.ui.delivery.location.DeliveryLocationActivity
 import com.scgexpress.backoffice.android.ui.delivery.location.DeliveryLocationActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.cantsent.OfdCantSentActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.cantsent.OfdCantSentActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.create.OfdCreateActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.create.OfdCreateActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.OfdDetailActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.OfdDetailActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingDetailsActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingDetailsActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingItemsActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.booking.BookingItemsActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.item.dragged.OfdDetailItemsDraggableActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.item.dragged.OfdDetailItemsDraggableActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.search.OfdItemSearchActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.search.OfdItemSearchActivityModule
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.tracking.TrackingDetailsActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.tracking.TrackingDetailsActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.ofd.retention.OfdRetentionActivity
+import com.scgexpress.backoffice.android.ui.delivery.ofd.retention.OfdRetentionActivityModule
 import com.scgexpress.backoffice.android.ui.delivery.ofd.scan.OfdScanActivity
 import com.scgexpress.backoffice.android.ui.delivery.ofd.scan.OfdScanActivityModule
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.OfdSentActivity
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.OfdSentActivityModule
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.signature.SignatureActivity
 import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.signature.SignatureActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.retention.changedatetime.RetentionChangeDateActivity
+import com.scgexpress.backoffice.android.ui.delivery.retention.changedatetime.RetentionChangeDateActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.retention.changesaledriver.RetentionChangeSDActivity
+import com.scgexpress.backoffice.android.ui.delivery.retention.changesaledriver.RetentionChangeSDActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.retention.reason.RetentionReasonActivity
+import com.scgexpress.backoffice.android.ui.delivery.retention.reason.RetentionReasonActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.task.DeliveryTaskActivity
+import com.scgexpress.backoffice.android.ui.delivery.task.DeliveryTaskActivityModule
+import com.scgexpress.backoffice.android.ui.delivery.task.search.DeliverySearchActivity
+import com.scgexpress.backoffice.android.ui.delivery.task.search.DeliverySearchActivityModule
 import com.scgexpress.backoffice.android.ui.login.LoginActivity
 import com.scgexpress.backoffice.android.ui.login.LoginActivityModule
 import com.scgexpress.backoffice.android.ui.main.MainActivity
@@ -38,10 +36,30 @@ import com.scgexpress.backoffice.android.ui.masterdata.forceupdate.ForceUpdateAc
 import com.scgexpress.backoffice.android.ui.masterdata.forceupdate.ForceUpdateActivityModule
 import com.scgexpress.backoffice.android.ui.menu.MenuActivity
 import com.scgexpress.backoffice.android.ui.menu.MenuActivityModule
+import com.scgexpress.backoffice.android.ui.navigation.NavigationMainActivity
+import com.scgexpress.backoffice.android.ui.navigation.NavigationMainActivityModule
+import com.scgexpress.backoffice.android.ui.navigation.map.NavigationMapActivity
+import com.scgexpress.backoffice.android.ui.navigation.map.NavigationMapActivityModule
 import com.scgexpress.backoffice.android.ui.notification.NotificationActivity
 import com.scgexpress.backoffice.android.ui.notification.NotificationActivityModule
+import com.scgexpress.backoffice.android.ui.photo.PhotoConfirmActivity
+import com.scgexpress.backoffice.android.ui.photo.PhotoConfirmActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.bookingList.PickupBookingListActivity
+import com.scgexpress.backoffice.android.ui.pickup.bookingList.PickupBookingListActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.detail.PickupDetailsActivity
+import com.scgexpress.backoffice.android.ui.pickup.detail.PickupDetailsActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.main.PickupMainActivity
+import com.scgexpress.backoffice.android.ui.pickup.main.PickupMainActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.receipt.PickupReceiptActivity
+import com.scgexpress.backoffice.android.ui.pickup.receipt.PickupReceiptActivityModule
 import com.scgexpress.backoffice.android.ui.pickup.scan.PickupScanActivity
 import com.scgexpress.backoffice.android.ui.pickup.scan.PickupScanActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.summary.PickupSummaryActivity
+import com.scgexpress.backoffice.android.ui.pickup.summary.PickupSummaryActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.task.PickupTaskActivity
+import com.scgexpress.backoffice.android.ui.pickup.task.PickupTaskActivityModule
+import com.scgexpress.backoffice.android.ui.pickup.task.search.PickupSearchActivity
+import com.scgexpress.backoffice.android.ui.pickup.task.search.PickupSearchActivityModule
 import com.scgexpress.backoffice.android.ui.pin.PinActivity
 import com.scgexpress.backoffice.android.ui.pin.PinActivityModule
 import com.scgexpress.backoffice.android.ui.topic.TopicActivity
@@ -54,17 +72,17 @@ abstract class ActivitiesModule {
     @ContributesAndroidInjector(modules = [(BaseActivityModule::class)])
     internal abstract fun bindBaseActivity(): BaseActivity
 
-    @ContributesAndroidInjector(modules = [(BookingDetailsActivityModule::class)])
-    internal abstract fun bindBookingDetailsActivity(): BookingDetailsActivity
-
-    @ContributesAndroidInjector(modules = [(BookingItemsActivityModule::class)])
-    internal abstract fun bindBookingItemsActivity(): BookingItemsActivity
-
     @ContributesAndroidInjector(modules = [(DeliveryMainActivityModule::class)])
     internal abstract fun bindDeliveryMainActivity(): DeliveryMainActivity
 
     @ContributesAndroidInjector(modules = [(DeliveryLocationActivityModule::class)])
     internal abstract fun bindDeliveryLocationActivity(): DeliveryLocationActivity
+
+    @ContributesAndroidInjector(modules = [(DeliverySearchActivityModule::class)])
+    internal abstract fun bindDeliverySearchActivity(): DeliverySearchActivity
+
+    @ContributesAndroidInjector(modules = [(DeliveryTaskActivityModule::class)])
+    internal abstract fun bindDeliveryTaskActivity(): DeliveryTaskActivity
 
     @ContributesAndroidInjector(modules = [(ForceUpdateActivityModule::class)])
     internal abstract fun bindForceUpdateActivity(): ForceUpdateActivity
@@ -81,23 +99,17 @@ abstract class ActivitiesModule {
     @ContributesAndroidInjector(modules = [(MenuActivityModule::class)])
     internal abstract fun bindMenuActivity(): MenuActivity
 
+    @ContributesAndroidInjector(modules = [(NavigationMainActivityModule::class)])
+    internal abstract fun bindNavigationMainActivity(): NavigationMainActivity
+
+    @ContributesAndroidInjector(modules = [(NavigationMapActivityModule::class)])
+    internal abstract fun bindNavigationMapActivity(): NavigationMapActivity
+
     @ContributesAndroidInjector(modules = [(NotificationActivityModule::class)])
     internal abstract fun bindNotificationActivity(): NotificationActivity
 
-    @ContributesAndroidInjector(modules = [(OfdCantSentActivityModule::class)])
-    internal abstract fun bindOfdCantSentActivity(): OfdCantSentActivity
-
-    @ContributesAndroidInjector(modules = [(OfdCreateActivityModule::class)])
-    internal abstract fun bindOfdCreateManifestActivity(): OfdCreateActivity
-
-    @ContributesAndroidInjector(modules = [(OfdDetailActivityModule::class)])
-    internal abstract fun bindOfdDetailActivity(): OfdDetailActivity
-
-    @ContributesAndroidInjector(modules = [(OfdDetailItemsDraggableActivityModule::class)])
-    internal abstract fun bindOfdDetailItemsDraggableActivity(): OfdDetailItemsDraggableActivity
-
-    @ContributesAndroidInjector(modules = [(OfdItemSearchActivityModule::class)])
-    internal abstract fun bindOfdItemSearchActivity(): OfdItemSearchActivity
+    @ContributesAndroidInjector(modules = [(OfdRetentionActivityModule::class)])
+    internal abstract fun bindOfdRetentionActivity(): OfdRetentionActivity
 
     @ContributesAndroidInjector(modules = [(OfdScanActivityModule::class)])
     internal abstract fun bindOfdScanActivity(): OfdScanActivity
@@ -105,8 +117,35 @@ abstract class ActivitiesModule {
     @ContributesAndroidInjector(modules = [(OfdSentActivityModule::class)])
     internal abstract fun bindOfdSentActivity(): OfdSentActivity
 
+    @ContributesAndroidInjector(modules = [(PickupDetailsActivityModule::class)])
+    internal abstract fun bindPickupDetailsActivity(): PickupDetailsActivity
+
+    @ContributesAndroidInjector(modules = [(PickupSearchActivityModule::class)])
+    internal abstract fun bindPickupSearchActivity(): PickupSearchActivity
+
+    @ContributesAndroidInjector(modules = [(PickupTaskActivityModule::class)])
+    internal abstract fun bindPickupTaskActivity(): PickupTaskActivity
+
+    @ContributesAndroidInjector(modules = [(PickupReceiptActivityModule::class)])
+    internal abstract fun bindPickupReceiptActivity(): PickupReceiptActivity
+
+    @ContributesAndroidInjector(modules = [(PickupScanActivityModule::class)])
+    internal abstract fun bindPickupScanActivity(): PickupScanActivity
+
+    @ContributesAndroidInjector(modules = [(PickupSummaryActivityModule::class)])
+    internal abstract fun bindPickupSummaryActivity(): PickupSummaryActivity
+
+    @ContributesAndroidInjector(modules = [(PickupBookingListActivityModule::class)])
+    internal abstract fun bindPickupTaskListActivity(): PickupBookingListActivity
+
+    @ContributesAndroidInjector(modules = [(PickupMainActivityModule::class)])
+    internal abstract fun bindPickupMainActivity(): PickupMainActivity
+
     @ContributesAndroidInjector(modules = [(PinActivityModule::class)])
     internal abstract fun bindPinActivity(): PinActivity
+
+    @ContributesAndroidInjector(modules = [PhotoConfirmActivityModule::class])
+    internal abstract fun bindPhotoConfirmActivityActivity(): PhotoConfirmActivity
 
     @ContributesAndroidInjector(modules = [(TopicActivityModule::class)])
     internal abstract fun bindTopicActivity(): TopicActivity
@@ -114,9 +153,16 @@ abstract class ActivitiesModule {
     @ContributesAndroidInjector(modules = [(TrackingDetailsActivityModule::class)])
     internal abstract fun bindTrackingDetailsActivity(): TrackingDetailsActivity
 
+    @ContributesAndroidInjector(modules = [(RetentionReasonActivityModule::class)])
+    internal abstract fun bindRetentionScanActivity(): RetentionReasonActivity
+
+    @ContributesAndroidInjector(modules = [(RetentionChangeSDActivityModule::class)])
+    internal abstract fun bindRetentionScanTrackingActivity(): RetentionChangeSDActivity
+
+    @ContributesAndroidInjector(modules = [(RetentionChangeDateActivityModule::class)])
+    internal abstract fun bindRetentionChangeDateActivity(): RetentionChangeDateActivity
+
     @ContributesAndroidInjector(modules = [(SignatureActivityModule::class)])
     internal abstract fun bindSignatureActivity(): SignatureActivity
 
-    @ContributesAndroidInjector(modules = [(PickupScanActivityModule::class)])
-    internal abstract fun bindPickupScanActivity(): PickupScanActivity
 }

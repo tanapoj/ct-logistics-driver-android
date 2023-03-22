@@ -6,6 +6,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.scgexpress.backoffice.android.BuildConfig
 import com.scgexpress.backoffice.android.common.Utils
 import com.scgexpress.backoffice.android.preference.LoginPreference
 import com.scgexpress.backoffice.android.preference.LoginPreference.Companion.LOGIN_DEFAULT_VALUE
@@ -19,6 +20,9 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import timber.log.Timber
+
+
 
 
 abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {

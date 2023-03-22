@@ -17,6 +17,8 @@ open class Event<out T>(private val content: T) {
         }
     }
 
+    fun <R> letContentIfNotHandled(block: (T) -> R) = getContentIfNotHandled()?.let(block)
+
     /**
      * Returns the content, even if it's already been handled.
      */

@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
+import com.google.zxing.integration.android.IntentIntegrator
 import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.common.decodeBase64
 import com.scgexpress.backoffice.android.ui.masterdata.MasterDataActivity
@@ -20,14 +21,15 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.fragment_login.*
-import com.google.zxing.integration.android.IntentIntegrator
 import javax.inject.Inject
 
 
 class LoginFragment : Fragment(), HasSupportFragmentInjector {
 
     companion object {
-        private const val username: String = "15000591"
+        //        private const val username: String = "15000591"
+        //        private const val username: String = "16000260"
+        private const val username: String = "15000262"
         private const val password: String = "Initial@1234"
         fun newInstance(): LoginFragment {
             return LoginFragment().also {
@@ -71,7 +73,11 @@ class LoginFragment : Fragment(), HasSupportFragmentInjector {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         rootView = inflater.inflate(R.layout.fragment_login, container, false)
         return rootView
     }

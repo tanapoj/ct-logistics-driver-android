@@ -3,6 +3,7 @@ package com.scgexpress.backoffice.android.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 
+@Deprecated("legacy delivery")
 @Entity(tableName = "delivery", primaryKeys = ["groupID", "userId", "manifestID", "trackingNumber"])
 data class DeliveryEntity(
         @ColumnInfo(name = "groupID") var groupID: String = "",

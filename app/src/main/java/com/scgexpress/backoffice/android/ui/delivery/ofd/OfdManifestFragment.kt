@@ -16,11 +16,7 @@ import com.scgexpress.backoffice.android.common.Const.PARAMS_MANIFEST
 import com.scgexpress.backoffice.android.common.Const.PARAMS_MANIFEST_ID
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryMainActivity
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryViewModel
-import com.scgexpress.backoffice.android.ui.delivery.ofd.cantsent.OfdCantSentActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.create.OfdCreateActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.detail.OfdDetailActivity
 import com.scgexpress.backoffice.android.ui.delivery.ofd.scan.OfdScanActivity
-import com.scgexpress.backoffice.android.ui.delivery.ofd.sent.OfdSentActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
@@ -97,10 +93,6 @@ class OfdManifestFragment : Fragment(), HasSupportFragmentInjector {
     }
 
     private fun initButton() {
-        fabAdd.setOnClickListener {
-            if (!viewModel.checkLastClickTime()) return@setOnClickListener
-            startActivity(Intent(activity, OfdCreateActivity::class.java))
-        }
     }
 
     private fun observeData() {
@@ -116,28 +108,10 @@ class OfdManifestFragment : Fragment(), HasSupportFragmentInjector {
     }
 
     private fun ofdClickedListener() {
-        viewModel.ofdClick.observe(this, Observer {
-            if (it == null) return@Observer
-            val intent = Intent(context, OfdDetailActivity::class.java)
-                .putExtra(PARAMS_MANIFEST, it)
-            startActivity(intent)
-        })
         viewModel.ofdScan.observe(this, Observer {
             if (it == null) return@Observer
             val intent = Intent(context, OfdScanActivity::class.java)
                 .putExtra(PARAMS_MANIFEST, it)
-            startActivity(intent)
-        })
-        viewModel.ofdSent.observe(this, Observer {
-            if (it == null) return@Observer
-            val intent = Intent(context, OfdSentActivity::class.java)
-                .putExtra(PARAMS_MANIFEST_ID, it.id)
-            startActivity(intent)
-        })
-        viewModel.ofdCantSent.observe(this, Observer {
-            if (it == null) return@Observer
-            val intent = Intent(context, OfdCantSentActivity::class.java)
-                .putExtra(PARAMS_MANIFEST_ID, it.id)
             startActivity(intent)
         })
     }

@@ -5,6 +5,7 @@
     <item name="menu_pickup" type="id"/>
     <item name="menu_ofd" type="id"/>
     <item name="menu_delivery" type="id"/>
+    <item name="menu_navigation" type="id"/>
     <item name="menu_sdreport" type="id"/>
     <item name="menu_line_haul" type="id"/>
     <item name="menu_line" type="id"/>

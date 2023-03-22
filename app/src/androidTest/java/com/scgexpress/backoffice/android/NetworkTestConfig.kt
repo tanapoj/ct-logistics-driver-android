@@ -103,4 +103,8 @@ class NetworkTestConfig(private val context: Context) {
     fun getUserService(): TopicService {
         return getRetrofit().create(TopicService::class.java)
     }
+
+    fun <T> getService(clazz: Class<T>): T {
+        return getRetrofit().create(clazz)
+    }
 }

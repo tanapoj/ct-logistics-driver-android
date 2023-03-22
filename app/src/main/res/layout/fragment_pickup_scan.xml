@@ -1,76 +1,82 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayLighter">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="@dimen/grid_xxlarge"
+        android:layout_marginEnd="32dp"
+        android:text="@string/scan_customer_qr_code_title"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/grid_xxlarge"
-            app:cardElevation="@dimen/grid_normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--android:id="@+id/tilScan"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="@dimen/grid_normal"-->
+    <!--android:layout_marginTop="@dimen/grid_normal"-->
+    <!--android:layout_marginEnd="@dimen/grid_normal"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    <!--android:drawableRight="@drawable/ic_qr_code_24dp"-->
+    <!--<androidx.appcompat.widget.AppCompatEditText-->
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etScanCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:gravity="center"
+        android:hint="@string/scan_customer_qr_code"
+        android:inputType="numberDecimal"
 
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilScan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/grid_normal"
-                    android:layout_marginStart="@dimen/grid_normal"
-                    android:layout_marginTop="@dimen/grid_large"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+        android:maxLength="12"
+        android:minWidth="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/etScanCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:hint="@string/scan_customer_qr_code"
-                        android:inputType="numberDecimal"
-                        android:maxLength="12"
-                        android:minWidth="100dp"
-                        android:drawableRight="@drawable/ic_qr_code_24dp"/>
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgBtnScan"
-                    android:layout_width="@dimen/icon_avatar_large"
-                    android:layout_height="@dimen/icon_avatar_large"
-                    android:padding="@dimen/grid_small"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:layout_marginBottom="@dimen/grid_normal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:srcCompat="@drawable/qrcode"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tilScan"
-                    android:visibility="gone"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgBtnScan"
+        android:layout_width="@dimen/icon_avatar_large"
+        android:layout_height="@dimen/icon_avatar_large"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="@dimen/grid_normal"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="@dimen/grid_small"
+        android:src="@drawable/ic_qr_code_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etScanCode"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/qrcode" />
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnConfirm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/grid_normal"
-            android:text="@string/confirm"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"
-            app:backgroundTint="@color/btn_accent_tint"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/btnConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:background="@drawable/button_with_disable"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

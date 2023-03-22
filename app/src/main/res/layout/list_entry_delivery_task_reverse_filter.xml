@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerReverse"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/grid_normal"
+    android:visibility="visible"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <Button
+        android:id="@+id/btnReverseAll"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_size_reverse"
+        android:layout_marginEnd="@dimen/grid_normal"
+        android:background="@drawable/button_green_background"
+        android:text="@string/all"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/glReverse1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glReverse1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <Button
+        android:id="@+id/btnReverse"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_size_reverse"
+        android:background="@drawable/button_border_green_background"
+        android:text="@string/reverse"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/glReverse2"
+        app:layout_constraintStart_toStartOf="@+id/glReverse1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glReverse2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <Button
+        android:id="@+id/btnReverseNon"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_size_reverse"
+        android:layout_marginStart="@dimen/grid_normal"
+        android:background="@drawable/button_border_green_background"
+        android:text="@string/non_reverse"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/glReverse2"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

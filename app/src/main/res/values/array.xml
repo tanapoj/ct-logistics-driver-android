@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="service_type_name_cod">
+        <item>5,Normal</item>
+        <item>6,Chilled</item>
+        <item>7,Frozen</item>
+    </string-array>
+    <string-array name="service_type_name_non_cod">
+        <item>2,Normal</item>
+        <item>3,Chilled</item>
+        <item>4,Frozen</item>
+    </string-array>
+    <integer-array name="parcel_sizing_chilled_display_id">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+    <integer-array name="parcel_sizing_frozen_display_id">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+</resources>

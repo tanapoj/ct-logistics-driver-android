@@ -14,10 +14,25 @@
     <string name="user">User</string>
     <string name="warning">Warning</string>
 
+    <string name="master_data_update_state_init">เริ่มต้นการอัปเดตข้อมูล Master</string>
+    <string name="master_data_update_state_check_version">กำลังตรวจสอบเวอร์ชันของ Master Data</string>
+    <string name="master_data_update_state_download_file">กำลัง download ข้อมูล Master</string>
+    <string name="master_data_update_state_convert_object">กำลังแปลงข้อมูล</string>
+    <string name="master_data_update_state_truncate_db">ทำการล้างข้อมูลเก่า</string>
+    <string name="master_data_update_state_read_file">อ่านไฟล์ Master %1$s\%%</string>
+    <string name="master_data_update_state_insert_db">เขียนข้อมูล Master ใหม่ลงระบบ\n%1$s %2$s records</string>
+    <string name="master_data_update_state_update_version">อัปเดตเสร็จสิ้น กำลังบันทึก</string>
+    <string name="master_data_update_state_up_to_date">Master Data is up-to-date\nข้อมูลเป็นเวอร์ชันปัจจุบันแล้ว</string>
     <string name="emergency_master_data_update">propagate emergency master data update\nจำเป็นต้องทำการอัปเดท master data</string>
     <string name="btn_master_data_update">อัปเดทข้อมูล master data ตอนนี้เลย</string>
     <string name="btn_master_data_postpone_short">เลื่อน 15 นาที</string>
     <string name="btn_master_data_postpone_long">เลื่อน 30 นาที</string>
+
+    <string name="sync_msg_before_logout">กำลัง sync ข้อมูลก่อนออกจากระบบ กรุณารอสักครู่...</string>
+    <string name="logout_confirm_msg">ต้องการออกจากระบบ?</string>
+    <string name="logout_confirm_msg_btn_ok">ออกจากระบบ</string>
+    <string name="logout_confirm_msg_btn_cancel">ยกเลิก</string>
+    <string name="logout_sync_pending_done">sync ข้อมูลครบแล้ว, ต้องการออกจากระบบกรุณา logout อีกรอบ</string>
 
     <string name="dialog_submit_confirm_title">จบการทำงาน</string>
     <string name="dialog_submit_confirm_message">ยืนยันการจบการทำงาน</string>
@@ -33,6 +48,12 @@
     <string name="services_type">Services type</string>
 
     <!--Pickup-->
+    <string name="pickup_task_list_stat">Normal %1$d / Chiled %2$d / Frozen %3$d</string>
+    <string name="pickup_title_shipper_code">%1$s</string>
+    <string name="pickup_title_amount_to_total">%1$d/%2$d</string>
+    <string name="pickup_title_amount_to_total_none">%1$d</string>
+    <string name="pickup_title_count_from_booking">From Booking</string>
+    <string name="pickup_title_count_from_new_tracking">New Tracking</string>
     <string name="services">Services</string>
     <string name="sizes">Sizes</string>
     <string name="remember">Remember</string>
@@ -40,8 +61,9 @@
     <string name="zip_code">รหัสไปรษณีย์</string>
     <string name="register">ลงทะเบียน</string>
     <string name="summary">สรุป</string>
-    <string name="tracking_code">Tracking code</string>
-    <string name="scan_customer_qr_code">Scan QR Code ลูกค้า</string>
+    <string name="tracking_code">Tracking</string>
+    <string name="scan_customer_qr_code_title">Scan Shipper Code</string>
+    <string name="scan_customer_qr_code">Shipper code / Mobile number (Sender)</string>
     <string name="dialog_pickup_cod_not_found_title">เกิดข้อผิดพลาด</string>
     <string name="dialog_pickup_cod_not_found_message">ไม่พบข้อมูล COD Fee ในระบบ</string>
     <string name="dialog_pickup_cod_not_found_ok">ตกลง</string>
@@ -54,6 +76,17 @@
     <string name="dialog_remote_postalcode_extra_desc">รหัสไปรษณีย์ที่ท่านเลือก อยู่ในพื้นที่ห่างไกล ใช้เวลาจัดส่งภายใน 2–4 วัน และมีค่าบริการเพิ่มเติม 200 บาท ต่อกล่อง</string>
     <string name="dialog_remote_postalcode_ok">ยอมรับ</string>
     <string name="dialog_remote_postalcode_cancel">ยกเลิก</string>
+    <string name="dialog_confirm_extra_tracking">Confirm add new tracking no. %1$s</string>
+    <string name="dialog_confirm_leave_pickup_main">Do you want to leave this page?\nIt will delete all scanned tracking.</string>
+    <string name="dialog_confirm_leave_ok">Leave</string>
+    <string name="dialog_confirm_leave_cancel">Cancel</string>
+    <string name="dialog_confirm_extra_tracking_ok">Confirm</string>
+    <string name="dialog_confirm_extra_tracking_cancel">Cancel</string>
+    <string name="dialog_alert_tracking_is_already_exist">Tracking %1$s is already registered.</string>
+    <string name="dialog_alert_tracking_wrong_format">%1$s is not tracking format</string>
+    <string name="dialog_alert_tracking_cod_not_allow">COD Tracking is not allow for this Organization</string>
+    <string name="list_title_tracking_pending">รอรับ</string>
+    <string name="list_title_tracking_scanned">รับแล้ว</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -102,6 +135,7 @@
     <string name="reject">Reject</string>
 
     <string name="ofd_manifest">OFD Manifest</string>
+    <string name="new_booking">New Booking</string>
     <string name="new_bookings">New Bookings</string>
 
     <string name="new_ofd">New</string>
@@ -116,7 +150,7 @@
 
     <string name="yes">ใช่</string>
     <string name="delete_tracking">ลบข้อมูล</string>
-    <string name="registered">Registered</string>
+    <string name="registered">Tracking registered</string>
     <string name="_0">0</string>
     <string name="scan_out_tracking_no">Scan Out - Tracking NO.</string>
     <string name="confirm">ยืนยัน</string>
@@ -135,10 +169,10 @@
     <string name="booking_id_with_colon">Booking ID : </string>
     <string name="date_time_picking_up">Date - Time Picking up</string>
     <string name="cancel_booking">Cancel Booking</string>
-    <string name="delivery_fee">Delivery Fee</string>
+    <string name="delivery_fee">ค่าขนส่ง</string>
     <string name="service_charge">Service charge</string>
     <string name="cod_fee">ค่าบริการ COD</string>
-    <string name="total">Total</string>
+    <string name="total">รวมทั้งหมด</string>
     <string name="branch">Branch</string>
     <string name="driver">Driver</string>
     <string name="vehicle">Vehicle</string>
@@ -148,6 +182,29 @@
     <string name="cod">COD</string>
     <string name="oreder_date">Order Date</string>
     <string name="cod_amount">COD Amount</string>
+    <string name="delivery_cost">ค่าขนส่ง</string>
+    <string name="carton_price">ค่ากล่อง</string>
+    <string name="photo_sender">รูปถ่ายผู้ส่ง</string>
+    <string name="photo_recipient">รูปถ่ายผู้รับ</string>
+    <string name="continue_">Continue</string>
+    <string name="payment_method">วิธีชำระเงิน</string>
+
+    <string name="sync_now">ซิงค์ข้อมูล</string>
+    <string name="sync_success">ซิงค์ข้อมูลสำเร็จ</string>
+    <string name="sync_fail">ไม่สามารถซิงค์ข้อมูลได้</string>
+    <string name="waiting_for_sync">มีข้อมูลที่ยังไม่ได้ซิงค์</string>
+    <string name="list_entry_no_data">ไม่มีข้อมูล</string>
+    <string name="submit_report">Submit and Logout</string>
+    <string name="customer">ลูกค้า</string>
+    <string name="choose_sizes">เลือกขนาด</string>
+    <string name="choose_carton">ขายกล่อง</string>
+    <string name="choose_carton_no_select_type">กรุณาเลือก Service และ Size ก่อน</string>
+
+    <string name="sentence_pickup_summary_are_you_sure_you_want_to_delete_this_tracking">คุณแน่ใจที่จะลบไอเทมนี้ใช่หรือไม่</string>
+
+    <string name="currency_placeholder">-</string>
+
+    <string name="dialog_alert_location_out_of_service">This location is out of service.</string>
 
     <string name="sentence_booking_details_error_invalid_customer_code">เกิดข้อผิดพลาด ไม่พบ Customer code ในระบบ</string>
 
@@ -170,6 +227,7 @@
     <string name="sentence_put_ofd_parcels_failed">เกิดข้อผิดพลาด บันทึกข้อมูลไม่สำเร็จ</string>
     <string name="sentence_scan_ofd_parcels_failed">เกิดข้อผิดพลาด ไม่สามารถแสกน tracking นี้ได้</string>
     <string name="sentence_this_tracking_has_been_scanned">Tracking ซ้ำ</string>
+    <string name="sentence_ofd_confirm_remove_tracking">Confirm delete tracking no.%1$s</string>
 
     <string name="sentence_scan_are_you_sure_you_want_to_confirm_scan_out">ยืนยันทำรายการ OFD เสร็จสิ้น</string>
     <string name="sentence_scan_delete_ofd_parcels_successful">ลบไอเทมสำเร็จ</string>
@@ -178,4 +236,40 @@
     <string name="sentence_signature_please_sign_customer_name">กรุณาเซ็นชื่อผู้รับ</string>
 
     <string name="sentence_tracking_details_reset_status_successful">รีเซ็ตสถานะสำเร็จ</string>
+
+    <string name="camera_scan_title">แสกนด้วยกล้อง</string>
+
+    <string name="dont_pick_yet">ยังไม่ได้รับ</string>
+    <string name="resend_receipt">Resend Receipt</string>
+    <string name="carton_fee">ค่ากล่อง</string>
+    <string name="size">Size</string>
+    <string name="service">Service</string>
+    <string name="sender_photo">รูปภาพผู้ส่ง</string>
+    <string name="receiver_photo">รูปภาพผู้รับ</string>
+    <string name="view_photo"><u>ดูรูปภาพ</u></string>
+    <string name="view_photo_no_line">ดูรูปภาพ</string>
+    <string name="send">Send</string>
+    <string name="email">Email</string>
+    <string name="drag_for_order">ลากวางเพื่อจัดลำดับการเข้ารับงาน</string>
+    <string name="all">All</string>
+    <string name="reverse">Reverse</string>
+    <string name="non_reverse">Non reverse</string>
+    <string name="product_reverse">Product reverse</string>
+    <string name="tracking_registered">Tracking Registered</string>
+    <string name="please_choose_a_branch">Please choose a branch</string>
+    <string name="change_sale_driver">Change sale driver</string>
+
+    <string name="save_image">Use this photo</string>
+    <string name="change_the_delivery_time_to">Change the delivery time to</string>
+    <string name="delivery_date">Delivery date</string>
+    <string name="delivery_time">Delivery time</string>
+    <string name="custom">Custom</string>
+    <string name="filter_far">ไกล - ใกล้</string>
+    <string name="filter_origin">Origin</string>
+    <string name="filter_near">ใกล้ - ไกล</string>
+    <string name="route">route</string>
+    <string name="btn_confirm">CONFIRM</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="back_order">ค้างส่ง 2 วัน</string>
+
 </resources>

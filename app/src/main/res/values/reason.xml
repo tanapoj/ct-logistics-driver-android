@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name= "main_reason_list">
+        <item>RTN0100,ติดต่อไม่ได้</item>
+        <item>RTN0201,Wrong Address</item>
+        <item>RTN0202,Customer Absent</item>
+        <item>RTN0300,ลูกค้า Reject</item>
+        <item>RTN0400,ลูกค้าเลื่อนส่ง</item>
+        <item>RTN0500,สินค้าส่งไม่ได้</item>
+        <item>RTN0601,สินค้าเสียหาย</item>
+        <item>RTN0602,สินค้าสูญหาย</item>
+        <item>RTN0701,ลูกค้าขอเปลี่ยนที่อยู่ในการจัดส่ง</item>
+        <item>RTN0801,ลูกค้าขอรับที่สาขา</item>
+        <item>RTN0901,ลูกค้าต้นทางแจ้งยกเลิกการจัดส่ง</item>
+        <item>RTN01001,เปลี่ยนพนักงานจัดส่ง</item>
+    </string-array>
+
+    <string-array name= "sub_reason_list">
+        <item>RTN0100,ลูกค้าปิดเครื่อง,normal,offline</item>
+        <item>RTN0100,เบอร์โทรไม่ถูกต้อง,normal,offline</item>
+        <item>RTN0100,ลูกค้าไม่รับสาย,normal,offline</item>
+        <item>RTN0201,ที่อยู่ไม่ถูกต้อง,normal,offline</item>
+        <item>RTN0202,ลูกค้าไม่อยู่บ้าน,normal,offline</item>
+        <item>RTN0300,ลูกค้าไม่ได้สั่งสินค้า,normal,offline</item>
+        <item>RTN0300,ได้รับสินค้าแล้ว,normal,offline</item>
+        <item>RTN0300,แจ้งยกเลิกแล้ว,normal,offline</item>
+        <item>RTN0300,สินค้าไม่ครบ,normal,offline</item>
+        <item>RTN0300,สภาพสินค้าไม่สมบูรณ์,normal,offline</item>
+        <item>RTN0300,ลูกค้าปฏิเสธจ่าย COD,normal,offline</item>
+        <item>RTN0400,เลื่อนเวลาส่งใหม่,changeDate,offline</item>
+        <item>RTN0400,ไม่ได้เตรียมเงิน COD,normal,offline</item>
+        <item>RTN0500,ส่งสินค้าไม่ทัน,normal,offline</item>
+        <item>RTN0500,บริษัทปิด,normal,offline</item>
+        <item>RTN0500,น้ำท่วม,normal,offline</item>
+        <item>RTN0500,ปิดถนน,normal,offline</item>
+        <item>RTN0601,จาก SD/SR,normal,offline</item>
+        <item>RTN0602,จาก SD/SR,normal,offline</item>
+        <item>RTN0701,ลูกค้าขอเปลี่ยนที่อยู่การจัดส่ง,normal,offline</item>
+        <item>RTN0801,ลูกค้าขอรับที่สาขา,normal,offline</item>
+        <item>RTN0901,ลูกค้าต้นทางแจ้งยกเลิกการจัดส่ง,normal,offline</item>
+        <item>RTN01001,เปลี่ยนพนักงานจัดส่ง โดยระบุ\n- สาขา\n- รหัส และชื่อพนักงาน,changeSD,online</item>
+    </string-array>
+
+</resources>

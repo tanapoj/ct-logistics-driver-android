@@ -2,39 +2,36 @@ package com.scgexpress.backoffice.android.ui.delivery.ofd.sent.signature
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.base.BaseActivity
-import com.scgexpress.backoffice.android.common.Const
 import com.scgexpress.backoffice.android.common.Const.PARAMS_MANIFEST_SENT_LIST
-import com.scgexpress.backoffice.android.model.DeliveryOfdParcelList
+import com.scgexpress.backoffice.android.model.delivery.DeliveryTaskList
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_signature.*
 
 
 class SignatureActivity : BaseActivity() {
 
-    private val viewModel: SignatureViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(SignatureViewModel::class.java)
-    }
+    private lateinit var viewModel: SignatureViewModel
 
-    private var manifestID: String? = ""
-    private var scanDataList: DeliveryOfdParcelList? = DeliveryOfdParcelList()
+    private var scanDataList: DeliveryTaskList? = DeliveryTaskList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signature)
 
+        viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(SignatureViewModel::class.java)
         getManifestIDIntent()
         initActionbar()
         observeData()
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.clContainer, SignatureFragment.newInstance(viewModel))
-                    .commit()
+                .replace(R.id.clContainer, SignatureFragment.newInstance(viewModel))
+                .commit()
         }
     }
 
@@ -49,10 +46,10 @@ class SignatureActivity : BaseActivity() {
     }
 
     private fun getManifestIDIntent() {
-        manifestID = intent.getStringExtra(Const.PARAMS_MANIFEST_ID)
-        viewModel.setManifestID(manifestID.toString())
+        /*manifestID = intent.getStringExtra(Const.PARAMS_MANIFEST_ID)
+        viewModel.setManifestID(manifestID.toString())*/
 
-        scanDataList = intent.getSerializableExtra(PARAMS_MANIFEST_SENT_LIST) as? DeliveryOfdParcelList
+        scanDataList = intent.getSerializableExtra(PARAMS_MANIFEST_SENT_LIST) as? DeliveryTaskList
         viewModel.setScanDataList(scanDataList!!)
     }
 
@@ -62,13 +59,13 @@ class SignatureActivity : BaseActivity() {
     }
 
     private fun observeData() {
-        viewModel.trackingNo.observe(this, Observer { it ->
+        /*viewModel.trackingNo.observe(this, Observer { it ->
             if (it != null) {
                 it.getContentIfNotHandled()?.let {
                     // Only proceed if the event has never been handled
                     supportActionBar!!.title = it
                 }
             }
-        })
+        })*/
     }
 }

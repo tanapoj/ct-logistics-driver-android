@@ -9,6 +9,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
@@ -19,6 +22,7 @@ import android.view.inputmethod.InputMethodManager
 import android.webkit.MimeTypeMap
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.scgexpress.backoffice.android.R
@@ -28,9 +32,8 @@ import com.scgexpress.backoffice.android.model.Manifest
 import com.scgexpress.backoffice.android.model.MetaBooking
 import com.scgexpress.backoffice.android.model.User
 import com.scgexpress.backoffice.android.model.UserTopic
-import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
+import timber.log.Timber
 import java.io.*
 import java.nio.charset.Charset
 import java.text.DecimalFormat
@@ -44,7 +47,8 @@ object Utils {
     const val JWT_BODY: String = "jwtBody"
 
     fun isOnline(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netInfo = connectivityManager.activeNetworkInfo
         return netInfo != null && netInfo.isConnected
     }
@@ -115,7 +119,7 @@ object Utils {
         return !(word.length != length && !word.isEmpty())
     }
 
-    fun setCurrencyFormatWithUnit(currency: Double) = "${setCurrencyFormat(currency)}฿"
+    fun setCurrencyFormatWithUnit(currency: Double) = "${setCurrencyFormat(currency)} THB"
 
     fun setCurrencyFormat(currency: Double) = currency.toScgCurrency().let {
         if (it == .0) {
@@ -138,7 +142,8 @@ object Utils {
     @Throws(Exception::class)
     fun decoded(JWTEncoded: String): String {
         try {
-            val split = JWTEncoded.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val split =
+                JWTEncoded.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             //Log.d("JWT_DECODED", "Header: " + getJson(split[0]))
             //Log.d("JWT_DECODED", "Body: " + getJson(split[1]))
             /*if (option == JWT_HEADER)
@@ -220,7 +225,11 @@ object Utils {
             callIntent.data = Uri.parse("tel:$tel")
             activity.startActivity(callIntent)
         } else {
-            ActivityCompat.requestPermissions(activity, arrayOf(android.Manifest.permission.CALL_PHONE), 1)
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf(android.Manifest.permission.CALL_PHONE),
+                1
+            )
         }
     }
 
@@ -264,6 +273,8 @@ fun Double.toCurrencyFormatWithUnit() = Utils.setCurrencyFormatWithUnit(this)
 
 fun String.decodeBase64() = Base64.decode(this, Base64.DEFAULT).toString(Charset.defaultCharset())
 
+fun String.isTrackingMismatch() = length == 12 && !isTrackingId()
+
 fun String.isTrackingId(): Boolean {
     if (length != 12) {
         return false
@@ -275,44 +286,111 @@ fun String.isTrackingId(): Boolean {
     return verifyBit == (first11 - (first11 / 7) * 7).toInt()
 }
 
-fun String.isTrackingCod(): Boolean = isTrackingId() && startsWith("11")
+fun String.isTrackingCod(): Boolean = isTrackingId() && (startsWith("11") || startsWith("27665"))
 fun String.trimTrackingCode(): String = replace("A", "")
 
 fun String?.toTrackingId(): String {
     if (this == null) return ""
-    if (length != 12) {
+    val input = trimTrackingCode()
+    if (input.length != 12) {
         return this
     }
 
-    val tracking = StringBuilder(this)
+    val tracking = StringBuilder(input)
     tracking.insert(8, "-")
     tracking.insert(4, "-")
 
     return tracking.toString()
 }
 
-fun String.toDateFormat(): String {
+fun String?.toPhoneNumber(): String {
+    val sub1: Int
+    val sub2: Int
+    if (this == null) return ""
+    val input = replace("-", "")
+    when {
+        input.length == 9 -> {
+            sub2 = 5
+            sub1 = 1
+        }
+        input.length == 10 -> {
+            sub2 = 6
+            sub1 = 2
+        }
+        input.length == 11 && input.startsWith("+") -> {
+            sub2 = 7
+            sub1 = 3
+        }
+        input.length == 12 && input.startsWith("+") -> {
+            sub2 = 8
+            sub1 = 4
+        }
+        else -> return input
+    }
+
+    val phone = StringBuilder(input)
+    phone.insert(sub2, "-")
+    phone.insert(sub1, "-")
+
+    return phone.toString()
+}
+
+fun String.containsIgnoreCase(lookup: String) = toLowerCase(Locale.ENGLISH).trim()
+    .contains(lookup.toLowerCase(Locale.ENGLISH).trim())
+
+fun String.toDateFormat(
+    inputFormat: String = Const.DATETIME_FORMAT_ISO8601,
+    onParseErrorReturn: String = "-"
+) = toDateTimeFormat(Const.DATETIME_FORMAT_Ymd, inputFormat, onParseErrorReturn)
+
+
+fun Date.toDateFormat(
+    outputFormat: String = Const.DATETIME_FORMAT_Ymd,
+    onParseErrorReturn: String = "-"
+) = toDateTimeFormat(outputFormat).toDateFormat(outputFormat, onParseErrorReturn)
+
+fun Date.toDateTimeFormat(
+    outputFormat: String = Const.DATETIME_FORMAT_YmdHis,
+    onParseErrorReturn: String = "-"
+): String {
     return try {
-        //2018-10-08
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val netDate = sdf.parse(this)
+        val netDate = this
+        SimpleDateFormat(outputFormat, Locale.getDefault()).format(netDate)
+    } catch (ex: Exception) {
+        onParseErrorReturn
+    }
+}
+
+fun String.toDateTimeFormat(
+    outputFormat: String = Const.DATETIME_FORMAT_YmdHis,
+    inputFormat: String = Const.DATETIME_FORMAT_ISO8601,
+    onParseErrorReturn: String = "-"
+): String {
+    return try {
+        val netDate = SimpleDateFormat(inputFormat, Locale.getDefault()).parse(this)
+        SimpleDateFormat(outputFormat, Locale.getDefault()).format(netDate)
+    } catch (ex: Exception) {
+        onParseErrorReturn
+    }
+}
+
+fun Long.toDateTimeFormat(
+    outputFormat: String = Const.DATETIME_FORMAT_YmdHis,
+    onParseErrorReturn: String = "-"
+): String {
+    return try {
+        val sdf = SimpleDateFormat(outputFormat, Locale.getDefault())
+        val netDate = Date(this)
         sdf.format(netDate)
     } catch (ex: Exception) {
-        ""
+        onParseErrorReturn
     }
 }
 
-fun Date.toDateFormat(): String {
-    return try {
-        //2018-10-08
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        sdf.format(this)
-    } catch (ex: Exception) {
-        ""
-    }
-}
+fun Int.numberFormat(): String = NumberFormat.getNumberInstance(Locale.US).format(this)
 
 fun TblOrganization.isAllowCod(): Boolean = codAllowed == "Y"
+fun TblOrganization.isNotAllowCod(): Boolean = !isAllowCod()
 fun TblScgPostalcode.isRemoteArea(): Boolean = remoteArea == "Y"
 fun TblScgPostalcode.hasExtraCharge(): Boolean = extraCharge?.let { it.toDouble() > 0 } ?: false
 
@@ -321,9 +399,8 @@ fun View.hideKeyboard() {
     imm.hideSoftInputFromWindow(windowToken, 0)
 }
 
-fun Activity.showWarningDialog(message: String) {
+fun Activity.showAlertMessage(message: String) {
     AlertDialog.Builder(this).apply {
-        setTitle(resources.getString(R.string.warning))
         setMessage(message)
         setPositiveButton(resources.getString(R.string.ok), null)
         setCancelable(false)
@@ -334,18 +411,34 @@ fun Activity.showWarningDialog(message: String) {
     }
 }
 
-fun <T> Flowable<T>.toSingle(): Single<T> = Single.create { emitter ->
-    subscribe({
-        emitter.onSuccess(it)
-    }, {
-        emitter.onError(it)
-    })
+infix fun Int.untilLessThan(to: Int) = this until to
+
+fun getCurrentLocation(context: Context): Single<Pair<Double, Double>> {
+    return Single.create { emitter ->
+        LocationServices.getFusedLocationProviderClient(context)
+            .lastLocation
+            .addOnSuccessListener { location ->
+                try {
+                    Timber.d("location=$location")
+                    emitter.onSuccess(location.latitude to location.longitude)
+                } catch (e: Exception) {
+                    Timber.e(e)
+                    emitter.onSuccess(.0 to .0)
+                }
+            }
+    }
 }
 
-fun <T> Completable.toSingle(value: T): Single<T> = Single.create { emitter ->
-    subscribe({
-        emitter.onSuccess(value)
-    }, {
-        emitter.onError(it)
-    })
+fun Drawable.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
+    if (this is BitmapDrawable) {
+        return bitmap
+    }
+    val width = if (bounds.isEmpty) intrinsicWidth else bounds.width()
+    val height = if (bounds.isEmpty) intrinsicHeight else bounds.height()
+    return Bitmap.createBitmap(width, height, config).also {
+        val canvas = Canvas(it)
+        setBounds(0, 0, canvas.width, canvas.height)
+        draw(canvas)
+    }
 }
+

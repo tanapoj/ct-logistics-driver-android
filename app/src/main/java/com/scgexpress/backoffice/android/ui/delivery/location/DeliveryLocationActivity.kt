@@ -97,9 +97,9 @@ class DeliveryLocationActivity : BaseActivity(), OnMapReadyCallback, DirectionCa
                 }
             }
         })
-        /*viewModel.result.observe(this, Observer { it ->
+        /*viewModelRetentionReason.result.observe(this, Observer { it ->
             if (it != null) {
-                    viewModel.addMarkersToMap(it, googleMap!!)
+                    viewModelRetentionReason.addMarkersToMap(it, googleMap!!)
             }
         })*/
     }

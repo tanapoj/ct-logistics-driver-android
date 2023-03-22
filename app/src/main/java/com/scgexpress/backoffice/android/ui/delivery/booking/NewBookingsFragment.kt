@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.common.Const
+import com.scgexpress.backoffice.android.common.showAlertMessage
 import com.scgexpress.backoffice.android.model.BookingInfo
 import com.scgexpress.backoffice.android.model.Manifest
 import com.scgexpress.backoffice.android.ui.delivery.DeliveryMainActivity
@@ -137,6 +138,15 @@ class NewBookingsFragment : Fragment(), HasSupportFragmentInjector {
                 it.getContentIfNotHandled()?.let {
                     // Only proceed if the event has never been handled
                     Snackbar.make(rootView, it, Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        viewModel.warning.observe(this, Observer { it ->
+            if (it != null) {
+                it.getContentIfNotHandled()?.let {
+                    // Only proceed if the event has never been handled
+                    activity!!.showAlertMessage(it)
                 }
             }
         })

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/grid_small">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginTop="@dimen/grid_small"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:layout_marginBottom="@dimen/grid_xsmall"
+            app:cardElevation="@dimen/grid_xsmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            android:clickable="true"
+            android:focusable="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgStatusIcon"
+                    android:layout_width="@dimen/icon_xlarge"
+                    android:layout_height="@dimen/icon_xlarge"
+                    android:layout_margin="@dimen/grid_normal"
+                    app:srcCompat="@drawable/ic_baseline_notification_important_24dp"
+                    android:tint="@color/deliveryOrange"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCustomerName"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBookingCode"/>
+
+            <TextView
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/imgStatusIcon"
+                    app:layout_constraintStart_toEndOf="@id/imgStatusIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="OFDXXXXXX"/>
+
+            <TextView
+                    android:id="@+id/tvBookingCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_xsmall"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCustomerName"
+                    app:layout_constraintStart_toStartOf="@+id/tvCustomerName"
+                    tools:text="BK123456"/>
+
+            <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:textColor="@color/grayLight"
+                    android:textSize="@dimen/text_xsmall"
+                    app:layout_constraintStart_toEndOf="@+id/tvBookingCode"
+                    app:layout_constraintTop_toTopOf="@+id/tvBookingCode"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBookingCode"
+                    tools:text="(2017-09-17 16:12)"
+                    android:layout_marginStart="@dimen/grid_normal"/>
+
+            <TextView
+                    android:id="@+id/tvCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_xxlarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCustomerName"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBookingCode"
+                    tools:text="243"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginBottom="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_medium"/>
+
+            <View
+                    android:id="@+id/vDividerTitle2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:background="@color/grayLight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvBookingCode"/>
+
+
+            <TextView
+                    android:id="@+id/tvSenderName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_large"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle2"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="Sender : Mrs. Pilin Kusol"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
+
+            <View
+                    android:id="@+id/vDivider1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:background="@color/grayLighter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvSenderName"
+                    app:layout_constraintTop_toTopOf="@id/tvSenderName"
+                    app:layout_constraintBottom_toBottomOf="@id/tvSenderName"/>
+
+            <TextView
+                    android:id="@+id/tvTelephone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSenderName"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="Tel: 012345679"
+                    android:textColor="@color/grayDarker"/>
+
+            <ImageView
+                    android:id="@+id/btnTel"
+                    android:layout_width="@dimen/icon_normal"
+                    android:layout_height="@dimen/icon_normal"
+                    android:layout_marginEnd="@dimen/grid_medium"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/ripple_effect_image_tint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvTelephone"
+                    app:layout_constraintTop_toBottomOf="@id/tvTelephone"
+                    app:srcCompat="@drawable/ic_baseline_phone_24dp"
+                    tools:layout_editor_absoluteX="300dp"
+                    tools:layout_editor_absoluteY="52dp"/>
+
+            <View
+                    android:id="@+id/vDivider2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/grayLighter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintTop_toBottomOf="@id/btnTel"/>
+
+            <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider2"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="Address:\ndgdgdfg"
+                    android:textColor="@color/grayDarker"/>
+
+            <ImageView
+                    android:id="@+id/btnAddress"
+                    android:layout_width="@dimen/icon_normal"
+                    android:layout_height="@dimen/icon_normal"
+                    android:layout_marginEnd="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginBottom="@dimen/grid_normal"
+                    android:background="?attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:tint="@color/ripple_effect_image_tint"
+                    app:layout_constraintTop_toTopOf="@+id/tvAddress"
+                    app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_location_24dp"/>
+
+            <View
+                    android:id="@+id/vDivider3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/grayLighter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddress"/>
+
+            <TextView
+                    android:id="@+id/tvPickupDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider3"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="Pickup date and time : 2018-09-22 16:30"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:id="@+id/tvServiceType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPickupDate"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="Service type : Normal 2/ chilled 0 / Frozen 3"
+                    android:textColor="@color/grayDarker"/>
+
+            <View
+                    android:id="@+id/vDivider4"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/grayLighter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintTop_toBottomOf="@id/tvServiceType"/>
+
+
+            <TextView
+                    android:id="@+id/tvRemark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_medium"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider4"
+                    app:layout_constraintWidth_percent=".8"
+                    tools:text="@string/remark"
+                    android:textColor="@color/grayDarker"/>
+
+
+            <View
+                    android:id="@+id/vDividerTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:background="@color/grayLight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvRemark"/>
+
+            <TextView
+                    android:id="@+id/btnAccept"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/icon_xlarge"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vDividerButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"
+                    android:text="@string/accept"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_normal"
+                    android:textColor="@color/colorPrimary"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:focusable="true"/>
+
+            <View
+                    android:id="@+id/vDividerButton"
+                    android:layout_width="@dimen/divider"
+                    android:layout_height="0dp"
+                    android:background="@color/grayLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"/>
+
+            <TextView
+                    android:id="@+id/btnReject"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/icon_xlarge"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/vDividerButton"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"
+                    android:text="@string/reject"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_normal"
+                    android:clickable="true"
+                    android:textStyle="bold"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:focusable="true"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

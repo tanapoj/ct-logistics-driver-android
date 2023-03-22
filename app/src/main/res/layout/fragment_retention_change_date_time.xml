@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_the_delivery_time_to"
+        android:textStyle="bold"
+        android:textColor="@color/grayDark"
+        android:textSize="@dimen/text_xlarge"
+        android:layout_marginTop="@dimen/grid_large"
+        android:layout_marginStart="@dimen/grid_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtDeliveryDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/ic_calendar_edit_text"
+        android:hint="@string/delivery_date"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:layout_marginTop="@dimen/grid_xlarge"
+        android:layout_marginStart="@dimen/grid_large"
+        android:layout_marginEnd="@dimen/grid_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtDeliveryTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/ic_clock_edit_text"
+        android:hint="@string/delivery_time"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:layout_marginTop="@dimen/grid_xxlarge"
+        android:layout_marginStart="@dimen/grid_large"
+        android:layout_marginEnd="@dimen/grid_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDeliveryDate"/>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_normal"
+        android:backgroundTint="@color/btn_accent_tint"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

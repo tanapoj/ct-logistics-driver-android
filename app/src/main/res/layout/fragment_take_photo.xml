@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+            android:id="@+id/imgResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:paddingBottom="@dimen/grid_xxxlarge"
+            android:paddingTop="@dimen/grid_normal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_image_24dp"
+            android:layout_marginBottom="@dimen/grid_xxlarge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/btnSaveImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grid_xxlarge"
+            android:layout_margin="@dimen/grid_normal"
+            android:backgroundTint="@color/btn_accent_tint"
+            android:text="@string/save_image"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

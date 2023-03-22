@@ -1,0 +1,49 @@
+{
+  "id": "1",
+  "booking_code": "BK123456",
+  "customer_code": "999996",
+  "customer_name": "Shopee",
+  "sender_code": "09876",
+  "sender_name": "Mrs. Pilin Kusol",
+  "tel": "0661234567",
+  "location": {
+    "address": "20/126, Ramintra Soi 14, Bangkhen",
+    "zipcode": "10220",
+    "latitude": "13.23456",
+    "longitude": "100.23456"
+  },
+  "total_count": 243,
+  "pickuped_count": 0,
+  "service_type_count": {
+    "normal": 200,
+    "chiled": 0,
+    "frozen": 43
+  },
+  "remark": "contact Mr. A before delivary",
+  "status": "IN_PROGRESS",
+  "created_at": "2008-10-17T00:00:00+08:00",
+  "update_at": "2008-10-17T00:00:00+08:00",
+  "pickup_at": "2008-10-17T00:00:00+08:00",
+  "offline_data": {
+    "trackings": [
+      {
+        "tracking": "12034537658",
+        "order_id": "PK4253646453425435",
+        "pinbox": "1025-7474-6755",
+        "service": 1,
+        "size": 1,
+        "zipcode": "12022"
+      },
+      {
+        "tracking": "11034537777",
+        "order_id": "PK4253646453425777",
+        "pinbox": "1025-7474-6777",
+        "service": 1,
+        "size": 1,
+        "zipcode": "11000"
+      }
+    ],
+    "receipts": [
+    ]
+  }
+}

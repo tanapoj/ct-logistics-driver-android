@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCodeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.3"
+        android:gravity="center"
+        android:text="@string/tracking_code"
+        android:textColor="@color/colorPrimary"
+        app:autoSizeMaxTextSize="@dimen/text_normal"
+        app:autoSizeTextType="uniform" />
+
+    <View
+        android:id="@+id/vDividerTitle1"
+        android:layout_width="@dimen/divider"
+        android:layout_height="match_parent"
+        android:background="@color/grayLight" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvZipCodeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.1"
+        android:gravity="center"
+        android:text="@string/zip_code"
+        android:textColor="@color/colorPrimary"
+        app:autoSizeMaxTextSize="@dimen/text_normal"
+        app:autoSizeTextType="uniform" />
+
+    <View
+        android:id="@+id/vDividerTitle2"
+        android:layout_width="@dimen/divider"
+        android:layout_height="match_parent"
+        android:background="@color/grayLight" />
+
+
+    <LinearLayout
+            android:id="@+id/containerServiceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvServiceTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="@string/service"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform" />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/grayLight"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:layout_marginEnd="@dimen/grid_normal"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSizeTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="@string/size"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vDividerTitle3"
+        android:layout_width="@dimen/divider"
+        android:layout_height="match_parent"
+        android:background="@color/grayLight" />
+
+    <LinearLayout
+        android:id="@+id/containerDeliveryTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPriceTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="@string/delivery"
+            android:textColor="@color/colorPrimary"
+            app:autoSizeMaxTextSize="@dimen/text_normal"
+            app:autoSizeTextType="uniform" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:background="@color/grayLight"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_normal"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCartonTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="@string/carton_fee"
+            android:textColor="@color/colorPrimary"
+            app:autoSizeMaxTextSize="@dimen/text_normal"
+            app:autoSizeTextType="uniform" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vDividerTitle4"
+        android:layout_width="@dimen/divider"
+        android:layout_height="match_parent"
+        android:background="@color/grayLight" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCodTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        android:text="@string/cod_fee"
+        android:textColor="@color/colorPrimary"
+        app:autoSizeMaxTextSize="@dimen/text_normal"
+        app:autoSizeTextType="uniform" />
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>

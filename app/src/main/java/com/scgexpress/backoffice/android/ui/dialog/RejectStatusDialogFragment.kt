@@ -16,9 +16,6 @@ import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.constant.BookingRejectStatus
 import com.scgexpress.backoffice.android.model.BookingRejectStatusModel
 import kotlinx.android.synthetic.main.dialog_ofd_re_status.*
-import kotlinx.android.synthetic.main.fragment_topic.btnOk
-import kotlinx.android.synthetic.main.fragment_topic.recyclerView
-
 
 class RejectStatusDialogFragment : AppCompatDialogFragment() {
 
@@ -105,6 +102,12 @@ class RejectStatusDialogFragment : AppCompatDialogFragment() {
                     mListener.onStatusSelected(adapter.data[adapter.selectedPosition], edtNote.text.toString())
                     dismiss()
                 }
+            } else {
+                Snackbar.make(
+                    edtNote,
+                    getString(R.string.sentence_retention_please_insert_the_reason),
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
         btnCancel.setOnClickListener {

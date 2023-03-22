@@ -213,7 +213,7 @@ class DeliveryFragmentPagerAdapter(
     private val context: Context,
     private val viewModel: DeliveryViewModel,
     fm: FragmentManager
-) : FragmentPagerAdapter(fm) {
+) : FragmentPagerAdapter(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getCount(): Int = 2
 

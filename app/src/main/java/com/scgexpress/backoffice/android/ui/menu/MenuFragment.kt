@@ -3,6 +3,7 @@ package com.scgexpress.backoffice.android.ui.menu
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scgexpress.backoffice.android.R
 import com.scgexpress.backoffice.android.common.Utils
-import com.scgexpress.backoffice.android.ui.delivery.DeliveryMainActivity
-import com.scgexpress.backoffice.android.ui.pickup.scan.PickupScanActivity
+import com.scgexpress.backoffice.android.ui.delivery.task.DeliveryTaskActivity
+import com.scgexpress.backoffice.android.ui.navigation.NavigationMainActivity
+import com.scgexpress.backoffice.android.ui.pickup.task.PickupTaskActivity
 import com.scgexpress.backoffice.android.ui.pin.PinActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.fragment_menu.*
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -80,6 +83,8 @@ class MenuFragment : Fragment(), HasSupportFragmentInjector {
         initRecyclerView()
         initButton()
         observeData()
+
+        viewModel.loadOfflineData()
     }
 
     private fun initRecyclerView() {
@@ -94,6 +99,11 @@ class MenuFragment : Fragment(), HasSupportFragmentInjector {
             if (!viewModel.checkLastClickTime()) return@setOnClickListener
             showDialogLogout()
         }
+        //TODO: remove this test func
+        btnLogout.setOnLongClickListener {
+            viewModel._clearPickupData()
+            true
+        }
     }
 
     private fun observeData() {
@@ -107,16 +117,51 @@ class MenuFragment : Fragment(), HasSupportFragmentInjector {
             if (it == null) return@Observer
             clickItem(it)
         })
+
+        viewModel.dialogMessage.observe(this, Observer {
+            showDialogMessage(it)
+        })
+
+        viewModel.syncState.observe(this, Observer { (state, percent) ->
+            Timber.d("syncState: state=$state percent=$percent")
+            when (state) {
+                MenuViewModel.Companion.SyncState.NONE -> cvLoadingStatus.visibility = View.GONE
+                MenuViewModel.Companion.SyncState.HAS_PENDING -> {
+                    cvLoadingStatus.visibility = View.VISIBLE
+                    pbStatus.isIndeterminate = true
+                }
+                MenuViewModel.Companion.SyncState.SYNCING -> {
+                    cvLoadingStatus.visibility = View.VISIBLE
+                    pbStatus.isIndeterminate = false
+                    pbStatus.progress = percent
+                }
+                MenuViewModel.Companion.SyncState.SYNC_DONE -> {
+                    cvLoadingStatus.visibility = View.VISIBLE
+                    pbStatus.isIndeterminate = true
+                    Handler().postDelayed({
+                        cvLoadingStatus.visibility = View.GONE
+                        showDialogMessage(resources.getString(R.string.logout_sync_pending_done))
+                    }, 1_000)
+                }
+            }
+        })
+
+        viewModel.logout.observe(this, Observer {
+            if(it == true) logout()
+        })
     }
 
     private fun clickItem(item: MenuModel) {
         if (!viewModel.checkLastClickTime()) return
         when (item.id) {
             R.id.menu_pickup -> {
-                startActivity(Intent(activity, PickupScanActivity::class.java))
+                startActivity(Intent(activity, PickupTaskActivity::class.java))
             }
             R.id.menu_delivery -> {
-                startActivity(Intent(activity, DeliveryMainActivity::class.java))
+                startActivity(Intent(activity, DeliveryTaskActivity::class.java))
+            }
+            R.id.menu_navigation -> {
+                startActivity(Intent(activity, NavigationMainActivity::class.java))
             }
             R.id.menu_sdreport -> {
                 //startActivity(Intent(activity, SDReportMainActivity::class.java))
@@ -135,12 +180,25 @@ class MenuFragment : Fragment(), HasSupportFragmentInjector {
         }
     }
 
+    fun showDialogMessage(msg: String) {
+        AlertDialog.Builder(context!!).apply {
+            setMessage(msg)
+            setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
+            }
+        }.run {
+            create()
+        }.also {
+            it.show()
+        }
+    }
+
     fun showDialogLogout() {
         val mBuilder = AlertDialog.Builder(context!!)
 
-        mBuilder.setTitle("Are you sure you want to logout?")
-        mBuilder.setPositiveButton("OK", null)
-        mBuilder.setNegativeButton("Cancel") { dialog, _ ->
+        mBuilder.setTitle(resources.getString(R.string.logout_confirm_msg))
+        mBuilder.setPositiveButton(resources.getString(R.string.logout_confirm_msg_btn_ok), null)
+        mBuilder.setNegativeButton(resources.getString(R.string.logout_confirm_msg_btn_cancel)) { dialog, _ ->
             dialog.cancel()
         }
         val mDialog = mBuilder.create()
@@ -148,14 +206,13 @@ class MenuFragment : Fragment(), HasSupportFragmentInjector {
             val b = mDialog.getButton(AlertDialog.BUTTON_POSITIVE)
             b.setOnClickListener {
                 mDialog.dismiss()
-                logout()
+                viewModel.logout()
             }
         }
         mDialog.show()
     }
 
     private fun logout() {
-        viewModel.logout()
         val intent = Intent(context, PinActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)

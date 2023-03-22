@@ -62,9 +62,9 @@ class PickupScanActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private fun initActionBar() {
         setSupportActionBar(toolbar)
 
-        /*supportActionBar?.apply {
-            this.setDisplayHomeAsUpEnabled(true)
-        }*/
+        supportActionBar?.apply {
+            title = "Pickup"
+        }
     }
 
     private fun initDrawer(drawer: DrawerLayout, nav: NavigationView) {
