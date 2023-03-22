@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="horizontal">
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTrackingTitle"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tracking"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSenderTitle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/sender"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCodTitle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:text="@string/cod"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReasonTitle"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/reason"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNoteTitle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/note"
+                android:textColor="@color/colorPrimary"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"/>
+    </LinearLayout>
+</LinearLayout>

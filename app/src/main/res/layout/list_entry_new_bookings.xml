@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvOfd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_normal"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:layout_marginTop="@dimen/grid_normal"
+            app:cardElevation="@dimen/grid_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgStatusIcon"
+                    android:layout_width="@dimen/icon_xlarge"
+                    android:layout_height="@dimen/icon_xlarge"
+                    android:layout_margin="@dimen/grid_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_notification_important_24dp"
+                    android:tint="@color/deliveryOrange"/>
+
+            <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/imgStatusIcon"
+                    app:layout_constraintStart_toEndOf="@id/imgStatusIcon"
+                    app:layout_constraintTop_toTopOf="@id/imgStatusIcon"
+                    tools:text="OFDXXXXXX"
+                    android:layout_marginLeft="@dimen/grid_normal"/>
+
+            <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/grid_normal"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Incoming"
+                    android:textColor="@color/deliveryOrange"/>
+
+            <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStatus"
+                    tools:text="2017-09-17 16:12:56"
+                    android:layout_marginRight="@dimen/grid_normal"/>
+
+            <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/grid_normal"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginTop="@dimen/grid_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgStatusIcon"/>
+
+            <!-- <TextView
+                 android:id="@+id/tvTelephone"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginEnd="@dimen/grid_normal"
+                 android:layout_marginStart="@dimen/grid_normal"
+                 android:layout_marginTop="@dimen/grid_large"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/tvAddress" />-->
+
+            <View
+                    android:id="@+id/vDividerTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/divider"
+                    android:layout_marginTop="@dimen/grid_medium"
+                    android:background="@color/grayLight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddress"/>
+
+            <TextView
+                    android:id="@+id/btnTel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/icon_xlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:text="@string/accept"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vDivider1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"/>
+
+            <View
+                    android:id="@+id/vDivider1"
+                    android:layout_width="@dimen/divider"
+                    android:layout_height="0dp"
+                    android:background="@color/grayLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"/>
+
+            <TextView
+                    android:id="@+id/btnLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/icon_xlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:text="@string/reject"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/vDivider1"
+                    app:layout_constraintTop_toBottomOf="@id/vDividerTitle"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

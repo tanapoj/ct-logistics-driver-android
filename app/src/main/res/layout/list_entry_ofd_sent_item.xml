@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:background="@color/grayLight"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/grid_xxxlarge"
+            android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"
+                tools:text="111111111"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                app:autoSizeMaxTextSize="@dimen/text_normal"
+                app:autoSizeTextType="uniform"
+                tools:text="10230"/>
+
+        <View
+                android:layout_width="@dimen/divider"
+                android:layout_height="match_parent"
+                android:background="@color/grayLight"/>
+
+        <LinearLayout
+                android:id="@+id/containerCod"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCodCollected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="@dimen/text_normal"
+                    app:autoSizeTextType="uniform"
+                    tools:text="30.00"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:autoSizeMaxTextSize="@dimen/text_normal"
+                    app:autoSizeTextType="uniform"
+                    tools:text="(1000)"/>
+        </LinearLayout>
+
+        <!-- <View
+             android:id="@+id/vDivider"
+             android:layout_width="@dimen/divider"
+             android:layout_height="match_parent"
+             android:background="@color/grayLight" />
+
+         <ImageView
+             android:id="@+id/btnDelete"
+             android:layout_width="@dimen/icon_xxlarge"
+             android:layout_height="@dimen/icon_xxlarge"
+             android:layout_margin="@dimen/grid_small"
+             android:clickable="true"
+             android:focusable="true"
+             android:foreground="?attr/selectableItemBackground"
+             android:padding="@dimen/grid_medium"
+             android:tint="@color/colorAccent"
+             app:srcCompat="@drawable/rubbish_bin" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

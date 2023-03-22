@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLight">#0db19d</color>
+    <color name="colorPrimary">#007365</color>
+    <color name="colorPrimaryDark">#00453C</color>
+    <color name="colorAccent">#DF0C1B</color>
+    <color name="colorAccentDark">#a71520</color>
+
+    <color name="primaryTextColor">#333</color>
+
+    <color name="grayDark">#555</color>
+    <color name="grayDarker">#333</color>
+
+    <color name="grayLight">#CCC</color>
+    <color name="grayLighter">#EEE</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFF</color>
+    <color name="gray">#999</color>
+
+    <color name="menuOrange">#F57C00</color>
+    <color name="menuPurple">#303F9F</color>
+    <color name="menuPink">#C2185B</color>
+    <color name="menuLightBlue">#0B9CDB</color>
+    <color name="menuLine">#378448</color>
+
+    <color name="colorCompleted">#488F4C</color>
+    <color name="colorIncomplete">#FF9E1C</color>
+    <color name="colorNew">#1c82ff</color>
+
+    <color name="deliveryBlue">#83d2f7</color>
+    <color name="deliveryGreen">#62b866</color>
+    <color name="deliveryYellow">#fed043</color>
+    <color name="deliveryRed">#f06866</color>
+    <color name="deliveryOrange">#f0791a</color>
+
+    <color name="deliveryBackgroundBlue">#2863e9</color>
+    <color name="deliveryBackgroundGrayDark">#2c373c</color>
+    <color name="deliveryBackgroundOrange">#dc5824</color>
+
+    <color name="barBlueDark">#37474F</color>
+
+    <color name="dividerGreyDark">#55333333</color>
+    <color name="dividerGreyLight">#efefef</color>
+
+    <color name="ofdCream">#FAFAFA</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="transparent_black">#00000000</color>
+    <color name="transparent_grey">#a0bbc7cd</color>
+</resources>

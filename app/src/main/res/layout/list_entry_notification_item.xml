@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/grid_small"
+        android:paddingTop="@dimen/grid_xsmall"
+        android:paddingEnd="@dimen/grid_small">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/grid_medium">
+
+            <ImageView
+                    android:id="@+id/imgNotification"
+                    android:layout_width="@dimen/icon_normal"
+                    android:layout_height="@dimen/icon_normal"
+                    app:srcCompat="@drawable/ic_info_24dp"
+                    android:tint="@color/menuOrange"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/txtDatePickup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    app:layout_constraintLeft_toRightOf="@+id/imgNotification"
+                    tools:text="PICKUP BOOKINGS"
+                    android:layout_marginLeft="@dimen/grid_normal"
+                    app:layout_constraintTop_toTopOf="@+id/imgNotification"/>
+
+            <TextView
+                    android:id="@+id/txtDateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_xsmall"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:text="Today, 11:24"
+                    app:layout_constraintTop_toTopOf="@+id/imgNotification"/>
+
+            <TextView
+                    android:id="@+id/txtMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintLeft_toRightOf="@+id/imgNotification"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDatePickup"
+                    tools:text="You have new booking!"
+                    android:layout_marginLeft="@dimen/grid_normal"/>
+
+            <TextView
+                    android:id="@+id/txtBookingID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintLeft_toRightOf="@+id/imgNotification"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMessage"
+                    tools:text="Booking ID : 123456789"
+                    android:layout_marginLeft="@dimen/grid_normal"/>
+
+            <Button
+                    android:id="@+id/btnGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go"
+                    android:textColor="@color/white"
+                    android:theme="@style/ButtonTheme"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBookingID"/>
+
+            <Button
+                    android:id="@+id/btnTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:text="Accept"
+                    android:textColor="@color/white"
+                    android:theme="@style/ButtonTheme"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnGo"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMessage"/>
+
+            <Button
+                    android:id="@+id/btnLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:text="Reject"
+                    android:textColor="@color/white"
+                    android:theme="@style/ButtonTheme"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnTel"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

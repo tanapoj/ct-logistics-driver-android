@@ -1,0 +1,142 @@
+<resources>
+    <!--Prefer-->
+    <dimen name="prefer_clickable_size">48dp</dimen>
+    <dimen name="prefer_container_max_width">360dp</dimen>
+
+    <!-- Grid -->
+    <dimen name="grid_xsmall">2dp</dimen>
+    <dimen name="grid_small">4dp</dimen>
+    <dimen name="grid_normal">8dp</dimen>
+    <dimen name="grid_medium">12dp</dimen>
+    <dimen name="grid_large">16dp</dimen>
+    <dimen name="grid_xlarge">24dp</dimen>
+    <dimen name="grid_xxlarge">32dp</dimen>
+    <dimen name="grid_xxxlarge">48dp</dimen>
+
+    <dimen name="card_margin">6dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_app_bar">4dp</dimen>
+    <dimen name="elevation_normal">4dp</dimen>
+
+    <dimen name="elevation_card_resting">2dp</dimen>
+    <dimen name="elevation_card_picked_up">8dp</dimen>
+
+    <dimen name="elevation_fab">6dp</dimen>
+    <dimen name="elevation_fab_pressed">12dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_container">16dp</dimen>
+    <dimen name="padding_dialog">24dp</dimen>
+    <dimen name="padding_profile_top">40dp</dimen>
+    <dimen name="padding_btn_bottom">80dp</dimen>
+
+    <!-- progress bar -->
+    <dimen name="progress_small">24dp</dimen>
+    <dimen name="progress_normal">40dp</dimen>
+    <dimen name="progress_large">56dp</dimen>
+
+    <!-- Text Size -->
+    <dimen name="text_display_4">112sp</dimen>
+    <dimen name="text_display_3">56sp</dimen>
+    <dimen name="text_display_2">45sp</dimen>
+    <dimen name="text_display_1">34sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_dialog_title">24sp</dimen>
+    <dimen name="text_dialog_fullscreen_title">20sp</dimen>
+    <dimen name="text_dialog_description">16sp</dimen>
+    <dimen name="text_title_card">24sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <!--All cap-->
+    <dimen name="text_button">14sp</dimen>
+
+    <dimen name="text_xxsmall">10sp</dimen>
+    <dimen name="text_xsmall">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_normal">16sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_xlarge">22sp</dimen>
+    <dimen name="text_xxlarge">26sp</dimen>
+    <dimen name="text_xxxlarge">30sp</dimen>
+    <dimen name="text_xxsmall_no_scale">10dp</dimen>
+    <dimen name="text_xsmall_no_scale">12dp</dimen>
+    <dimen name="text_small_no_scale">14dp</dimen>
+    <dimen name="text_normal_no_scale">16dp</dimen>
+    <dimen name="text_medium_no_scale">18dp</dimen>
+    <dimen name="text_title_no_scale">20dp</dimen>
+    <dimen name="text_xlarge_no_scale">22dp</dimen>
+    <dimen name="text_xxlarge_no_scale">26dp</dimen>
+    <dimen name="text_xxxlarge_no_scale">30dp</dimen>
+
+    <!-- Icon Size -->
+    <dimen name="icon_avatar_small">32dp</dimen>
+    <dimen name="icon_avatar">40dp</dimen>
+    <dimen name="icon_avatar_large">64dp</dimen>
+    <dimen name="icon_avatar_xlarge">96dp</dimen>
+    <dimen name="icon_avatar_xxlarge">128dp</dimen>
+    <dimen name="icon_avatar_xxxlarge">240dp</dimen>
+    <dimen name="icon_placeholder">64dp</dimen>
+
+    <dimen name="icon_small_half">10dp</dimen>
+    <dimen name="icon_xxsmall">12dp</dimen>
+    <dimen name="icon_xsmall">16dp</dimen>
+    <dimen name="icon_small">20dp</dimen>
+    <dimen name="icon_normal">24dp</dimen>
+    <dimen name="icon_medium">28dp</dimen>
+    <dimen name="icon_large">32dp</dimen>
+    <dimen name="icon_xlarge">40dp</dimen>
+    <dimen name="icon_xxlarge">48dp</dimen>
+    <dimen name="icon_xxxlarge">56dp</dimen>
+    <dimen name="icon_xxxxlarge">64dp</dimen>
+    <dimen name="icon_xxxxxlarge">72dp</dimen>
+    <dimen name="icon_xxxxxxlarge">80dp</dimen>
+    <dimen name="icon_xxxxxxxlarge">96dp</dimen>
+
+    <!-- Button Flat -->
+    <dimen name="btn_flat_external_padding_width">8dp</dimen>
+    <dimen name="btn_flat_external_padding_height">6dp</dimen>
+    <dimen name="btn_flat_internal_padding_width">8dp</dimen>
+    <dimen name="btn_flat_internal_padding_height">0dp</dimen>
+    <dimen name="btn_flat_min_width">64dp</dimen>
+    <dimen name="btn_flat_min_height">36dp</dimen>
+    <dimen name="btn_flat_touch_target_height">48dp</dimen>
+
+    <!-- Button -->
+    <dimen name="btn_raised_title">14sp</dimen>
+    <dimen name="btn_raised_min_height">36dp</dimen>
+    <dimen name="btn_raised_small_title">13sp</dimen>
+    <dimen name="btn_raised_small_min_height">32dp</dimen>
+    <dimen name="btn_raised_min_width">64dp</dimen>
+    <dimen name="btn_raised_padding">16dp</dimen>
+    <dimen name="btn_raised_corner_radius">2dp</dimen>
+
+    <!-- Float Action Button -->
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_min_margin">16dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dialog_prefer_width">@dimen/abc_dialog_min_width_minor</dimen>
+
+    <!-- List -->
+    <dimen name="list_xxsmall">28dp</dimen>
+    <dimen name="list_xsmall">36dp</dimen>
+    <dimen name="list_small">48dp</dimen>
+    <dimen name="list_normal">56dp</dimen>
+    <dimen name="list_large">64dp</dimen>
+    <dimen name="list_xlarge">80dp</dimen>
+
+    <!-- Divider -->
+    <dimen name="divider_small">0.5dp</dimen>
+    <dimen name="divider">1dp</dimen>
+    <dimen name="divider_large">2dp</dimen>
+
+    <!-- Other -->
+    <dimen name="drawerWidth">300dp</dimen>
+    <dimen name="none">0dp</dimen>
+
+    <dimen name="tab_height">40dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

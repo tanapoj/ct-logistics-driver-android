@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">SCG Express</string>
+    <string name="go">Go</string>
+    <string name="greeting">Hello World!</string>
+    <string name="loading_ellipsis">Loading…</string>
+    <string name="login">Login</string>
+    <string name="ok">OK</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="or">or</string>
+    <string name="password">Password</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="scan_qr_code_to_login">Scan QR code to login</string>
+    <string name="there_is_on_internet_connection">There is no internet connection</string>
+    <string name="user">User</string>
+    <string name="warning">Warning</string>
+
+    <string name="emergency_master_data_update">propagate emergency master data update\nจำเป็นต้องทำการอัปเดท master data</string>
+    <string name="btn_master_data_update">อัปเดทข้อมูล master data ตอนนี้เลย</string>
+    <string name="btn_master_data_postpone_short">เลื่อน 15 นาที</string>
+    <string name="btn_master_data_postpone_long">เลื่อน 30 นาที</string>
+
+    <string name="dialog_submit_confirm_title">จบการทำงาน</string>
+    <string name="dialog_submit_confirm_message">ยืนยันการจบการทำงาน</string>
+    <string name="dialog_submit_confirm_ok">จบการทำงาน</string>
+    <string name="dialog_submit_confirm_cancel">ยกเลิก</string>
+    <string name="signer">Signer</string>
+    <string name="sign_here">Sign here</string>
+    <string name="clear">CLEAR</string>
+
+    <string name="dialog_app_version_title">เกิดข้อผิดพลาด</string>
+    <string name="dialog_app_version_message">แอพพลิเคชันไม่ใช่เวอร์ชันล่าสุด กรุณาอัปเดตก่อนใช้งาน</string>
+    <string name="dialog_app_version_ok">อัปเดต</string>
+    <string name="services_type">Services type</string>
+
+    <string name="dialog_pickup_cod_not_found_title">เกิดข้อผิดพลาด</string>
+    <string name="dialog_pickup_cod_not_found_message">ไม่พบข้อมูล COD Fee ในระบบ</string>
+    <string name="dialog_pickup_cod_not_found_ok">ตกลง</string>
+    <string name="dialog_pickup_not_allow_cod_title">เกิดข้อผิดพลาด</string>
+    <string name="dialog_pickup_not_allow_cod_message">ยังไม่ได้เปิดให้บริการ COD สำหรับลูกค้ารายนี้</string>
+    <string name="dialog_pickup_not_allow_cod_ok">ตกลง</string>
+
+    <string name="dialog_remote_postalcode_selector">กรุณาเลือกพื้นที่ปลายทาง</string>
+    <string name="dialog_remote_postalcode_alert">! เตือนพื้นที่ห่างไกล</string>
+    <string name="dialog_remote_postalcode_desc">รหัสไปรษณีย์ที่ท่านเลือก อยู่ในพื้นที่ห่างไกล ใช้เวลาจัดส่งภายใน 2–4 วัน</string>
+    <string name="dialog_remote_postalcode_extra_desc">รหัสไปรษณีย์ที่ท่านเลือก อยู่ในพื้นที่ห่างไกล ใช้เวลาจัดส่งภายใน 2–4 วัน และมีค่าบริการเพิ่มเติม 200 บาท ต่อกล่อง</string>
+    <string name="dialog_remote_postalcode_ok">ยอมรับ</string>
+    <string name="dialog_remote_postalcode_cancel">ยกเลิก</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
+    <string name="logout">Logout</string>
+    <string name="this_is_subtitle">This is subtitle</string>
+    <string name="this_is_title">This is title</string>
+
+    <string name="pickup">Pick up</string>
+    <string name="delivery">Delivery</string>
+    <string name="sale_driver_report">Sale driver report</string>
+    <string name="sd_report">SD Report</string>
+    <string name="line_haul">Line haul</string>
+    <string name="line">Line</string>
+    <string name="date_picker">Date Picker</string>
+    <string name="notifications">Notifications</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="done">Done</string>
+    <string name="search">Search</string>
+    <string name="scan">Scan</string>
+    <string name="scan_ofd">Scan OFD</string>
+    <string name="ofd">OFD</string>
+    <string name="booking">Booking</string>
+    <string name="show_all">Show All</string>
+    <string name="sent">Sent</string>
+    <string name="retention">Retention</string>
+    <string name="can_not_sent">Can\'t sent</string>
+
+    <string name="sentence_booking_details_error_invalid_customer_code">เกิดข้อผิดพลาด ไม่พบ Customer code ในระบบ</string>
+
+    <string name="sentence_delivery_tracking_not_found">ไม่พบ Tracking No. ใน OFD ใบนี้</string>
+    <string name="sentence_booking_has_been_accepted">Booking has been accepted</string>
+    <string name="sentence_booking_has_been_rejected">Booking has been rejected</string>
+</resources>

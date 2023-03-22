@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/grid_normal"
+    android:paddingTop="@dimen/grid_normal">
+
+    <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:layout_marginStart="@dimen/grid_normal"
+            tools:src="@drawable/ic_menu_24dp"
+            android:tint="@color/grayDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginLeft="@dimen/grid_normal"/>
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_normal"
+            android:textColor="@color/grayDark"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imgIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgIcon"
+            app:layout_constraintTop_toTopOf="@id/imgIcon"
+            tools:text="This is title" android:layout_marginLeft="@dimen/grid_normal"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

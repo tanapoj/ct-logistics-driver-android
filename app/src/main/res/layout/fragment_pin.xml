@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/grid_normal"
+            android:paddingTop="@dimen/grid_xxxlarge"
+            android:paddingBottom="@dimen/grid_xxxlarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="กรุณาใส่รหัสผ่าน"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_normal"
+                android:layout_marginTop="@dimen/grid_xxlarge"
+                android:layout_marginEnd="@dimen/grid_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv1">
+
+            <ImageView
+                    android:id="@+id/ivIndicator1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="@dimen/grid_large"
+                    android:src="@drawable/ic_pin_circle_outline"/>
+
+            <ImageView
+                    android:id="@+id/ivIndicator2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="@dimen/grid_large"
+                    android:src="@drawable/ic_pin_circle_outline"/>
+
+            <ImageView
+                    android:id="@+id/ivIndicator3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="@dimen/grid_large"
+                    android:src="@drawable/ic_pin_circle_outline"/>
+
+            <ImageView
+                    android:id="@+id/ivIndicator4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="@dimen/grid_large"
+                    android:src="@drawable/ic_pin_circle_outline"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <Button
+                    android:id="@+id/btn1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                    android:id="@+id/btn2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="2"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+            <Button
+                    android:id="@+id/btn3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="3"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <Button
+                    android:id="@+id/btn4"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="4"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                    android:id="@+id/btn5"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="5"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+            <Button
+                    android:id="@+id/btn6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="6"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <Button
+                    android:id="@+id/btn7"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="7"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                    android:id="@+id/btn8"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="8"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+            <Button
+                    android:id="@+id/btn9"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="9"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <Button
+                    android:id="@+id/btnf"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="f"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                    android:id="@+id/btn0"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textSize="24sp"/>
+
+            <ImageButton
+                    android:id="@+id/btnBackspace"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/ic_baseline_backspace"
+                    android:textAlignment="center"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_baseline_search_white_24dp"
+        android:title="@string/search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_filter"
+        android:icon="@drawable/ic_baseline_filter_list_white_24dp"
+        android:title="@string/scan_ofd"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_ofd"
+                android:title="@string/ofd" />
+
+            <item
+                android:id="@+id/menu_booking"
+                android:title="@string/booking" />
+
+            <item
+                android:id="@+id/menu_all"
+                android:title="@string/show_all" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_barcode"
+        android:icon="@drawable/ic_qr_code_white_24dp"
+        android:title="@string/scan_ofd"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_scan_ofd"
+                android:title="@string/scan_ofd" />
+
+            <item
+                android:id="@+id/menu_sent"
+                android:title="@string/sent" />
+
+            <item
+                android:id="@+id/menu_retention"
+                android:title="@string/retention" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_notification"
+        android:icon="@drawable/ic_notifications_white_24dp"
+        android:title="@string/notifications"
+        app:showAsAction="always" />
+
+</menu>

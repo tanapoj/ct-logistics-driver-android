@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.delivery.ofd.sent.OfdSentFragment">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_large"
+                android:layout_marginTop="@dimen/grid_medium"
+                android:layout_marginEnd="@dimen/grid_large"
+                android:layout_marginBottom="@dimen/grid_medium">
+
+            <TextView
+                    android:id="@+id/txtRegisteredTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/registered"
+                    android:textSize="@dimen/text_normal"
+                    app:layout_constraintBottom_toTopOf="@id/txtRegistered"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtRegistered"/>
+
+            <TextView
+                    android:id="@+id/txtRegistered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_xxxlarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <View
+                    android:id="@+id/vDivider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_small"
+                    android:layout_marginTop="@dimen/grid_small"
+                    android:background="@color/grayLight"
+                    app:layout_constraintTop_toBottomOf="@id/txtRegistered"/>
+
+            <TextView
+                    android:id="@+id/txtCodAmountTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_small"
+                    android:text="@string/cod_amount"
+                    android:textSize="@dimen/text_normal"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider1"/>
+
+            <TextView
+                    android:id="@+id/txtCodAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    app:layout_constraintBaseline_toBaselineOf="@id/txtCodAmountTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+            android:id="@+id/edtScanTracking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_medium"
+            android:layout_marginTop="@dimen/grid_large"
+            android:layout_marginEnd="@dimen/grid_medium"
+            android:layout_marginBottom="@dimen/grid_medium"
+            android:drawableRight="@drawable/ic_qr_code_24dp"
+            android:hint="@string/scan_out_tracking_no"
+            android:inputType="numberDecimal"
+            android:maxLength="12"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvHeader"/>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/grid_normal"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtScanTracking">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cvItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_large"
+                android:layout_marginTop="@dimen/grid_large"
+                android:layout_marginEnd="@dimen/grid_large"
+                android:background="@color/white"
+                tools:layout_height="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout_height="20dp"/>
+
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/grid_normal"
+            android:backgroundTint="@color/btn_accent_tint"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

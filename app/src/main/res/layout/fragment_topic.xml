@@ -1,0 +1,50 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="@dimen/grid_normal"
+            app:layout_constraintBottom_toTopOf="@+id/btnOk">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:nestedScrollingEnabled="false"
+                    tools:targetApi="lollipop"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/grid_large"
+            android:visibility="visible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

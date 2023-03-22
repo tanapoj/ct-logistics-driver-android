@@ -1,0 +1,466 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnSummary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grid_normal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_large"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:textSize="@dimen/text_medium"
+                    app:layout_constraintBottom_toTopOf="@id/cvCustomerDetail"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCount"
+                    app:layout_constraintRight_toLeftOf="@+id/tvCount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Super Position : 0014504" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_normal"
+                    android:layout_marginTop="@dimen/grid_normal"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:textSize="@dimen/text_xxxlarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/tvTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="5" />
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCustomerDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_large"
+                    android:layout_marginTop="@dimen/grid_large"
+                    android:layout_marginEnd="@dimen/grid_large"
+                    android:layout_marginBottom="@dimen/padding_btn_bottom"
+                    app:cardElevation="@dimen/grid_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/grid_large">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spnServiceType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_normal"
+                            android:layout_marginTop="@dimen/grid_large"
+                            android:layout_marginEnd="@dimen/grid_small"
+                            android:prompt="@string/services"
+                            android:spinnerMode="dialog"
+                            app:layout_constraintEnd_toStartOf="@id/spnSize"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spnSize"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_small"
+                            android:layout_marginTop="@dimen/grid_large"
+                            android:layout_marginEnd="@dimen/grid_small"
+                            android:prompt="@string/sizes"
+                            android:spinnerMode="dialog"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/spnServiceType"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swRemember"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/grid_large"
+                            android:checked="false"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/spnServiceType" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textView9"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_normal"
+                            android:layout_marginEnd="@dimen/grid_normal"
+                            android:text="@string/memory"
+                            android:textSize="@dimen/text_normal"
+                            app:layout_constraintBottom_toBottomOf="@id/swRemember"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/swRemember"
+                            app:layout_constraintTop_toTopOf="@id/swRemember" />
+
+                    <View
+                            android:id="@+id/vDivider1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/divider"
+                            android:layout_marginTop="@dimen/grid_normal"
+                            android:background="@color/grayLight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/swRemember" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etTrackingCode"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/grid_large"
+                            android:drawableEnd="@drawable/ic_qr_code_24dp"
+                            android:hint="@string/tracking_code"
+                            android:inputType="numberDecimal"
+                            android:maxLength="12"
+                            android:minWidth="100dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/vDivider1" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etZipCode"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/grid_large"
+                            android:hint="@string/zip_code"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:minWidth="100dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etTrackingCode" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_large"
+                            android:layout_marginEnd="@dimen/grid_large"
+                            android:textColor="@color/deliveryGreen"
+                            android:textSize="@dimen/text_small"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etZipCode"
+                            tools:text="xx,xx xxxxx" />
+
+                    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+                            <!--android:id="@+id/containerFee"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--app:layout_constraintStart_toStartOf="parent"-->
+                            <!--app:layout_constraintTop_toBottomOf="@id/tvAddress">-->
+
+                        <!--<androidx.appcompat.widget.AppCompatEditText-->
+                                <!--android:id="@+id/etCod"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_margin="@dimen/grid_large"-->
+                                <!--android:hint="@string/cod_thb"-->
+                                <!--android:inputType="number"-->
+                                <!--android:minWidth="100dp"-->
+                                <!--android:visibility="visible"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                        <!--<View-->
+                                <!--android:id="@+id/vDivider2"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="@dimen/divider"-->
+                                <!--android:layout_marginTop="@dimen/grid_large"-->
+                                <!--android:background="@color/grayLight"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toBottomOf="@id/etCod" />-->
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                <!--android:id="@+id/tvTotalTitle"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginStart="@dimen/grid_large"-->
+                                <!--android:layout_marginTop="@dimen/grid_large"-->
+                                <!--android:text="@string/pickup_total"-->
+                                <!--android:textSize="@dimen/text_medium"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toBottomOf="@+id/vDivider2" />-->
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                <!--android:id="@+id/tvTotal"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginEnd="@dimen/grid_large"-->
+                                <!--android:textSize="@dimen/text_medium"-->
+                                <!--app:layout_constraintBaseline_toBaselineOf="@id/tvTotalTitle"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--tools:text="@string/currency_placeholder" />-->
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                <!--android:id="@+id/tvDeliveryCostTitle"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginStart="@dimen/grid_large"-->
+                                <!--android:layout_marginTop="@dimen/grid_normal"-->
+                                <!--android:layout_marginBottom="@dimen/grid_large"-->
+                                <!--android:text="@string/delivery_cost"-->
+                                <!--android:textSize="@dimen/text_medium"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toBottomOf="@id/tvTotalTitle" />-->
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                <!--android:id="@+id/tvDeliveryCost"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginEnd="@dimen/grid_large"-->
+                                <!--android:textSize="@dimen/text_medium"-->
+                                <!--app:layout_constraintBaseline_toBaselineOf="@id/tvDeliveryCostTitle"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--tools:text="@string/currency_placeholder" />-->
+
+                        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+                                <!--android:id="@+id/containerCod"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginStart="@dimen/grid_large"-->
+                                <!--android:layout_marginTop="@dimen/grid_normal"-->
+                                <!--android:layout_marginEnd="@dimen/grid_large"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:visibility="gone"-->
+                                <!--app:layout_constraintBottom_toTopOf="@id/containerCarton"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toBottomOf="@id/tvDeliveryCostTitle">-->
+
+                            <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                    <!--android:id="@+id/tvCodFeeTitle"-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="@string/cod_fee"-->
+                                    <!--android:textSize="@dimen/text_medium"-->
+                                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                            <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                    <!--android:id="@+id/tvCodFee"-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_marginStart="@dimen/grid_normal"-->
+                                    <!--android:textSize="@dimen/text_medium"-->
+                                    <!--app:layout_constraintBaseline_toBaselineOf="@id/tvCodFeeTitle"-->
+                                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                    <!--tools:text="@string/currency_placeholder" />-->
+                        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+                                <!--android:id="@+id/containerCarton"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginStart="@dimen/grid_large"-->
+                                <!--android:layout_marginTop="@dimen/grid_normal"-->
+                                <!--android:layout_marginEnd="@dimen/grid_large"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:visibility="gone"-->
+                                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                <!--app:layout_constraintStart_toStartOf="parent"-->
+                                <!--app:layout_constraintTop_toBottomOf="@id/containerCod">-->
+
+                            <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                    <!--android:id="@+id/tvCartonTitle"-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="@string/carton_price"-->
+                                    <!--android:textSize="@dimen/text_medium"-->
+                                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                            <!--<androidx.appcompat.widget.AppCompatTextView-->
+                                    <!--android:id="@+id/tvCartonPrice"-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_marginStart="@dimen/grid_normal"-->
+                                    <!--android:textSize="@dimen/text_medium"-->
+                                    <!--app:layout_constraintBaseline_toBaselineOf="@id/tvCartonTitle"-->
+                                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                                    <!--tools:text="@string/currency_placeholder" />-->
+                        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+                    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbCarton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="32dp"
+                            android:text="ขายกล่อง"
+                            app:layout_constraintBottom_toBottomOf="@+id/swRemember"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/swRemember" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--<androidx.cardview.widget.CardView-->
+                    <!--android:id="@+id/cvRecipient"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="@dimen/grid_large"-->
+                    <!--android:layout_marginTop="@dimen/grid_large"-->
+                    <!--android:layout_marginEnd="@dimen/grid_large"-->
+                    <!--android:layout_marginBottom="@dimen/grid_large"-->
+                    <!--android:padding="@dimen/grid_small"-->
+                    <!--app:cardElevation="@dimen/grid_normal"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/cvCustomerDetail">-->
+
+
+                <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="@dimen/grid_normal">-->
+
+                    <!--<androidx.appcompat.widget.AppCompatImageView-->
+                            <!--android:id="@+id/ivPhotoSender"-->
+                            <!--android:layout_width="@dimen/icon_avatar_large"-->
+                            <!--android:layout_height="@dimen/icon_avatar_large"-->
+                            <!--android:layout_marginStart="8dp"-->
+                            <!--android:layout_marginTop="8dp"-->
+                            <!--android:src="@drawable/ic_baseline_image_24dp"-->
+                            <!--app:layout_constraintStart_toStartOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--<androidx.appcompat.widget.AppCompatTextView-->
+                            <!--android:id="@+id/txtPhoto1"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginStart="8dp"-->
+                            <!--android:text="@string/photo_sender"-->
+                            <!--app:layout_constraintBottom_toBottomOf="@id/ivPhotoSender"-->
+                            <!--app:layout_constraintStart_toEndOf="@+id/ivPhotoSender"-->
+                            <!--app:layout_constraintTop_toTopOf="@id/ivPhotoSender" />-->
+
+                    <!--<androidx.appcompat.widget.AppCompatImageView-->
+                            <!--android:id="@+id/btnAddPhoto1"-->
+                            <!--android:layout_width="@dimen/icon_normal"-->
+                            <!--android:layout_height="@dimen/icon_normal"-->
+                            <!--android:layout_marginEnd="@dimen/grid_medium"-->
+                            <!--android:focusable="true"-->
+                            <!--android:tint="@color/ripple_effect_image_tint"-->
+                            <!--app:layout_constraintBottom_toBottomOf="@id/txtBefore"-->
+                            <!--app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="@+id/txtPhoto1"-->
+                            <!--app:srcCompat="@drawable/ic_baseline_photo_camera_24dp" />-->
+
+
+                    <!--<View-->
+                            <!--android:id="@+id/vDivider5"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="@dimen/divider"-->
+                            <!--android:layout_marginTop="@dimen/grid_normal"-->
+                            <!--android:background="@color/grayLight"-->
+                            <!--app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--app:layout_constraintStart_toStartOf="parent"-->
+                            <!--app:layout_constraintTop_toBottomOf="@id/ivPhotoSender" />-->
+
+
+                    <!--<androidx.appcompat.widget.AppCompatImageView-->
+                            <!--android:id="@+id/ivPhotoRecipient"-->
+                            <!--android:layout_width="@dimen/icon_avatar_large"-->
+                            <!--android:layout_height="@dimen/icon_avatar_large"-->
+                            <!--android:layout_marginStart="8dp"-->
+                            <!--android:layout_marginTop="8dp"-->
+                            <!--android:src="@drawable/ic_baseline_image_24dp"-->
+                            <!--app:layout_constraintStart_toStartOf="parent"-->
+                            <!--app:layout_constraintTop_toBottomOf="@+id/vDivider5" />-->
+
+                    <!--<androidx.appcompat.widget.AppCompatTextView-->
+                            <!--android:id="@+id/txtPhoto2"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginStart="8dp"-->
+                            <!--android:text="@string/photo_recipient"-->
+                            <!--app:layout_constraintBottom_toBottomOf="@id/ivPhotoRecipient"-->
+                            <!--app:layout_constraintStart_toEndOf="@+id/ivPhotoRecipient"-->
+                            <!--app:layout_constraintTop_toTopOf="@id/ivPhotoRecipient" />-->
+
+                    <!--<androidx.appcompat.widget.AppCompatImageView-->
+                            <!--android:id="@+id/btnAddPhoto2"-->
+                            <!--android:layout_width="@dimen/icon_normal"-->
+                            <!--android:layout_height="@dimen/icon_normal"-->
+                            <!--android:layout_marginEnd="@dimen/grid_medium"-->
+                            <!--android:focusable="true"-->
+                            <!--android:tint="@color/ripple_effect_image_tint"-->
+                            <!--app:layout_constraintBottom_toBottomOf="@id/txtBefore"-->
+                            <!--app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="@+id/txtPhoto2"-->
+                            <!--app:srcCompat="@drawable/ic_baseline_photo_camera_24dp" />-->
+
+
+                <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                <!--&lt;!&ndash;<View&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/vDivider5"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="@dimen/divider"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="@dimen/grid_normal"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@color/grayLight"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:layout_constraintTop_toBottomOf="@id/txtRemark" />&ndash;&gt;-->
+
+            <!--</androidx.cardview.widget.CardView>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/btn_accent_tint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSummary"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSummary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_normal"
+            android:text="@string/summary"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/btn_accent_tint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

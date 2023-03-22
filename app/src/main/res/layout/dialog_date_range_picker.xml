@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+            android:id="@+id/calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            custom:disable_date_color="#ABABAB"
+            custom:enable_past_date="true"
+            custom:header_bg="@color/colorPrimary"
+            custom:range_color="@color/grayLight"
+            custom:selected_date_circle_color="@color/colorAccent"
+            custom:title_color="@color/white"/>
+
+    <TextView
+            android:id="@+id/btnToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_xlarge"
+            android:layout_marginEnd="@dimen/grid_large"
+            android:layout_marginBottom="@dimen/grid_large"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/today"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendar"
+            android:layout_marginLeft="@dimen/grid_xlarge"
+            android:layout_marginRight="@dimen/grid_large"/>
+
+    <TextView
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginEnd="@dimen/grid_xlarge"
+            android:layout_marginBottom="@dimen/grid_large"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/ok"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendar"
+            android:layout_marginLeft="@dimen/grid_large"
+            android:layout_marginRight="@dimen/grid_xlarge"/>
+
+    <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_large"
+            android:layout_marginEnd="@dimen/grid_xxlarge"
+            android:layout_marginBottom="@dimen/grid_large"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/cancel_upper"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnOk"
+            app:layout_constraintTop_toBottomOf="@+id/calendar"
+            android:layout_marginLeft="@dimen/grid_large"
+            android:layout_marginRight="@dimen/grid_xxlarge"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

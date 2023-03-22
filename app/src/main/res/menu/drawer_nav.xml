@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_menu">
+
+        <item
+            android:id="@+id/nav_menu_dashboard"
+            android:icon="@drawable/ic_dashboard_24dp"
+            android:title="@string/dashboard" />
+        <item
+            android:id="@+id/nav_menu_pickup"
+            android:icon="@drawable/ic_store_24dp"
+            android:title="@string/pickup" />
+        <item
+            android:id="@+id/nav_menu_delivery"
+            android:icon="@drawable/ic_shipping_24dp"
+            android:title="@string/delivery" />
+        <item
+            android:id="@+id/nav_menu_line_haul"
+            android:icon="@drawable/ic_zoom_out_map_24dp"
+            android:title="@string/line_haul" />
+        <item
+            android:id="@+id/nav_menu_sdreport"
+            android:icon="@drawable/ic_baseline_assignment"
+            android:title="@string/sale_driver_report" />
+        <item
+            android:id="@+id/nav_menu_line"
+            android:icon="@drawable/ic_menu_24dp"
+            android:title="@string/line" />
+
+    </group>
+
+    <group android:id="@+id/group_footer">
+        <item
+            android:id="@+id/nav_menu_logout"
+            android:icon="@drawable/ic_exit_24dp"
+            android:title="@string/logout" />
+    </group>
+
+</menu>

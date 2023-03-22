@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_menu_scan"
+        android:title="@string/scan_ofd" />
+    <item
+        android:id="@+id/nav_menu_sent"
+        android:title="@string/sent" />
+    <item
+        android:id="@+id/nav_menu_cant_sent"
+        android:title="@string/can_not_sent" />
+</menu>
